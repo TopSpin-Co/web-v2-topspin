@@ -204,6 +204,23 @@ h5 {
     transform: translateY(-2px);
 }
 
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+}
+
+.btn-outline:hover {
+    background-color: var(--accent-color);
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+}
+
 .btn-link {
     background: transparent;
     color: var(--text-primary);
@@ -377,7 +394,7 @@ section {
 }
 
 .subheadline {
-    font-size: 1.125rem;
+    font-size: 0.95rem;
     color: var(--text-secondary);
     max-width: 600px;
     margin: 0 auto 2.5rem;
@@ -395,6 +412,12 @@ section {
 .email-capture-form {
     display: flex;
     gap: 0.5rem;
+}
+
+.email-capture-form button {
+    white-space: nowrap;
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
 }
 
 .email-capture-form input,
