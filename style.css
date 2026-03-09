@@ -848,7 +848,7 @@ section {
 
 /* Tabs Browser Style */
 .tabs-container {
-    max-width: 1600px;
+    max-width: 1200px;
     width: 96%;
     margin-left: auto;
     margin-right: auto;
@@ -945,12 +945,14 @@ section {
 
 .tabs-content .card {
     padding: 1.5rem;
-    text-align: center;
+    text-align: left;
+    border-left: 3px solid var(--accent-color);
 }
 
 .tabs-content .card h3 {
+    font-family: var(--font-body);
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 600;
     margin-bottom: 0.5rem;
 }
 
@@ -959,9 +961,38 @@ section {
     margin-top: 0.5rem;
 }
 
+.card-step {
+    font-family: var(--font-heading);
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    opacity: 0.25;
+    line-height: 1;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.tabs-content .card .btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-color);
+    padding: 0.4rem 0;
+    border-bottom: 1.5px solid transparent;
+    transition: border-color 0.3s ease, gap 0.3s ease;
+}
+
+.tabs-content .card .btn-link:hover {
+    border-bottom-color: var(--accent-color);
+    gap: 0.6rem;
+    color: var(--accent-color);
+}
+
 .tabs-content .card .badge {
     font-size: 0.70rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     padding: 0.25rem 0.6rem;
 }
 
@@ -999,74 +1030,350 @@ section {
     font-size: 1.1rem;
 }
 
-/* 07 - Como Trabajamos (Timeline) */
-.timeline {
+/* 05 - Workflow Sticky Scroll */
+.wf-section {
+    padding: 6rem 0 0;
+    background-color: var(--bg-tertiary);
+}
+
+.wf-header {
+    position: sticky;
+    top: 60px;
+    z-index: 10;
+    background-color: var(--bg-tertiary);
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5% 0.5rem;
+}
+
+.wf-wrapper {
     display: flex;
-    justify-content: space-between;
-    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto 0;
+    padding: 0 5%;
     position: relative;
+    gap: 3rem;
 }
 
-.timeline::before {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background-color: var(--border-color);
-    z-index: 0;
+/* --- Sidebar (Sticky Flowchart) --- */
+.wf-sidebar {
+    flex: 0 0 30%;
+    max-width: 320px;
+    position: sticky;
+    top: 240px;
+    align-self: flex-start;
+    height: fit-content;
+    padding-bottom: 4rem;
 }
 
-.timeline-step {
-    flex: 1;
-    text-align: left;
-    position: relative;
-    z-index: 1;
-    padding-top: 3rem;
+.wf-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.step-marker {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--bg-secondary);
-    border: 2px solid var(--accent-color);
-    color: var(--accent-color);
+/* Node row: box + label */
+.wf-node {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Phase box */
+.wf-box {
+    width: 90px;
+    height: 46px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-weight: bold;
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-}
-
-.timeline-step p {
+    border: 2px solid var(--border-color);
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
     color: var(--text-secondary);
-    font-size: 0.9rem;
-    margin-top: 0.5rem;
+    background: var(--bg-secondary);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.5;
+    flex-shrink: 0;
 }
 
+.wf-box--active {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    opacity: 1;
+    box-shadow: 0 0 20px rgba(230, 89, 38, 0.15), 0 0 0 4px rgba(230, 89, 38, 0.06);
+}
+
+[data-theme="dark"] .wf-box--active {
+    box-shadow: 0 0 25px rgba(230, 89, 38, 0.2), 0 0 0 4px rgba(230, 89, 38, 0.1);
+}
+
+/* Label beside box */
+.wf-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    transition: color 0.4s ease, opacity 0.4s ease;
+    opacity: 0.5;
+}
+
+.wf-node:has(.wf-box--active) .wf-label {
+    color: var(--text-primary);
+    opacity: 1;
+}
+
+/* Connector: line - diamond - line */
+.wf-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90px;
+    flex-shrink: 0;
+}
+
+.wf-line {
+    width: 2px;
+    height: 18px;
+    background: var(--border-color);
+    transition: background 0.5s ease;
+}
+
+.wf-connector--done .wf-line {
+    background: var(--accent-color);
+}
+
+/* Diamond shape */
+.wf-diamond {
+    width: 24px;
+    height: 24px;
+    transform: rotate(45deg);
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+}
+
+.wf-diamond svg {
+    transform: rotate(-45deg);
+    color: transparent;
+    transition: color 0.4s ease;
+}
+
+.wf-connector--done .wf-diamond {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+}
+
+.wf-connector--done .wf-diamond svg {
+    color: #fff;
+}
+
+/* --- Right Column: Phase Content --- */
+.wf-phases {
+    flex: 1;
+    min-width: 0;
+}
+
+.wf-phase {
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    padding: 3rem 0;
+}
+
+.wf-phase:last-child {
+    min-height: 70vh;
+    padding-bottom: 6rem;
+}
+
+.wf-phase-inner {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 2.5rem;
+    box-shadow: var(--card-shadow);
+    opacity: 0.3;
+    transform: translateY(30px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.wf-phase--active .wf-phase-inner {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Phase tag */
+.wf-phase-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--accent-color);
+    margin-bottom: 0.75rem;
+}
+
+.wf-phase-inner h3 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 1.25rem;
+    color: var(--text-primary);
+}
+
+.wf-phase-inner p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+}
+
+.wf-phase-text {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Phase image */
+.wf-phase-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+/* Tool logos */
+.wf-logos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.wf-logos span {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    background: var(--bg-tertiary);
+    transition: opacity 0.3s ease;
+}
+
+.wf-logos span:hover {
+    opacity: 1;
+}
+
+/* --- Responsive: Mobile --- */
 @media (max-width: 768px) {
-    .timeline {
+    .wf-section {
+        padding: 4rem 0 0;
+    }
+
+    .wf-header {
+        position: relative;
+        top: 0;
+    }
+
+    .wf-wrapper {
+        flex-direction: column;
+        gap: 0;
+        margin-top: 2rem;
+    }
+
+    .wf-sidebar {
+        position: relative;
+        top: 0;
+        flex: unset;
+        max-width: 100%;
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 1.5rem;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .wf-diagram {
+        flex-direction: row;
+        align-items: center;
+        min-width: max-content;
+        padding: 0 0.5rem;
+    }
+
+    .wf-node {
+        flex-direction: column;
+        gap: 0.4rem;
+        text-align: center;
+    }
+
+    .wf-label {
+        font-size: 0.65rem;
+        white-space: nowrap;
+    }
+
+    .wf-connector {
+        flex-direction: row;
+        width: auto;
+        height: auto;
+        align-items: center;
+    }
+
+    .wf-line {
+        width: 20px;
+        height: 2px;
+    }
+
+    .wf-diamond {
+        width: 20px;
+        height: 20px;
+    }
+
+    .wf-diamond svg {
+        width: 10px;
+        height: 10px;
+    }
+
+    .wf-box {
+        width: 70px;
+        height: 36px;
+        font-size: 0.65rem;
+    }
+
+    .wf-phases {
+        padding: 0;
+    }
+
+    .wf-phase {
+        min-height: auto;
+        padding: 1.5rem 0;
+    }
+
+    .wf-phase:last-child {
+        min-height: auto;
+        padding-bottom: 3rem;
+    }
+
+    .wf-phase-inner {
+        padding: 1.5rem;
         flex-direction: column;
     }
 
-    .timeline::before {
-        top: 0;
-        left: 20px;
-        bottom: 0;
+    .wf-phase-img {
+        width: 100%;
         height: auto;
-        width: 2px;
-    }
-
-    .timeline-step {
-        padding-top: 0;
-        padding-left: 4rem;
-        margin-bottom: 2rem;
+        max-height: 200px;
     }
 }
 
