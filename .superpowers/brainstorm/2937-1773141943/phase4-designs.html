@@ -1,0 +1,186 @@
+<style>
+  .designs { display: flex; flex-direction: column; gap: 2.5rem; }
+  .design-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #e65926; margin-bottom: 0.75rem; }
+  .card-wrap {
+    max-width: 480px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 1.75rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .phase-tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e65926;
+    background: rgba(230,89,38,0.08);
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    margin-bottom: 0.6rem;
+  }
+  .card-wrap h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.6rem;
+  }
+  .card-wrap > p, .card-desc {
+    font-size: 0.83rem;
+    color: #5c5c5c;
+    line-height: 1.65;
+    margin: 0 0 0.3rem;
+  }
+  .divider { border: none; border-top: 1px solid #e5e5e5; margin: 0.65rem 0; }
+
+  /* === OPTION A: 3 columns grid === */
+  .three-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.75rem 1rem;
+  }
+  .col-label { font-size: 0.78rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.3rem; }
+  .col-body { font-size: 0.75rem; color: #5c5c5c; line-height: 1.55; }
+
+  /* === OPTION B: 3 rows with left orange accent === */
+  .accent-rows { display: flex; flex-direction: column; gap: 0.6rem; }
+  .accent-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+  }
+  .accent-bar {
+    width: 3px;
+    min-height: 100%;
+    background: #e65926;
+    border-radius: 2px;
+    flex-shrink: 0;
+    align-self: stretch;
+  }
+  .accent-row-text {}
+  .accent-row-label { font-size: 0.78rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.2rem; }
+  .accent-row-body { font-size: 0.75rem; color: #5c5c5c; line-height: 1.5; }
+
+  /* === OPTION C: 3 stat-style tiles === */
+  .stat-tiles { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.6rem; }
+  .stat-tile {
+    background: #f4f2ec;
+    border-radius: 8px;
+    padding: 0.75rem 0.85rem;
+  }
+  .stat-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #e65926;
+    line-height: 1;
+    margin-bottom: 0.35rem;
+  }
+  .stat-label { font-size: 0.72rem; font-weight: 600; color: #1a1a1a; margin-bottom: 0.2rem; }
+  .stat-body { font-size: 0.7rem; color: #5c5c5c; line-height: 1.45; }
+</style>
+
+<h2>Fase 4 — 3 diseños</h2>
+<p class="subtitle">Mismo contenido, tres tratamientos distintos. ¿Cuál te convence más?</p>
+
+<div class="designs">
+
+  <!-- OPTION A -->
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">A</div>
+    <div class="content">
+      <div class="design-label">Opción A — 3 columnas</div>
+      <div class="card-wrap">
+        <span class="phase-tag">Fase 4 — Mes 2 en adelante</span>
+        <h3>Mejoramos y escalamos</h3>
+        <p class="card-desc">No desaparecemos cuando las campañas están en marcha. Cada semana revisamos los datos, ajustamos lo que no funciona y ampliamos lo que sí.</p>
+        <hr class="divider">
+        <div class="three-cols">
+          <div>
+            <div class="col-label">Semana a semana</div>
+            <div class="col-body">Recibes un informe con todo lo que está pasando.</div>
+          </div>
+          <div>
+            <div class="col-label">Lo que funciona</div>
+            <div class="col-body">lo ampliamos. Lo que no, lo cambiamos.</div>
+          </div>
+          <div>
+            <div class="col-label">Tú solo recibes</div>
+            <div class="col-body">reuniones. Nosotros nos encargamos del resto.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <div class="design-label">Opción B — Filas con acento naranja</div>
+      <div class="card-wrap">
+        <span class="phase-tag">Fase 4 — Mes 2 en adelante</span>
+        <h3>Mejoramos y escalamos</h3>
+        <p class="card-desc">No desaparecemos cuando las campañas están en marcha. Cada semana revisamos los datos, ajustamos lo que no funciona y ampliamos lo que sí.</p>
+        <hr class="divider">
+        <div class="accent-rows">
+          <div class="accent-row">
+            <div class="accent-bar"></div>
+            <div class="accent-row-text">
+              <div class="accent-row-label">Semana a semana</div>
+              <div class="accent-row-body">Recibes un informe con todo lo que está pasando.</div>
+            </div>
+          </div>
+          <div class="accent-row">
+            <div class="accent-bar"></div>
+            <div class="accent-row-text">
+              <div class="accent-row-label">Lo que funciona</div>
+              <div class="accent-row-body">lo ampliamos. Lo que no, lo cambiamos.</div>
+            </div>
+          </div>
+          <div class="accent-row">
+            <div class="accent-bar"></div>
+            <div class="accent-row-text">
+              <div class="accent-row-label">Tú solo recibes</div>
+              <div class="accent-row-body">reuniones. Nosotros nos encargamos del resto.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <div class="design-label">Opción C — Tiles con número destacado</div>
+      <div class="card-wrap">
+        <span class="phase-tag">Fase 4 — Mes 2 en adelante</span>
+        <h3>Mejoramos y escalamos</h3>
+        <p class="card-desc">No desaparecemos cuando las campañas están en marcha. Cada semana revisamos los datos, ajustamos lo que no funciona y ampliamos lo que sí.</p>
+        <hr class="divider">
+        <div class="stat-tiles">
+          <div class="stat-tile">
+            <div class="stat-number">01</div>
+            <div class="stat-label">Semana a semana</div>
+            <div class="stat-body">Recibes un informe con todo lo que está pasando.</div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-number">02</div>
+            <div class="stat-label">Lo que funciona</div>
+            <div class="stat-body">lo ampliamos. Lo que no, lo cambiamos.</div>
+          </div>
+          <div class="stat-tile">
+            <div class="stat-number">03</div>
+            <div class="stat-label">Tú solo recibes</div>
+            <div class="stat-body">reuniones. Nosotros nos encargamos del resto.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

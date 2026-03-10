@@ -1,0 +1,90 @@
+<style>
+  .card-wrap {
+    max-width: 520px;
+    margin: 2rem auto;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .phase-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e65926;
+    background: rgba(230,89,38,0.08);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+  .card-wrap h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.75rem;
+  }
+  .card-wrap > p {
+    font-size: 0.875rem;
+    color: #5c5c5c;
+    line-height: 1.65;
+    margin: 0 0 0.3rem;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 0.75rem 0;
+  }
+  .three-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+  .col-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+  .col-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    line-height: 1.3;
+  }
+  .col-body {
+    font-size: 0.78rem;
+    color: #5c5c5c;
+    line-height: 1.55;
+  }
+  .col-sep {
+    width: 1px;
+    background: #e5e5e5;
+  }
+</style>
+
+<h2>Mockup — Fase 4 Card</h2>
+<p class="subtitle">¿Te encaja esta estructura para Fase 4?</p>
+
+<div class="card-wrap">
+  <span class="phase-tag">Fase 4 — Mes 2 en adelante</span>
+  <h3>Mejoramos y escalamos</h3>
+  <p>No desaparecemos cuando las campañas están en marcha. Cada semana revisamos los datos, ajustamos lo que no funciona y ampliamos lo que sí. Llevamos tiempo haciendo esto.</p>
+  <hr class="divider">
+  <div class="three-cols">
+    <div class="col-item">
+      <span class="col-label">Semana a semana</span>
+      <span class="col-body">Recibes un informe con todo lo que está pasando.</span>
+    </div>
+    <div class="col-item">
+      <span class="col-label">Lo que funciona</span>
+      <span class="col-body">lo ampliamos. Lo que no, lo cambiamos.</span>
+    </div>
+    <div class="col-item">
+      <span class="col-label">Tú solo recibes</span>
+      <span class="col-body">reuniones. Nosotros nos encargamos del resto.</span>
+    </div>
+  </div>
+</div>

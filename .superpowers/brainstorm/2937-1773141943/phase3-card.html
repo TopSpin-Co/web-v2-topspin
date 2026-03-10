@@ -1,0 +1,182 @@
+<style>
+  .card-wrap {
+    max-width: 520px;
+    margin: 2rem auto;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    padding: 2rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .phase-tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e65926;
+    background: rgba(230,89,38,0.08);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+  }
+  .card-wrap h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin: 0 0 0.5rem;
+  }
+  .card-wrap > p {
+    font-size: 0.9rem;
+    color: #5c5c5c;
+    line-height: 1.6;
+    margin: 0 0 0.3rem;
+    max-width: 85%;
+  }
+  .divider {
+    border: none;
+    border-top: 1px solid #e5e5e5;
+    margin: 0.5rem 0 0.6rem;
+  }
+  .minicards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .minicard {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: #f4f2ec;
+    border-radius: 8px;
+    padding: 0.75rem 0.9rem;
+  }
+  .minicard-icon {
+    width: 32px;
+    height: 32px;
+    background: #fff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #e65926;
+  }
+  .minicard-body { flex: 1; min-width: 0; }
+  .minicard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+  }
+  .minicard-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+  .active-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #16a34a;
+    background: rgba(22,163,74,0.1);
+    padding: 0.15rem 0.5rem;
+    border-radius: 99px;
+    white-space: nowrap;
+  }
+  .minicard-body p {
+    font-size: 0.78rem;
+    color: #5c5c5c;
+    line-height: 1.5;
+    margin: 0 0 0.4rem;
+    max-width: 85%;
+  }
+  .tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .tools span {
+    font-size: 0.68rem;
+    font-weight: 500;
+    color: #5c5c5c;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+  }
+</style>
+
+<h2>Mockup — Fase 3 Card</h2>
+<p class="subtitle">Vista previa del diseño. ¿Te parece bien el contenido y la estructura?</p>
+
+<div class="card-wrap">
+  <span class="phase-tag">Fase 3 — Semana 3</span>
+  <h3>Arrancamos</h3>
+  <p>Las campañas salen al mercado. La IA gestiona y prioriza. Tú recibes reuniones.</p>
+  <hr class="divider">
+  <div class="minicards">
+
+    <!-- Minicard 1 -->
+    <div class="minicard">
+      <div class="minicard-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/>
+        </svg>
+      </div>
+      <div class="minicard-body">
+        <div class="minicard-header">
+          <span class="minicard-title">Lanzamiento multicanal</span>
+          <span class="active-badge">✓ Activo</span>
+        </div>
+        <p>Email, LinkedIn y llamada coordinados desde el primer día. Cada canal refuerza al otro.</p>
+        <div class="tools">
+          <span>Instantly</span>
+          <span>Lemlist</span>
+          <span>Aircall</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Minicard 2 -->
+    <div class="minicard">
+      <div class="minicard-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/>
+        </svg>
+      </div>
+      <div class="minicard-body">
+        <div class="minicard-header">
+          <span class="minicard-title">Lead scoring con IA</span>
+          <span class="active-badge">✓ Activo</span>
+        </div>
+        <p>La IA detecta señales de interés y prioriza automáticamente a quién merece follow-up inmediato.</p>
+        <div class="tools">
+          <span>HubSpot</span>
+          <span>Clay</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Minicard 3 -->
+    <div class="minicard">
+      <div class="minicard-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+          <path d="M18 20V10M12 20V4M6 20v-6"/>
+        </svg>
+      </div>
+      <div class="minicard-body">
+        <div class="minicard-header">
+          <span class="minicard-title">A/B testing en tiempo real</span>
+          <span class="active-badge">✓ Activo</span>
+        </div>
+        <p>Las mejores variantes de mensaje escalan solas con cada envío. Sin intervención manual.</p>
+        <div class="tools">
+          <span>Instantly</span>
+          <span>Smartlead</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
