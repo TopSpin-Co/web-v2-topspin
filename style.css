@@ -1032,13 +1032,17 @@ section {
 
 /* 05 - Workflow Sticky Scroll */
 .wf-section {
-    padding: 6rem 0 0;
+    padding: 2rem 0 0;
     background-color: var(--bg-tertiary);
+}
+
+#soluciones {
+    padding-bottom: 2rem;
 }
 
 .wf-header {
     position: sticky;
-    top: 60px;
+    top: 90px;
     z-index: 10;
     background-color: var(--bg-tertiary);
     text-align: center;
@@ -1061,7 +1065,7 @@ section {
     flex: 0 0 30%;
     max-width: 320px;
     position: sticky;
-    top: 240px;
+    top: 270px;
     align-self: flex-start;
     height: fit-content;
     padding-bottom: 4rem;
@@ -1184,15 +1188,15 @@ section {
 }
 
 .wf-phase {
-    min-height: 85vh;
+    min-height: auto;
     display: flex;
     align-items: center;
-    padding: 3rem 0;
+    padding: 1.5rem 0;
 }
 
 .wf-phase:last-child {
-    min-height: 70vh;
-    padding-bottom: 6rem;
+    min-height: auto;
+    padding-bottom: 4rem;
 }
 
 .wf-phase-inner {
@@ -1280,6 +1284,187 @@ section {
     opacity: 1;
 }
 
+/* Phases 1, 2, 3 & 4 compact spacing */
+#wf-phase-2 .wf-phase-inner > p,
+#wf-phase-3 .wf-phase-inner > p {
+    margin-bottom: 0;
+}
+
+#wf-phase-1 .wf-divider,
+#wf-phase-2 .wf-divider,
+#wf-phase-3 .wf-divider,
+#wf-phase-4 .wf-divider {
+    margin: 0.2rem 0 0.3rem;
+}
+
+#wf-phase-1 .wf-phase-inner,
+#wf-phase-2 .wf-phase-inner,
+#wf-phase-3 .wf-phase-inner,
+#wf-phase-4 .wf-phase-inner {
+    gap: 0;
+}
+
+/* Phase 2 Minicards */
+.wf-minicards {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    width: 100%;
+}
+
+.wf-minicard {
+    display: flex;
+    gap: 0.75rem;
+    align-items: flex-start;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.9rem 1rem;
+}
+
+.wf-minicard-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 7px;
+    background: rgba(230, 89, 38, 0.08);
+    border: 1px solid rgba(230, 89, 38, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--accent-color);
+}
+
+.wf-minicard-icon svg {
+    width: 13px;
+    height: 13px;
+}
+
+.wf-minicard-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.wf-minicard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.2rem;
+}
+
+.wf-minicard-title {
+    font-weight: 600;
+    font-size: 0.83rem;
+    color: var(--text-primary);
+}
+
+.wf-ready-badge {
+    font-size: 0.62rem;
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+    padding: 2px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+[data-theme="dark"] .wf-ready-badge {
+    background: rgba(22, 163, 74, 0.1);
+    border-color: rgba(22, 163, 74, 0.3);
+    color: #4ade80;
+}
+
+.wf-active-badge {
+    font-size: 0.62rem;
+    background: #f0fdf4;
+    color: #16a34a;
+    border: 1px solid #bbf7d0;
+    padding: 2px 9px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+[data-theme="dark"] .wf-active-badge {
+    background: rgba(22, 163, 74, 0.1);
+    border-color: rgba(22, 163, 74, 0.3);
+    color: #4ade80;
+}
+
+.wf-minicard-body > p {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+    margin: 0 0 0.4rem;
+    max-width: 85%;
+}
+
+.wf-minicard-tools {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+}
+
+.wf-minicard-tools span {
+    font-size: 0.65rem;
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    padding: 2px 8px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+}
+
+/* Phase 4 Stat Tiles */
+.wf-stat-tiles {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0.6rem;
+}
+
+.wf-stat-tile {
+    background: var(--bg-tertiary);
+    border-radius: 8px;
+    padding: 0.75rem 0.85rem;
+}
+
+.wf-stat-number {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.35rem;
+}
+
+.wf-stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+}
+
+.wf-stat-body {
+    font-size: 0.72rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Phase 4 compact spacing */
+#wf-phase-4 .wf-phase-inner > p {
+    margin-bottom: 0;
+}
+
+#wf-phase-4 .wf-divider {
+    margin: 0.2rem 0 0.3rem;
+}
+
+#wf-phase-4 .wf-phase-inner {
+    gap: 0;
+}
+
 /* Phase split layout (two-column card) */
 .wf-phase-inner--split {
     flex-direction: column;
@@ -1319,18 +1504,19 @@ section {
     list-style: none;
     padding: 0;
     margin: 0;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
 }
 
 .wf-checklist li {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    font-size: 0.95rem;
-    color: var(--text-primary);
-    font-weight: 500;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 400;
 }
 
 .wf-checklist .wf-check {
@@ -1338,6 +1524,27 @@ section {
     width: 18px;
     height: 18px;
     flex-shrink: 0;
+}
+
+/* Specific column adjustments for Lead Scoring block */
+@media (min-width: 769px) {
+    .lead-scoring-col .wf-col-left {
+        flex: 0 0 40%;
+        max-width: 40%;
+    }
+
+    .lead-scoring-col .wf-col-right {
+        flex: 0 0 55%;
+        max-width: 55%;
+    }
+}
+
+.wf-title-lg {
+    font-size: 1.75rem;
+    font-family: var(--font-heading);
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    color: var(--text-secondary);
 }
 
 /* Align columns vertically centered */
@@ -1457,63 +1664,195 @@ section {
 }
 
 /* Outbound Sequence Diagram */
-.outbound-sequence {
+/* M-List Diagram */
+.mlist-diagram {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem;
-    background: var(--bg-primary);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
 }
 
-.sequence-step {
+.mlist-box {
+    width: 180px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid var(--border-color);
+    background: var(--bg-secondary);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.mlist-box.mlist-dark {
+    background: #1a1a1a;
+    border-color: #1a1a1a;
+    color: #fff;
+}
+
+[data-theme="dark"] .mlist-box.mlist-dark {
+    background: #111113;
+    border-color: #333336;
+}
+
+.mlist-box.mlist-accent {
+    border-color: var(--accent-color);
+    background: var(--bg-secondary);
+}
+
+.mlist-box.mlist-close {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(230,89,38,0.35);
+}
+
+.mlist-header {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 0.5rem 0;
-    width: 100%;
-}
-
-.sequence-step .day {
-    font-size: 0.8rem;
-    font-weight: 600;
+    gap: 5px;
+    padding: 6px 12px;
+    font-size: 0.7rem;
     color: var(--text-secondary);
-    min-width: 50px;
-    text-align: right;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--bg-tertiary);
 }
 
-.sequence-step .action {
-    font-size: 0.95rem;
+.mlist-dark .mlist-header {
+    color: rgba(255,255,255,0.5);
+    border-bottom-color: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.05);
+}
+
+.mlist-accent .mlist-header {
+    color: var(--accent-color);
+    border-bottom-color: rgba(230,89,38,0.2);
+    background: rgba(230,89,38,0.05);
+}
+
+.mlist-close .mlist-header {
+    color: rgba(255,255,255,0.6);
+    border-bottom-color: rgba(255,255,255,0.2);
+    background: rgba(0,0,0,0.1);
+}
+
+.mlist-body {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 12px;
     font-weight: 500;
     color: var(--text-primary);
-    background: var(--bg-secondary);
-    padding: 0.6rem 1.2rem;
-    border-radius: 8px;
-    border: 1px solid var(--border-color);
-    flex: 1;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    font-size: 0.8rem;
 }
 
-.sequence-step:hover .action {
-    transform: translateX(5px);
-    border-color: var(--accent-color);
-}
-
-.sequence-step .action.highlight-action {
-    background: rgba(230, 89, 38, 0.05);
-    border-color: var(--accent-color);
-    color: var(--accent-color);
+.mlist-dark .mlist-body {
+    color: #fff;
     font-weight: 600;
 }
 
-.sequence-line {
-    width: 2px;
-    height: 15px;
+.mlist-accent .mlist-body {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.mlist-close .mlist-body {
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.mlist-icon {
+    width: 12px;
+    height: 12px;
+    flex-shrink: 0;
+}
+
+.mlist-connector {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.mlist-connector::before {
+    content: '';
+    width: 1.5px;
+    height: 8px;
     background: var(--border-color);
-    margin-left: calc(50px + 1rem + 15px);
-    /* day width + gap + padding approx */
+    display: block;
+}
+
+.mlist-connector::after {
+    content: '+';
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid var(--border-color);
+    font-size: 13px;
+    line-height: 15px;
+    text-align: center;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    display: block;
+}
+
+.mlist-connector-accent::before {
+    background: var(--accent-color);
+    opacity: 0.4;
+}
+
+.mlist-connector-accent::after {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.mlist-split {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    justify-content: center;
+}
+
+.mlist-track {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+@media (max-width: 768px) {
+    .mlist-split {
+        flex-direction: column;
+        align-items: center;
+    }
+    .mlist-track {
+        width: 100%;
+    }
+}
+
+/* M-List dark mode overrides */
+[data-theme="dark"] .mlist-box {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
+}
+
+[data-theme="dark"] .mlist-box.mlist-accent {
+    background: rgba(230,89,38,0.08);
+}
+
+[data-theme="dark"] .mlist-accent .mlist-header {
+    background: rgba(230,89,38,0.1);
+}
+
+[data-theme="dark"] .mlist-box.mlist-close {
+    box-shadow: 0 4px 16px rgba(230,89,38,0.25);
+}
+
+/* Lead scoring dark mode */
+[data-theme="dark"] .lead-card {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+[data-theme="dark"] .lead-score.med-score {
+    background: rgba(59, 130, 246, 0.15);
 }
 
 /* Email Mockup */

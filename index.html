@@ -263,7 +263,7 @@
                 </div>
 
                 <!-- Item 1: Búsqueda y filtrado -->
-                <div class="wf-columns align-center mb-md">
+                <div class="wf-columns align-center mb-md lead-scoring-col">
                     <div class="wf-col-left">
                         <div class="lead-scoring-mockup">
                             <!-- Lead 1 -->
@@ -298,7 +298,7 @@
                                     <div class="lead-avatar" style="background-color: #ff8a65; color: white;">DC</div>
                                     <div class="lead-info">
                                         <div class="lead-name">Diego Castro</div>
-                                        <div class="lead-role">Director de Ventas · SaaS Labs</div>
+                                        <div class="lead-role">Director de Ventas · Industrial Labs</div>
                                     </div>
                                     <div class="lead-score high-score">91 / Alto</div>
                                 </div>
@@ -334,7 +334,7 @@
                         </div>
                     </div>
                     <div class="wf-col-right">
-                        <h4>Búsqueda y filtrado de leads con herramientas modernas</h4>
+                        <h3 class="wf-title-lg">Búsqueda y filtrado de leads con herramientas modernas</h3>
                         <p class="mt-sm">Identificamos a tu cliente ideal entre miles de empresas. ICP
                             scoring, datos en tiempo real y filtros inteligentes para que solo trabajemos
                             con los que pueden comprarte.</p>
@@ -342,49 +342,147 @@
                 </div>
 
                 <!-- Item 2: Secuencia outbound -->
-                <div class="wf-columns align-center mb-md reverse-mobile">
+                <div class="wf-columns align-center mb-md reverse-mobile lead-scoring-col">
                     <div class="wf-col-left">
-                        <h4>Secuencia outbound personalizada</h4>
+                        <h3 class="wf-title-lg">Secuencia outbound personalizada</h3>
                         <p class="mt-sm">Diseñamos el camino completo desde el primer contacto hasta la
                             reunión. Email, LinkedIn y llamada, todo coordinado y con el timing exacto.</p>
+
+                        <ul class="wf-checklist">
+                            <li>
+                                <svg class="wf-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Email + LinkedIn coordinados en paralelo
+                            </li>
+                            <li>
+                                <svg class="wf-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Cada mensaje se adapta al cargo, sector y momento del prospecto
+                            </li>
+                            <li>
+                                <svg class="wf-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                Variantes A/B generadas automáticamente en cada punto de contacto
+                            </li>
+                            <li>
+                                <svg class="wf-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                La secuencia aprende y se ajusta según las respuestas
+                            </li>
+                        </ul>
                     </div>
                     <div class="wf-col-right">
-                        <div class="outbound-sequence">
-                            <div class="sequence-step">
-                                <span class="day">Día 1</span>
-                                <span class="action">Email inicial</span>
+                        <div class="mlist-diagram">
+
+                            <!-- Inicio -->
+                            <div class="mlist-box mlist-dark">
+                                <div class="mlist-header">
+                                    <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                                    Envío inmediato
+                                </div>
+                                <div class="mlist-body">
+                                    <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    Inicio Secuencia
+                                </div>
                             </div>
-                            <div class="sequence-line"></div>
-                            <div class="sequence-step">
-                                <span class="day">Día 3</span>
-                                <span class="action">Follow up email</span>
+
+                            <div class="mlist-connector"></div>
+
+                            <!-- Email inicial -->
+                            <div class="mlist-box">
+                                <div class="mlist-header">
+                                    <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    Día 1
+                                </div>
+                                <div class="mlist-body">
+                                    <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+                                    Email inicial
+                                </div>
                             </div>
-                            <div class="sequence-line"></div>
-                            <div class="sequence-step">
-                                <span class="day">Día 5</span>
-                                <span class="action">LinkedIn connect</span>
+
+                            <div class="mlist-connector"></div>
+
+                            <!-- Split row -->
+                            <div class="mlist-split">
+                                <!-- Email track -->
+                                <div class="mlist-track">
+                                    <div class="mlist-box">
+                                        <div class="mlist-header">
+                                            <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                            Espera 3 días
+                                        </div>
+                                        <div class="mlist-body">
+                                            <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+                                            Follow up email
+                                        </div>
+                                    </div>
+                                    <div class="mlist-connector"></div>
+                                    <div class="mlist-box">
+                                        <div class="mlist-header">
+                                            <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                            Espera 8 días
+                                        </div>
+                                        <div class="mlist-body">
+                                            <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22,4 12,13 2,4"/></svg>
+                                            LinkedIn message
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- LinkedIn track -->
+                                <div class="mlist-track mlist-track-accent">
+                                    <div class="mlist-box mlist-accent">
+                                        <div class="mlist-header">
+                                            <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                            Espera 5 días
+                                        </div>
+                                        <div class="mlist-body">
+                                            <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                                            LinkedIn connect
+                                        </div>
+                                    </div>
+                                    <div class="mlist-connector mlist-connector-accent"></div>
+                                    <div class="mlist-box mlist-accent">
+                                        <div class="mlist-header">
+                                            <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                            Espera 12 días
+                                        </div>
+                                        <div class="mlist-body">
+                                            <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.67 12.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 1.4h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 15.92z"/></svg>
+                                            Llamada
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="sequence-line"></div>
-                            <div class="sequence-step">
-                                <span class="day">Día 8</span>
-                                <span class="action">LinkedIn message</span>
+
+                            <div class="mlist-connector mlist-connector-accent"></div>
+
+                            <!-- Cierre -->
+                            <div class="mlist-box mlist-close">
+                                <div class="mlist-header">
+                                    <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                    Día 15
+                                </div>
+                                <div class="mlist-body">
+                                    <svg class="mlist-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                                    ¡Cierre con éxito!
+                                </div>
                             </div>
-                            <div class="sequence-line"></div>
-                            <div class="sequence-step">
-                                <span class="day">Día 12</span>
-                                <span class="action">Llamada</span>
-                            </div>
-                            <div class="sequence-line"></div>
-                            <div class="sequence-step">
-                                <span class="day">Día 15</span>
-                                <span class="action highlight-action">Cierre / nurture</span>
-                            </div>
+
                         </div>
                     </div>
                 </div>
 
                 <!-- Item 3: Cold outreach -->
-                <div class="wf-columns align-center mb-md">
+                <div class="wf-columns align-center mb-md lead-scoring-col">
                     <div class="wf-col-left">
                         <div class="email-mockup">
                             <div class="email-header">
@@ -396,12 +494,12 @@
                                 <p>He visto que [Empresa] acaba de [trigger evento]. En TopSpin ayudamos a
                                     empresas como la tuya a escalar su outreach sin perder la
                                     personalización.</p>
-                                <p>¿Tirando 10 min la semana que viene para verlo?</p>
+                                <p>¿Tienes 10 minutos la semana que viene para verlo?</p>
                             </div>
                         </div>
                     </div>
                     <div class="wf-col-right">
-                        <h4>Cold outreach que abre puertas</h4>
+                        <h3 class="wf-title-lg">Cold outreach que abre puertas</h3>
                         <p class="mt-sm">Cada mensaje está escrito para sonar humano, relevante y específico
                             para quien lo recibe. Sin plantillas. Sin spam. Con contexto real.</p>
                     </div>
@@ -524,58 +622,162 @@
 
                     <!-- Phase 2 -->
                     <div class="wf-phase" data-phase="2" id="wf-phase-2">
-                        <div class="wf-phase-inner">
-                            <div class="wf-phase-text">
-                                <span class="wf-phase-tag">Fase 2 — Semanas 2 y 3</span>
-                                <h3>Sistematizamos el proceso</h3>
-                                <p>Dejamos lista tu infraestructura tecnológica: configuración de dominios, flujos de
-                                    trabajo en CRM y conexión de herramientas de prospección. Automatizamos todo lo
-                                    mecánico para que tu equipo se concentre en vender.</p>
-                                <div class="wf-logos">
-                                    <span>Apollo</span>
-                                    <span>Clay</span>
-                                    <span>HubSpot</span>
-                                    <span>Instantly</span>
+                        <div class="wf-phase-inner wf-phase-inner--split">
+                            <span class="wf-phase-tag">Fase 2 — Semanas 2 y 3</span>
+                            <h3>Sistematizamos el proceso</h3>
+                            <p>Dejamos lista tu infraestructura comercial. Herramientas configuradas, secuencias montadas y mensajes listos para salir a mercado.</p>
+                            <hr class="wf-divider">
+                            <div class="wf-minicards">
+
+                                <!-- Minicard 1 -->
+                                <div class="wf-minicard">
+                                    <div class="wf-minicard-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                                    </div>
+                                    <div class="wf-minicard-body">
+                                        <div class="wf-minicard-header">
+                                            <span class="wf-minicard-title">Base de prospectos</span>
+                                            <span class="wf-ready-badge">✓ Listo</span>
+                                        </div>
+                                        <p>ICP definido, datos enriquecidos y lista de leads calificados lista para activar desde el día 1.</p>
+                                        <div class="wf-minicard-tools">
+                                            <span>Apollo</span>
+                                            <span>Clay</span>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <!-- Minicard 2 -->
+                                <div class="wf-minicard">
+                                    <div class="wf-minicard-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                                    </div>
+                                    <div class="wf-minicard-body">
+                                        <div class="wf-minicard-header">
+                                            <span class="wf-minicard-title">Motor de outreach</span>
+                                            <span class="wf-ready-badge">✓ Listo</span>
+                                        </div>
+                                        <p>Secuencias multicanal con timing calculado y A/B testing automático desde el primer envío.</p>
+                                        <div class="wf-minicard-tools">
+                                            <span>Instantly</span>
+                                            <span>Lemlist</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Minicard 3 -->
+                                <div class="wf-minicard">
+                                    <div class="wf-minicard-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                                    </div>
+                                    <div class="wf-minicard-body">
+                                        <div class="wf-minicard-header">
+                                            <span class="wf-minicard-title">Copy personalizado</span>
+                                            <span class="wf-ready-badge">✓ Listo</span>
+                                        </div>
+                                        <p>Mensajes escritos para sonar humanos. Adaptados al cargo, sector y propuesta de valor real.</p>
+                                        <div class="wf-minicard-tools">
+                                            <span>IA + revisión humana</span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <img src="assets/images/workflow/phase2.png" alt="Sistematizamos el proceso comercial"
-                                class="wf-phase-img" loading="lazy">
                         </div>
                     </div>
 
                     <!-- Phase 3 -->
                     <div class="wf-phase" data-phase="3" id="wf-phase-3">
-                        <div class="wf-phase-inner">
-                            <div class="wf-phase-text">
-                                <span class="wf-phase-tag">Fase 3 — Semana 3</span>
-                                <h3>Arrancamos</h3>
-                                <p>Lanzamos las campañas. La IA gestiona los envíos y detecta señales de interés —
-                                    nuestro equipo decide el siguiente paso. Recibes un informe semanal con todo lo que
-                                    está pasando.</p>
-                                <div class="wf-logos">
-                                    <span>Lemlist</span>
-                                    <span>Aircall</span>
-                                    <span>Calendly</span>
+                        <div class="wf-phase-inner wf-phase-inner--split">
+                            <span class="wf-phase-tag">Fase 3 — Semana 3</span>
+                            <h3>Arrancamos</h3>
+                            <p>Las campañas salen al mercado. Nosotros gestionamos y priorizamos. Tú recibes reuniones.</p>
+                            <hr class="wf-divider">
+                            <div class="wf-minicards">
+
+                                <!-- Minicard 1 -->
+                                <div class="wf-minicard">
+                                    <div class="wf-minicard-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+                                    </div>
+                                    <div class="wf-minicard-body">
+                                        <div class="wf-minicard-header">
+                                            <span class="wf-minicard-title">Lanzamiento multicanal</span>
+                                            <span class="wf-active-badge">✓ Activo</span>
+                                        </div>
+                                        <p>Email, LinkedIn y llamada coordinados desde el primer día. Cada canal refuerza al otro.</p>
+                                        <div class="wf-minicard-tools">
+                                            <span>Instantly</span>
+                                            <span>Lemlist</span>
+                                            <span>Aircall</span>
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <!-- Minicard 2 -->
+                                <div class="wf-minicard">
+                                    <div class="wf-minicard-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+                                    </div>
+                                    <div class="wf-minicard-body">
+                                        <div class="wf-minicard-header">
+                                            <span class="wf-minicard-title">Lead scoring con IA</span>
+                                            <span class="wf-active-badge">✓ Activo</span>
+                                        </div>
+                                        <p>La IA detecta señales de interés y prioriza automáticamente a quién merece follow-up inmediato.</p>
+                                        <div class="wf-minicard-tools">
+                                            <span>HubSpot</span>
+                                            <span>Clay</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Minicard 3 -->
+                                <div class="wf-minicard">
+                                    <div class="wf-minicard-icon">
+                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+                                    </div>
+                                    <div class="wf-minicard-body">
+                                        <div class="wf-minicard-header">
+                                            <span class="wf-minicard-title">A/B testing en tiempo real</span>
+                                            <span class="wf-active-badge">✓ Activo</span>
+                                        </div>
+                                        <p>Las mejores variantes de mensaje escalan solas con cada envío. Sin intervención manual.</p>
+                                        <div class="wf-minicard-tools">
+                                            <span>Instantly</span>
+                                            <span>Smartlead</span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <img src="assets/images/workflow/phase3.png"
-                                alt="Lanzamiento multicanal — email, LinkedIn y llamadas activas" class="wf-phase-img"
-                                loading="lazy">
                         </div>
                     </div>
 
                     <!-- Phase 4 -->
                     <div class="wf-phase" data-phase="4" id="wf-phase-4">
-                        <div class="wf-phase-inner">
-                            <div class="wf-phase-text">
-                                <span class="wf-phase-tag">Fase 4 — Mes 2 en adelante</span>
-                                <h3>Mejoramos y escalamos</h3>
-                                <p>Lo que funciona, lo ampliamos. Lo que no, lo cambiamos. El pipeline crece cada
-                                    semana. Tú recibes reuniones. Nosotros seguimos optimizando.</p>
+                        <div class="wf-phase-inner wf-phase-inner--split">
+                            <span class="wf-phase-tag">Fase 4 — Mes 2 en adelante</span>
+                            <h3>Mejoramos y escalamos</h3>
+                            <p>No desaparecemos cuando las campañas están en marcha. Cada semana revisamos los datos, ajustamos lo que no funciona y ampliamos lo que sí.</p>
+                            <hr class="wf-divider">
+                            <div class="wf-stat-tiles">
+                                <div class="wf-stat-tile">
+                                    <div class="wf-stat-number">01</div>
+                                    <div class="wf-stat-label">Semana a semana</div>
+                                    <div class="wf-stat-body">Recibes un informe con todo lo que está pasando.</div>
+                                </div>
+                                <div class="wf-stat-tile">
+                                    <div class="wf-stat-number">02</div>
+                                    <div class="wf-stat-label">Lo que funciona</div>
+                                    <div class="wf-stat-body">lo ampliamos. Lo que no, lo cambiamos.</div>
+                                </div>
+                                <div class="wf-stat-tile">
+                                    <div class="wf-stat-number">03</div>
+                                    <div class="wf-stat-label">Tú solo recibes</div>
+                                    <div class="wf-stat-body">reuniones. Nosotros nos encargamos del resto.</div>
+                                </div>
                             </div>
-                            <img src="assets/images/workflow/phase4.png"
-                                alt="Crecimiento y optimización — métricas en ascenso" class="wf-phase-img"
-                                loading="lazy">
                         </div>
                     </div>
                 </div>
