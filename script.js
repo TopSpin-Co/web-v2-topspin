@@ -262,7 +262,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     phase.classList.remove('wf-phase--active');
                 }
             });
+
+            // We handle the header shrink continuously via scroll listener rather than discrete phases
         };
+
+        // Sticky Header Continuous Shrink on Scroll
+        const wfSection = document.querySelector('.wf-section');
+        const wfHeader = document.querySelector('.wf-header');
+        
+        if (wfSection && wfHeader) {
+            const handleHeaderShrink = () => {
+                const sectionRect = wfSection.getBoundingClientRect();
+                // The header becomes sticky when section top is at 90px (its top offset)
+                // We track how far the section has scrolled PAST 90px
+                const scrollDist = 90 - sectionRect.top;
+                
+                // We map 0-250px of scroll distance to a 0-1 progress value
+                let progress = 0;
+                if (scrollDist > 0) {
+                    progress = Math.min(1, scrollDist / 250);
+                }
+                
+                wfHeader.style.setProperty('--shrink-progress', progress);
+            };
+            
+            window.addEventListener('scroll', handleHeaderShrink, { passive: true });
+            handleHeaderShrink(); // Initialize on load
+        }
 
         // Intersection Observer
         const wfObserver = new IntersectionObserver((entries) => {
@@ -273,6 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
+            rootMargin: '-150px 0px 0px 0px',
             threshold: 0.33
         });
 

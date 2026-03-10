@@ -1060,6 +1060,8 @@ section {
 }
 
 .wf-header {
+    --shrink-progress: 0;
+    
     position: sticky;
     top: 90px;
     z-index: 10;
@@ -1067,7 +1069,38 @@ section {
     text-align: center;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 5% 0.5rem;
+    
+    /* Calculate dynamic padding and border based on scroll progress */
+    padding: 0 5% calc(0.5rem * (1 - var(--shrink-progress)));
+    border-bottom: calc(1px * var(--shrink-progress)) solid rgba(0, 0, 0, calc(0.05 * var(--shrink-progress)));
+    
+    /* We don't need transitions here because progress is tied directly to scroll */
+}
+
+[data-theme="dark"] .wf-header {
+    border-bottom-color: rgba(255, 255, 255, calc(0.05 * var(--shrink-progress)));
+}
+
+.wf-header h2 {
+    /* 
+       Interpolate between base font-size clamp(2rem, 4vw, 3rem) 
+       and shrunk font-size clamp(1.25rem, 2.5vw, 1.75rem) 
+    */
+    font-size: calc(
+        clamp(2rem, 4vw, 3rem) * (1 - var(--shrink-progress)) + 
+        clamp(1.25rem, 2.5vw, 1.75rem) * var(--shrink-progress)
+    );
+    margin-bottom: calc(1.5rem - (1rem * var(--shrink-progress)));
+}
+
+.wf-header .subheadline {
+    /* Base: 0.95rem shrinks to 0.8rem */
+    font-size: calc(0.95rem - (0.15rem * var(--shrink-progress)));
+    /* Base margin 2.5rem shrinks to 1rem */
+    margin-bottom: calc(2.5rem - (1.5rem * var(--shrink-progress)));
+    /* Opacity fades from 1 to 0.7 */
+    opacity: calc(1 - (0.3 * var(--shrink-progress)));
+    overflow: hidden;
 }
 
 .wf-wrapper {
