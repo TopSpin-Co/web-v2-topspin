@@ -1,30 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Theme Toggle Logic
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const htmlElement = document.documentElement;
-
-    // Check for saved theme preference or use system preference
-    const savedTheme = localStorage.getItem('theme');
-    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    if (savedTheme) {
-        htmlElement.setAttribute('data-theme', savedTheme);
-    } else if (systemPrefersDark) {
-        htmlElement.setAttribute('data-theme', 'dark');
-    }
-
-    // Toggle Theme — support both desktop and mobile buttons
-    const toggleTheme = () => {
-        const currentTheme = htmlElement.getAttribute('data-theme');
-        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-        htmlElement.setAttribute('data-theme', newTheme);
-        localStorage.setItem('theme', newTheme);
-    };
-
-    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-    const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-    if (themeToggleMobile) themeToggleMobile.addEventListener('click', toggleTheme);
-
     // Tubelight Nav Slider
     const navPill = document.querySelector('.nav-pill-wrap');
     const navSlider = document.querySelector('.nav-slider');
@@ -227,6 +201,43 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // Dolor Section — Checkbox progress
+    const dolorCards = document.querySelectorAll('.dolor-card');
+    const dolorCbs = document.querySelectorAll('.dolor-cb');
+
+    if (dolorCbs.length > 0) {
+        const updateDolorProgress = () => {
+            let checked = 0;
+            dolorCbs.forEach((cb, i) => {
+                if (cb.checked) {
+                    checked++;
+                    dolorCards[i].classList.add('is-checked');
+                } else {
+                    dolorCards[i].classList.remove('is-checked');
+                }
+            });
+
+            const pct = (checked / dolorCbs.length) * 100;
+            const fill = document.getElementById('dolor-progress-fill');
+            const label = document.getElementById('dolor-progress-label');
+
+            if (fill) fill.style.width = pct + '%';
+            if (label) {
+                if (checked === dolorCbs.length) {
+                    label.classList.add('all-done');
+                    label.innerHTML = '<span class="dolor-num">' + checked + '/' + dolorCbs.length + '</span> — ¡todas te suenan! TopSpin existe para ti.';
+                } else {
+                    label.classList.remove('all-done');
+                    label.innerHTML = '<span class="dolor-num">' + checked + '</span> de ' + dolorCbs.length + ' marcadas';
+                }
+            }
+        };
+
+        dolorCbs.forEach(cb => {
+            cb.addEventListener('change', updateDolorProgress);
+        });
+    }
 
     // Workflow Sticky Scroll Logic
     const wfPhases = document.querySelectorAll('.wf-phase');

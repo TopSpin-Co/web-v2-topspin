@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -42,9 +42,8 @@
 
             <!-- Pill 3: Actions -->
             <div class="pill right-pill">
-                <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
-                    <span class="icon-sun">☀️</span>
-                    <span class="icon-moon">🌙</span>
+                <button class="lang-switcher" aria-label="Cambiar idioma" title="Español">
+                    <img src="https://flagcdn.com/w40/es.png" alt="ES" width="22">
                 </button>
                 <a href="contacto.html" class="btn btn-primary btn-nav">Agendar Llamada</a>
             </div>
@@ -69,9 +68,8 @@
         <a href="blog.html" class="mobile-menu-item">Blog</a>
         <div class="mobile-menu-divider"></div>
         <div class="mobile-menu-actions">
-            <button id="theme-toggle-mobile" class="theme-toggle" aria-label="Cambiar tema">
-                <span class="icon-sun">☀️</span>
-                <span class="icon-moon">🌙</span>
+            <button class="lang-switcher" aria-label="Cambiar idioma" title="Español">
+                <img src="https://flagcdn.com/w40/es.png" alt="ES" width="22">
             </button>
             <a href="contacto.html" class="btn btn-primary w-100">Agendar Llamada</a>
         </div>
@@ -154,7 +152,68 @@
             </div>
         </section>
 
-        <!-- 04 - Soluciones -->
+        <!-- 04 - Dolor -->
+        <section id="dolor" class="dolor-section">
+            <div class="container">
+                <div class="layout-split dolor-split">
+                    <div class="split-header dolor-left text-center">
+                        <h2>¿Te suena esto?</h2>
+                        <p class="lead-text mt-md">Si diriges ventas B2B en España, probablemente estás viviendo alguna de estas situaciones.</p>
+
+                        <div class="dolor-progress">
+                            <div class="dolor-progress-bg">
+                                <div class="dolor-progress-fill" id="dolor-progress-fill"></div>
+                            </div>
+                            <p class="dolor-progress-label" id="dolor-progress-label"><span class="dolor-num">0</span> de 5 marcadas</p>
+                        </div>
+
+                        <div class="dolor-cierre">
+                            <p>Si has dicho que sí a alguna de estas, <strong>TopSpin existe para ti.</strong></p>
+                            <a href="#contacto" class="btn btn-primary mt-sm">Agendar Llamada</a>
+                        </div>
+                    </div>
+                    <div class="split-content dolor-right">
+                        <label class="dolor-card">
+                            <input type="checkbox" class="dolor-cb">
+                            <span class="dolor-check">
+                                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
+                            </span>
+                            <span class="dolor-card-text">Tu equipo de ventas dedica más tiempo a <strong class="text-accent">buscar contactos</strong> que a cerrar reuniones</span>
+                        </label>
+                        <label class="dolor-card">
+                            <input type="checkbox" class="dolor-cb">
+                            <span class="dolor-check">
+                                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
+                            </span>
+                            <span class="dolor-card-text">El pipeline <strong class="text-accent">sube y baja sin control</strong> — hay meses buenos y meses en seco</span>
+                        </label>
+                        <label class="dolor-card">
+                            <input type="checkbox" class="dolor-cb">
+                            <span class="dolor-check">
+                                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
+                            </span>
+                            <span class="dolor-card-text">Ya intentasteis hacer outbound, pero <strong class="text-accent">parecía spam</strong> y no funcionó</span>
+                        </label>
+                        <label class="dolor-card">
+                            <input type="checkbox" class="dolor-cb">
+                            <span class="dolor-check">
+                                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
+                            </span>
+                            <span class="dolor-card-text">Necesitas <strong class="text-accent">más reuniones</strong>, pero no tienes un sistema para conseguirlas</span>
+                        </label>
+                        <label class="dolor-card">
+                            <input type="checkbox" class="dolor-cb">
+                            <span class="dolor-check">
+                                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
+                            </span>
+                            <span class="dolor-card-text">Contratar un SDR interno te parece <strong class="text-accent">caro, lento y arriesgado</strong></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 - Soluciones -->
         <section id="soluciones" class="services-section bg-tertiary">
             <div class="container layout-split" style="align-items: center;">
                 <div class="split-header" style="flex: 1.2;">

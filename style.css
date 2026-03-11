@@ -1,5 +1,5 @@
 :root {
-    /* Day Theme Variables (Default) */
+    /* Theme Variables */
     --bg-primary: #fdfbf7;
     --bg-secondary: #ffffff;
     --bg-tertiary: #f4f2ec;
@@ -15,16 +15,6 @@
     --font-body: 'Inter', sans-serif;
 }
 
-[data-theme="dark"] {
-    /* Night Theme Variables */
-    --bg-primary: #1c1c1e;
-    --bg-secondary: #252527;
-    --bg-tertiary: #2a2a2d;
-    --text-primary: #ffffff;
-    --text-secondary: #a3a3a3;
-    --border-color: #3f3f42;
-    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-}
 
 /* Base Styles */
 * {
@@ -42,7 +32,7 @@ body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     line-height: 1.6;
-    transition: background-color 0.3s ease, color 0.3s ease;
+
 }
 
 /* Utility Classes */
@@ -303,11 +293,6 @@ h5 {
     align-items: center;
 }
 
-[data-theme="dark"] .pill {
-    background: var(--bg-secondary);
-    border-color: var(--border-color);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-}
 
 /* Pill 1: Logo */
 .logo-pill {
@@ -351,9 +336,6 @@ h5 {
     z-index: 0;
 }
 
-[data-theme="dark"] .nav-slider {
-    background: rgba(232, 86, 42, 0.15);
-}
 
 .nav-item {
     position: relative;
@@ -425,10 +407,6 @@ h5 {
     transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
-[data-theme="dark"] .dropdown-menu {
-    background: var(--bg-secondary);
-    border-color: var(--border-color);
-}
 
 .nav-item-dropdown::after {
     content: '';
@@ -473,21 +451,20 @@ h5 {
     font-size: 0.85rem;
 }
 
-.theme-toggle {
+.lang-switcher {
     background: transparent;
     border: none;
-    font-size: 1.1rem;
-    cursor: pointer;
-    color: var(--text-primary);
-    padding: 4px;
+    cursor: default;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
 }
 
-[data-theme="dark"] .icon-moon {
-    display: none;
-}
-
-[data-theme="light"] .icon-sun {
-    display: none;
+.lang-switcher img {
+    width: 22px;
+    height: auto;
+    border-radius: 2px;
 }
 
 /* Hamburger (mobile only) */
@@ -502,9 +479,6 @@ h5 {
     background: #fff;
 }
 
-[data-theme="dark"] .hamburger-btn {
-    background: var(--bg-secondary);
-}
 
 .hamburger-line {
     display: block;
@@ -546,10 +520,6 @@ h5 {
     z-index: 999;
 }
 
-[data-theme="dark"] .mobile-menu {
-    background: var(--bg-secondary);
-    border-color: var(--border-color);
-}
 
 .mobile-menu.open {
     opacity: 1;
@@ -785,9 +755,6 @@ section {
     transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 }
 
-[data-theme="dark"] .brand-logo-icon {
-    filter: grayscale(100%) invert(1) opacity(0.6);
-}
 
 .marquee-content span:hover .brand-logo-icon {
     filter: grayscale(0%) invert(0) opacity(1);
@@ -902,9 +869,6 @@ section {
     position: relative;
 }
 
-[data-theme="dark"] .tab-btn {
-    background: rgba(0, 0, 0, 0.2);
-}
 
 .tab-btn:hover {
     color: var(--text-primary);
@@ -1077,9 +1041,6 @@ section {
     /* We don't need transitions here because progress is tied directly to scroll */
 }
 
-[data-theme="dark"] .wf-header {
-    border-bottom-color: rgba(255, 255, 255, calc(0.05 * var(--shrink-progress)));
-}
 
 .wf-header h2 {
     /* 
@@ -1163,9 +1124,6 @@ section {
     box-shadow: 0 0 20px rgba(230, 89, 38, 0.15), 0 0 0 4px rgba(230, 89, 38, 0.06);
 }
 
-[data-theme="dark"] .wf-box--active {
-    box-shadow: 0 0 25px rgba(230, 89, 38, 0.2), 0 0 0 4px rgba(230, 89, 38, 0.1);
-}
 
 /* Label beside box */
 .wf-label {
@@ -1423,11 +1381,6 @@ section {
     margin-top: 2px;
 }
 
-[data-theme="dark"] .wf-ready-badge {
-    background: rgba(22, 163, 74, 0.1);
-    border-color: rgba(22, 163, 74, 0.3);
-    color: #4ade80;
-}
 
 .wf-active-badge {
     font-size: 0.62rem;
@@ -1441,11 +1394,6 @@ section {
     margin-top: 2px;
 }
 
-[data-theme="dark"] .wf-active-badge {
-    background: rgba(22, 163, 74, 0.1);
-    border-color: rgba(22, 163, 74, 0.3);
-    color: #4ade80;
-}
 
 .wf-minicard-body > p {
     font-size: 0.75rem;
@@ -1639,9 +1587,6 @@ section {
     transition: transform 0.2s ease, border-color 0.2s ease;
 }
 
-[data-theme="dark"] .lead-card {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
 
 .lead-card:hover {
     transform: translateY(-2px);
@@ -1740,10 +1685,6 @@ section {
     color: #fff;
 }
 
-[data-theme="dark"] .mlist-box.mlist-dark {
-    background: #111113;
-    border-color: #333336;
-}
 
 .mlist-box.mlist-accent {
     border-color: var(--accent-color);
@@ -1881,31 +1822,6 @@ section {
     }
 }
 
-/* M-List dark mode overrides */
-[data-theme="dark"] .mlist-box {
-    box-shadow: 0 2px 10px rgba(0,0,0,0.25);
-}
-
-[data-theme="dark"] .mlist-box.mlist-accent {
-    background: rgba(230,89,38,0.08);
-}
-
-[data-theme="dark"] .mlist-accent .mlist-header {
-    background: rgba(230,89,38,0.1);
-}
-
-[data-theme="dark"] .mlist-box.mlist-close {
-    box-shadow: 0 4px 16px rgba(230,89,38,0.25);
-}
-
-/* Lead scoring dark mode */
-[data-theme="dark"] .lead-card {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-}
-
-[data-theme="dark"] .lead-score.med-score {
-    background: rgba(59, 130, 246, 0.15);
-}
 
 /* Email Mockup */
 .email-mockup {
@@ -1916,9 +1832,6 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
-[data-theme="dark"] .email-mockup {
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
 
 .email-header {
     background: var(--bg-secondary);
@@ -2281,5 +2194,185 @@ section {
 
     .text-center-mobile {
         text-align: center;
+    }
+}
+
+/* ═══════════════════════════════════════════════
+   04 - DOLOR SECTION
+   ═══════════════════════════════════════════════ */
+.dolor-section {
+    padding: 6rem 0;
+}
+
+.dolor-split {
+    align-items: flex-start;
+}
+
+.dolor-left {
+    position: sticky;
+    top: 100px;
+}
+
+.dolor-right {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* ── Cards ── */
+.dolor-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: all 0.3s ease;
+}
+
+.dolor-card:hover {
+    border-color: var(--accent-color);
+    box-shadow: var(--card-shadow);
+}
+
+.dolor-card input[type="checkbox"] {
+    display: none;
+}
+
+/* ── Checkbox (square with rounded corners) ── */
+.dolor-check {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    border: 2px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    margin-top: 1px;
+}
+
+.dolor-check svg {
+    width: 14px;
+    height: 14px;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dolor-check svg path {
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    stroke-dasharray: 20;
+    stroke-dashoffset: 20;
+    transition: stroke-dashoffset 0.35s ease 0.1s;
+}
+
+.dolor-card input:checked ~ .dolor-check {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    transform: scale(1.08);
+}
+
+.dolor-card input:checked ~ .dolor-check svg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.dolor-card input:checked ~ .dolor-check svg path {
+    stroke-dashoffset: 0;
+}
+
+.dolor-card:hover .dolor-check {
+    border-color: var(--accent-color);
+}
+
+/* ── Card text ── */
+.dolor-card-text {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    transition: all 0.3s ease;
+}
+
+.dolor-card input:checked ~ .dolor-card-text {
+    color: var(--text-secondary);
+}
+
+/* ── Checked card state ── */
+.dolor-card.is-checked {
+    background: var(--bg-tertiary);
+    border-color: var(--accent-color);
+    border-left: 4px solid var(--accent-color);
+}
+
+/* ── Progress bar ── */
+.dolor-progress {
+    margin-top: 1.5rem;
+}
+
+.dolor-progress-bg {
+    width: 100%;
+    height: 4px;
+    background: var(--border-color);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.dolor-progress-fill {
+    height: 100%;
+    background: var(--accent-color);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dolor-progress-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.dolor-progress-label .dolor-num {
+    font-weight: 600;
+    color: var(--accent-color);
+}
+
+.dolor-progress-label.all-done {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+/* ── CTA cierre ── */
+.dolor-cierre {
+    margin-top: 2rem;
+    padding: 1.5rem 2rem;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-color);
+}
+
+.dolor-cierre p {
+    font-size: 1.05rem;
+    font-weight: 500;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+    .dolor-left {
+        position: static;
+    }
+
+    .dolor-split {
+        flex-direction: column;
     }
 }

@@ -42,12 +42,12 @@ Los tres servicios están diseñados para trabajar juntos como sistema, pero el 
 ### Colores
 - **Accent/Primario:** `#e65926` (naranja del logo)
 - **Accent hover:** `#cc4f22`
-- **BG Primary (light):** `#fdfbf7` / **(dark):** `#1c1c1e`
-- **BG Secondary (light):** `#ffffff` / **(dark):** `#252527`
-- **BG Tertiary (light):** `#f4f2ec` / **(dark):** `#2a2a2d`
-- **Text Primary (light):** `#1a1a1a` / **(dark):** `#ffffff`
-- **Text Secondary (light):** `#5c5c5c` / **(dark):** `#a3a3a3`
-- **Border (light):** `#e5e5e5` / **(dark):** `#3f3f42`
+- **BG Primary:** `#fdfbf7`
+- **BG Secondary:** `#ffffff`
+- **BG Tertiary:** `#f4f2ec`
+- **Text Primary:** `#1a1a1a`
+- **Text Secondary:** `#5c5c5c`
+- **Border:** `#e5e5e5`
 - **Footer:** fondo `#1a1a1a`, texto `#999`, links hover `#fff`
 
 ### Tipografías
@@ -56,7 +56,8 @@ Los tres servicios están diseñados para trabajar juntos como sistema, pero el 
 - Google Fonts (preconnect a fonts.googleapis.com y fonts.gstatic.com)
 
 ### Estilo visual
-- Tema claro/oscuro con toggle (data-theme="light"/"dark")
+- Tema claro únicamente (sin dark mode)
+- Botón de idioma (bandera española) en navbar como placeholder para futuro selector de idioma
 - Cards con bordes sutiles, sombras suaves, hover con translateY(-5px)
 - Layout split (1/3 + 2/3) para secciones como FAQ, contacto, "para quién"
 - Grid responsive: grid-3 (minmax 300px), grid-4 (minmax 200px)
@@ -71,8 +72,8 @@ Los tres servicios están diseñados para trabajar juntos como sistema, pero el 
 ```
 /
 ├── index.html          ← Home completa (13 secciones)
-├── style.css           ← CSS completo con variables, dark mode, responsive
-├── script.js           ← Theme toggle + accordion FAQ
+├── style.css           ← CSS completo con variables y responsive
+├── script.js           ← Accordion FAQ + nav slider + mobile menu
 ├── lgaas.html          ← Página LGaaS (placeholder "Not done yet")
 ├── roaas.html          ← Página ROaaS (placeholder "Not done yet")
 ├── crm-admin.html      ← Página CRM Admin (placeholder "Not done yet")
@@ -98,7 +99,7 @@ Los tres servicios están diseñados para trabajar juntos como sistema, pero el 
 
 **Completado:**
 - Home page (index.html) con 13 secciones completas pero con placeholders [X] en métricas y testimonios
-- Design system completo (CSS con variables, dark/light mode)
+- Design system completo (CSS con variables, solo light mode)
 - Navbar con dropdown de servicios
 - Footer consistente en todas las páginas
 - Git inicializado con historial de commits
