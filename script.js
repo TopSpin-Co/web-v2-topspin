@@ -319,4 +319,21 @@ document.addEventListener('DOMContentLoaded', () => {
         // Activate phase 1 on load
         activatePhase(1);
     }
+
+    // Evolución Section — Fade in on scroll
+    const evolucionSection = document.querySelector('.evolucion-section');
+    if (evolucionSection) {
+        const evoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const cards = evolucionSection.querySelectorAll('.evolucion-card');
+                    const closing = evolucionSection.querySelector('.evolucion-closing');
+                    cards.forEach(card => card.classList.add('visible'));
+                    if (closing) closing.classList.add('visible');
+                    evoObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        evoObserver.observe(evolucionSection);
+    }
 });

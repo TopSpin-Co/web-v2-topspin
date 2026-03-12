@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopSpin — #evolucion — Preview Final</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-color: #e65926;
+            --accent-hover: #cc4f22;
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f4f2ec;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5c5c5c;
+            --border-color: #e5e5e5;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-primary);
+            background: var(--bg-tertiary);
+        }
+
+        /* ═══════════════════════════════════════
+           SECCIÓN EVOLUCIÓN — SPLIT LAYOUT + CARDS CON IMAGEN
+           ═══════════════════════════════════════ */
+        .evolucion-section {
+            background: var(--bg-primary);
+            padding: 3.5rem 0;
+            width: 100%;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Header — centrado */
+        .evolucion-header {
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto 2.25rem;
+        }
+
+        .evolucion-header h2 {
+            font-family: var(--font-heading);
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            font-weight: 600;
+            line-height: 1.2;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .evolucion-header .lead-text {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+
+        /* Cards stack */
+        .evolucion-cards {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+            max-width: 920px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Closing — centrado */
+        .evolucion-closing {
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-primary);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+
+            opacity: 0;
+            transform: translateY(15px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .evolucion-closing.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.45s;
+        }
+
+        /* Card — horizontal con imagen */
+        .evolucion-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .evolucion-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease, box-shadow 0.35s ease;
+        }
+
+        .evolucion-card:nth-child(1).visible { transition-delay: 0s; }
+        .evolucion-card:nth-child(2).visible { transition-delay: 0.2s; }
+
+        .evolucion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Flip image side on second card */
+        .evolucion-card:nth-child(2) {
+            flex-direction: row-reverse;
+        }
+
+        /* Text side */
+        .evolucion-card-body {
+            flex: 1 1 58%;
+            padding: 1.5rem 1.75rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .evolucion-badge {
+            display: inline-block;
+            padding: 0.25rem 0.7rem;
+            border-radius: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            background: rgba(230, 89, 38, 0.08);
+            color: var(--accent-color);
+            margin-bottom: 0.75rem;
+        }
+
+        .evolucion-card h3 {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .evolucion-card p {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin-bottom: 1.25rem;
+        }
+
+        /* Button */
+        .btn-evo {
+            display: inline-block;
+            padding: 0.5rem 1.4rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            color: var(--accent-color);
+            background: transparent;
+            border: 1.5px solid var(--accent-color);
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.25s ease, color 0.25s ease;
+        }
+
+        .btn-evo:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Image side */
+        .evolucion-card-img {
+            flex: 0 0 35%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            min-height: 200px;
+        }
+
+        .evolucion-card:nth-child(1) .evolucion-card-img {
+            background: rgba(230, 89, 38, 0.04);
+            border-radius: 0 12px 12px 0;
+        }
+
+        .evolucion-card:nth-child(2) .evolucion-card-img {
+            background: rgba(26, 26, 26, 0.03);
+            border-radius: 12px 0 0 12px;
+        }
+
+        .evolucion-card-img svg {
+            width: 100%;
+            max-width: 175px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .evolucion-section { padding: 2.5rem 0; }
+            .evolucion-header { margin-bottom: 2rem; }
+            .evolucion-card,
+            .evolucion-card:nth-child(2) {
+                flex-direction: column;
+            }
+            .evolucion-card-img,
+            .evolucion-card:nth-child(1) .evolucion-card-img,
+            .evolucion-card:nth-child(2) .evolucion-card-img {
+                min-height: 180px;
+                width: 100%;
+                border-radius: 12px 12px 0 0;
+            }
+            .evolucion-card-body {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="evolucion-section" id="evolucion">
+        <div class="container">
+
+            <div class="evolucion-header">
+                <h2>Ya nos conocemos.<br>El siguiente paso es más fácil.</h2>
+                <p class="lead-text">No tienes que explicarle a nadie cómo funciona tu negocio, quién es tu cliente o qué has probado antes. Ya lo sabemos. Y eso lo cambia todo.</p>
+            </div>
+
+            <div class="evolucion-cards">
+
+                <!-- Card 1: texto izq — imagen der -->
+                <div class="evolucion-card">
+                        <div class="evolucion-card-body">
+                            <span class="evolucion-badge">Revenue Operations</span>
+                            <h3>¿Tu equipo crece pero los procesos no escalan?</h3>
+                            <p>Alineamos ventas, marketing y tecnología para que el pipeline que hemos construido juntos se convierta en revenue real y predecible.</p>
+                            <a href="roaas.html" class="btn-evo">Ver ROaaS</a>
+                        </div>
+                        <div class="evolucion-card-img">
+                            <svg viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="300" height="240" rx="10" fill="transparent"/>
+                                <line x1="40" y1="200" x2="270" y2="200" stroke="#e5e5e5" stroke-width="1"/>
+                                <line x1="40" y1="160" x2="270" y2="160" stroke="#f4f2ec" stroke-width="1" stroke-dasharray="4 4"/>
+                                <line x1="40" y1="120" x2="270" y2="120" stroke="#f4f2ec" stroke-width="1" stroke-dasharray="4 4"/>
+                                <line x1="40" y1="80" x2="270" y2="80" stroke="#f4f2ec" stroke-width="1" stroke-dasharray="4 4"/>
+                                <rect x="55" y="155" width="28" height="45" rx="4" fill="#f4f2ec"/>
+                                <rect x="95" y="130" width="28" height="70" rx="4" fill="#f4f2ec"/>
+                                <rect x="135" y="110" width="28" height="90" rx="4" fill="rgba(230,89,38,0.15)"/>
+                                <rect x="175" y="85" width="28" height="115" rx="4" fill="rgba(230,89,38,0.25)"/>
+                                <rect x="215" y="55" width="28" height="145" rx="4" fill="#e65926"/>
+                                <polyline points="69,148 109,125 149,102 189,78 229,48" stroke="#1a1a1a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <circle cx="229" cy="48" r="4" fill="#1a1a1a"/>
+                                <path d="M229 38 L225 44 L233 44 Z" fill="#1a1a1a"/>
+                                <g transform="translate(252, 28)">
+                                    <circle cx="0" cy="0" r="8" stroke="#e65926" stroke-width="1.5" fill="none" opacity="0.4"/>
+                                    <circle cx="0" cy="0" r="3" fill="#e65926" opacity="0.4"/>
+                                </g>
+                                <circle cx="48" cy="40" r="2" fill="#f4f2ec"/>
+                                <circle cx="58" cy="40" r="2" fill="#f4f2ec"/>
+                                <circle cx="48" cy="50" r="2" fill="#f4f2ec"/>
+                                <circle cx="58" cy="50" r="2" fill="#f4f2ec"/>
+                                <text x="155" y="225" text-anchor="middle" font-family="Inter, sans-serif" font-size="9" fill="#5c5c5c" letter-spacing="1.5" font-weight="500">PIPELINE</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: imagen izq — texto der -->
+                    <div class="evolucion-card">
+                        <div class="evolucion-card-body">
+                            <span class="evolucion-badge">CRM Administrado</span>
+                            <h3>¿Tu HubSpot está desactualizado o nadie lo usa bien?</h3>
+                            <p>Te lo dejamos limpio, configurado y funcionando. Tu equipo vende, nosotros mantenemos el sistema. Sin fricciones, sin dependencias internas.</p>
+                            <a href="crm-admin.html" class="btn-evo">Ver CRM Admin</a>
+                        </div>
+                        <div class="evolucion-card-img">
+                            <svg viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="300" height="240" rx="10" fill="transparent"/>
+                                <rect x="30" y="30" width="240" height="180" rx="10" stroke="#e5e5e5" stroke-width="1.5" fill="#ffffff"/>
+                                <rect x="30" y="30" width="240" height="32" rx="10" fill="#f4f2ec"/>
+                                <rect x="30" y="52" width="240" height="10" fill="#f4f2ec"/>
+                                <circle cx="48" cy="46" r="4" fill="#e5e5e5"/>
+                                <circle cx="62" cy="46" r="4" fill="#e5e5e5"/>
+                                <circle cx="76" cy="46" r="4" fill="#e5e5e5"/>
+                                <rect x="30" y="62" width="60" height="148" fill="rgba(26,26,26,0.03)"/>
+                                <line x1="90" y1="62" x2="90" y2="210" stroke="#e5e5e5" stroke-width="1"/>
+                                <rect x="40" y="75" width="40" height="6" rx="3" fill="#e5e5e5"/>
+                                <rect x="40" y="92" width="35" height="6" rx="3" fill="rgba(230,89,38,0.3)"/>
+                                <rect x="40" y="109" width="38" height="6" rx="3" fill="#e5e5e5"/>
+                                <rect x="40" y="126" width="32" height="6" rx="3" fill="#e5e5e5"/>
+                                <circle cx="112" cy="82" r="9" fill="rgba(230,89,38,0.1)"/>
+                                <text x="112" y="85" text-anchor="middle" font-family="Inter" font-size="8" fill="#e65926" font-weight="600">A</text>
+                                <rect x="128" y="78" width="65" height="6" rx="3" fill="#1a1a1a" opacity="0.15"/>
+                                <rect x="200" y="78" width="30" height="6" rx="3" fill="#f4f2ec"/>
+                                <rect x="240" y="75" width="16" height="16" rx="4" fill="rgba(230,89,38,0.08)"/>
+                                <polyline points="244,83 248,87 253,79" stroke="#e65926" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <line x1="100" y1="98" x2="262" y2="98" stroke="#f4f2ec" stroke-width="1"/>
+                                <circle cx="112" cy="113" r="9" fill="rgba(26,26,26,0.06)"/>
+                                <text x="112" y="116" text-anchor="middle" font-family="Inter" font-size="8" fill="#5c5c5c" font-weight="600">M</text>
+                                <rect x="128" y="109" width="55" height="6" rx="3" fill="#1a1a1a" opacity="0.15"/>
+                                <rect x="190" y="109" width="40" height="6" rx="3" fill="#f4f2ec"/>
+                                <rect x="240" y="106" width="16" height="16" rx="4" fill="rgba(230,89,38,0.08)"/>
+                                <polyline points="244,114 248,118 253,110" stroke="#e65926" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <line x1="100" y1="129" x2="262" y2="129" stroke="#f4f2ec" stroke-width="1"/>
+                                <circle cx="112" cy="144" r="9" fill="rgba(230,89,38,0.1)"/>
+                                <text x="112" y="147" text-anchor="middle" font-family="Inter" font-size="8" fill="#e65926" font-weight="600">R</text>
+                                <rect x="128" y="140" width="70" height="6" rx="3" fill="#1a1a1a" opacity="0.15"/>
+                                <rect x="205" y="140" width="25" height="6" rx="3" fill="#f4f2ec"/>
+                                <rect x="240" y="137" width="16" height="16" rx="4" fill="rgba(230,89,38,0.08)"/>
+                                <polyline points="244,145 248,149 253,141" stroke="#e65926" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                                <line x1="100" y1="160" x2="262" y2="160" stroke="#f4f2ec" stroke-width="1"/>
+                                <rect x="105" y="170" width="45" height="28" rx="6" fill="rgba(230,89,38,0.06)"/>
+                                <text x="127" y="183" text-anchor="middle" font-family="Inter" font-size="10" fill="#e65926" font-weight="700">128</text>
+                                <text x="127" y="193" text-anchor="middle" font-family="Inter" font-size="6" fill="#5c5c5c">activos</text>
+                                <rect x="160" y="170" width="45" height="28" rx="6" fill="rgba(26,26,26,0.03)"/>
+                                <text x="182" y="183" text-anchor="middle" font-family="Inter" font-size="10" fill="#1a1a1a" font-weight="700">94%</text>
+                                <text x="182" y="193" text-anchor="middle" font-family="Inter" font-size="6" fill="#5c5c5c">sync</text>
+                                <rect x="215" y="170" width="45" height="28" rx="6" fill="rgba(26,26,26,0.03)"/>
+                                <text x="237" y="183" text-anchor="middle" font-family="Inter" font-size="10" fill="#1a1a1a" font-weight="700">3</text>
+                                <text x="237" y="193" text-anchor="middle" font-family="Inter" font-size="6" fill="#5c5c5c">flows</text>
+                            </svg>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="evolucion-closing">Dos servicios. Cero curva de aprendizaje. Porque ya estamos dentro.</p>
+        </div>
+    </section>
+
+    <script>
+        const evolucionSection = document.querySelector('.evolucion-section');
+        if (evolucionSection) {
+            const evoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const cards = evolucionSection.querySelectorAll('.evolucion-card');
+                        const closing = evolucionSection.querySelector('.evolucion-closing');
+                        cards.forEach(card => card.classList.add('visible'));
+                        if (closing) closing.classList.add('visible');
+                        evoObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.3 });
+            evoObserver.observe(evolucionSection);
+        }
+    </script>
+
+</body>
+</html>
