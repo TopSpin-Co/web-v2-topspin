@@ -727,7 +727,16 @@ section {
 .logo-marquee {
     display: flex;
     width: max-content;
-    animation: marquee 35s linear infinite;
+    animation: marquee 50s linear infinite;
+}
+
+.logos-title {
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 1.25rem;
 }
 
 .marquee-content {
@@ -747,10 +756,11 @@ section {
 }
 
 .brand-logo-icon {
-    width: 32px;
-    height: 32px;
+    width: auto;
+    height: 36px;
+    max-width: 120px;
     object-fit: contain;
-    border-radius: 6px;
+    border-radius: 4px;
     filter: grayscale(100%) opacity(0.6);
     transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease;
 }
@@ -2190,37 +2200,310 @@ section {
     }
 }
 
-/* 08 - Testimonios */
-.testimonial-metric {
-    font-family: var(--font-heading);
-    font-size: 2.5rem;
-    line-height: 1.1;
+/* 08 - Casos de éxito — Carousel */
+.testimonials-section {
+    padding: 3rem 0;
+}
+.cases-carousel {
+    display: flex;
+    gap: 1rem;
+    align-items: stretch;
+    overflow: hidden;
 }
 
-.testimonial-submetric {
-    color: var(--text-secondary);
-    font-size: 0.9rem;
+.case-slide {
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+    cursor: pointer;
+    transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1), width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.case-slide.active {
+    flex: 1;
+    cursor: default;
+}
+
+/* Preview — shown when NOT active */
+.case-slide-preview {
+    padding: 1.25rem 0.75rem;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+}
+
+.case-slide.active .case-slide-preview {
+    display: none;
+}
+
+.case-slide-preview h3 {
+    font-size: 1.1rem;
+    white-space: nowrap;
+}
+
+.case-slide-preview .case-tag {
+    writing-mode: horizontal-tb;
+}
+
+/* Full content — shown when active */
+.case-slide-full {
+    display: none;
+    padding: 2rem 2.5rem;
+}
+
+.case-slide.active .case-slide-full {
+    display: block;
+    opacity: 0;
+    animation: caseReveal 0.35s ease 0.2s forwards;
+}
+
+@keyframes caseReveal {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Case card internals */
+.case-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.case-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.case-tag {
+    font-size: 0.7rem;
     text-transform: uppercase;
-    margin-bottom: 1rem;
+    letter-spacing: 1px;
+    color: var(--text-secondary);
+    background: var(--bg-tertiary);
+    padding: 0.2rem 0.7rem;
+    border-radius: 50px;
+    border: 1px solid var(--border-color);
+    display: inline-block;
 }
 
-.card-testimonial blockquote {
+.case-hero-metric {
+    text-align: right;
+    line-height: 1.2;
+}
+
+.case-hero-metric .font-heading {
+    font-size: 2.2rem;
+    display: block;
+}
+
+.case-hero-metric span:last-child {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.case-metrics {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.case-metric {
+    flex: 1;
+    text-align: center;
+}
+
+.case-metric-value {
+    display: block;
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    color: var(--accent-color);
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+}
+
+.case-metric-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.case-desc {
+    margin-top: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    font-size: 0.9rem;
+}
+
+.case-footer {
+    margin-top: 1rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.case-footer blockquote {
     font-style: italic;
     color: var(--text-secondary);
-    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    flex: 1;
 }
 
-.author-info strong {
-    color: var(--text-primary);
+.case-footer .btn {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+/* Hover on inactive slides */
+.case-slide:not(.active):hover {
+    background: var(--bg-tertiary);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
 }
 
 /* 09 - About Us */
-.team-photo {
-    width: 100%;
-    aspect-ratio: 1;
+#about-us {
+    padding: 2rem 0;
+}
+
+.about-layout {
+    display: flex;
+    gap: 3rem;
+    align-items: stretch;
+}
+
+.about-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+}
+
+.about-text p {
+    line-height: 1.7;
+}
+
+.about-team-carousel {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.team-carousel-track {
+    position: relative;
+    flex: 1;
+}
+
+.team-member-card {
+    text-align: center;
+    background: var(--bg-secondary);
     border-radius: 8px;
-    margin-bottom: 1rem;
-    background-color: var(--border-color);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: none;
+}
+
+.team-member-card.active {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.team-carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border-color);
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.carousel-dot.active {
+    background: var(--accent-color);
+}
+
+.team-card-image {
+    position: relative;
+    flex: 1;
+    min-height: 0;
+    background: var(--bg-tertiary);
+    overflow: hidden;
+}
+
+.team-card-image .team-avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.team-member-info {
+    padding: 1.25rem 1.5rem;
+    background: var(--bg-secondary);
+}
+
+.team-member-card h4 {
+    margin-bottom: 0.35rem;
+    color: var(--text-primary);
+    font-size: 1.25rem;
+}
+
+.team-member-card .text-sm {
+    font-size: 1rem;
+}
+
+.team-quote {
+    font-style: italic;
+    color: var(--accent-color);
+    font-size: 1rem;
+    margin-top: 0.75rem;
 }
 
 /* 10 - Stack */
@@ -2259,51 +2542,181 @@ section {
     letter-spacing: 1px;
 }
 
+.card-article-enhanced {
+    padding: 0;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-article-enhanced:hover {
+    transform: translateY(-5px);
+}
+
+.card-article-img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.card-article-img-label {
+    color: #fff;
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.card-article-body {
+    padding: 1.5rem 2rem 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-article-body h3 {
+    font-size: 1.15rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+}
+
+.article-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.article-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 0.25rem 0.75rem;
+    border-radius: 50px;
+    background: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-weight: 500;
+    border: 1px solid var(--border-color);
+}
+
+.article-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.article-excerpt {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.card-article-body .btn-link {
+    margin-top: auto;
+}
+
 /* 12 - FAQ */
-.accordion {
-    border-top: 1px solid var(--border-color);
+.faq-section {
+    padding-bottom: 3rem;
 }
 
-.accordion-item {
-    border-bottom: 1px solid var(--border-color);
+.cta-section {
+    padding-top: 3rem;
 }
 
-.accordion-header {
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-v2 {
+    border-top: none;
+}
+
+.accordion-v2-item {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.accordion-v2-item:hover {
+    box-shadow: var(--card-shadow);
+}
+
+.accordion-v2-header {
     width: 100%;
     text-align: left;
-    padding: 1.5rem 0;
+    padding: 1.15rem 1.5rem;
     background: none;
     border: none;
-    font-size: 1.25rem;
+    font-size: 0.95rem;
     font-family: var(--font-body);
+    font-weight: 500;
     color: var(--text-primary);
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: 1rem;
 }
 
-.accordion-icon {
-    transition: transform 0.3s;
-    font-size: 0.8rem;
+.accordion-v2-icon {
+    font-size: 1.25rem;
+    color: var(--accent-color);
+    font-weight: 300;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
-.accordion-header.active .accordion-icon {
-    transform: rotate(90deg);
+.accordion-v2-header.active .accordion-v2-icon {
+    transform: rotate(45deg);
 }
 
-.accordion-content {
+.accordion-v2-item .accordion-content {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease-out;
 }
 
-.accordion-content p {
-    padding: 0 0 1.5rem 2rem;
+.accordion-v2-item .accordion-content p {
+    padding: 0 1.5rem 1.25rem 1.5rem;
     color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.faq-hidden {
+    display: none;
+}
+
+.faq-hidden.faq-visible {
+    display: block;
+}
+
+.faq-toggle-btn {
+    font-size: 0.9rem;
 }
 
 /* 13 - Contacto */
+.cta-section .split-header {
+    flex: 1;
+}
+
+.cta-section .split-content {
+    flex: 1.5;
+}
+
 .contact-form {
     text-align: left;
     border: 1px solid var(--border-color);
@@ -2380,6 +2793,70 @@ section {
 
     .text-center-mobile {
         text-align: center;
+    }
+
+    /* Cases carousel mobile */
+    .cases-carousel {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .case-slide {
+        width: 100%;
+        min-height: auto;
+    }
+
+    .case-slide-preview {
+        writing-mode: horizontal-tb;
+        text-orientation: initial;
+        padding: 1rem 1.25rem;
+        flex-direction: row;
+        height: auto;
+    }
+
+    .case-slide-full {
+        padding: 1.5rem;
+    }
+
+    .case-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .case-hero-metric {
+        text-align: left;
+    }
+
+    .case-hero-metric .font-heading {
+        font-size: 2rem;
+    }
+
+    .case-metrics {
+        flex-wrap: wrap;
+    }
+
+    .case-footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    /* About section mobile */
+    .about-layout {
+        flex-direction: column;
+    }
+
+    .about-text h2 {
+        font-size: 2rem;
+    }
+
+    .about-team-carousel {
+        min-width: unset;
+    }
+
+    /* Blog cards mobile */
+    .card-article-body {
+        padding: 1.25rem 1.5rem 1.5rem;
     }
 }
 

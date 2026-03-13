@@ -354,4 +354,83 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.3 });
         evoObserver.observe(evolucionSection);
     }
+
+    // Cases Carousel — click to expand
+    const caseSlides = document.querySelectorAll('.case-slide');
+    const casesCarousel = document.querySelector('.cases-carousel');
+    caseSlides.forEach(slide => {
+        slide.addEventListener('click', () => {
+            if (slide.classList.contains('active')) return;
+
+            // Lock the carousel height to prevent jump during transition
+            if (casesCarousel) {
+                const currentHeight = casesCarousel.offsetHeight;
+                casesCarousel.style.height = currentHeight + 'px';
+            }
+
+            caseSlides.forEach(s => s.classList.remove('active'));
+            void slide.offsetHeight;
+            slide.classList.add('active');
+
+            // After flex transition ends, release the fixed height smoothly
+            if (casesCarousel) {
+                setTimeout(() => {
+                    const newHeight = casesCarousel.scrollHeight;
+                    casesCarousel.style.transition = 'height 0.3s ease';
+                    casesCarousel.style.height = newHeight + 'px';
+                    setTimeout(() => {
+                        casesCarousel.style.height = '';
+                        casesCarousel.style.transition = '';
+                    }, 320);
+                }, 500);
+            }
+        });
+    });
+
+    // FAQ Toggle — show/hide extra questions
+    const faqToggle = document.getElementById('faqToggle');
+    if (faqToggle) {
+        let faqExpanded = false;
+        faqToggle.addEventListener('click', () => {
+            const hiddenItems = document.querySelectorAll('.faq-hidden');
+            faqExpanded = !faqExpanded;
+            hiddenItems.forEach(item => {
+                item.classList.toggle('faq-visible', faqExpanded);
+            });
+            faqToggle.textContent = faqExpanded ? 'Ver menos preguntas −' : 'Ver más preguntas +';
+        });
+    }
+
+    // Team Carousel
+    const teamCards = document.querySelectorAll('.about-team-carousel .team-member-card');
+    const carouselDots = document.querySelectorAll('.carousel-dot');
+
+    if (teamCards.length > 0) {
+        let teamIndex = 0;
+        let teamInterval;
+
+        const showTeamCard = (index) => {
+            teamCards.forEach(card => card.classList.remove('active'));
+            carouselDots.forEach(dot => dot.classList.remove('active'));
+            teamCards[index].classList.add('active');
+            carouselDots[index].classList.add('active');
+            teamIndex = index;
+        };
+
+        const startTeamRotation = () => {
+            teamInterval = setInterval(() => {
+                showTeamCard((teamIndex + 1) % teamCards.length);
+            }, 3500);
+        };
+
+        carouselDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                clearInterval(teamInterval);
+                showTeamCard(parseInt(dot.dataset.index));
+                startTeamRotation();
+            });
+        });
+
+        startTeamRotation();
+    }
 });
