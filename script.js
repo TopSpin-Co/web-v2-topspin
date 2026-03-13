@@ -320,6 +320,24 @@ document.addEventListener('DOMContentLoaded', () => {
         activatePhase(1);
     }
 
+    // ICP Sector Tabs
+    const sectorTabBtns = document.querySelectorAll('.sector-tab-btn');
+    const sectorTabPanes = document.querySelectorAll('.sector-tab-pane');
+
+    if (sectorTabBtns.length > 0) {
+        sectorTabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                sectorTabBtns.forEach(b => b.classList.remove('active'));
+                sectorTabPanes.forEach(p => p.classList.remove('active'));
+
+                btn.classList.add('active');
+                const targetId = btn.getAttribute('data-sector');
+                const pane = document.getElementById(targetId);
+                if (pane) pane.classList.add('active');
+            });
+        });
+    }
+
     // Evolución Section — Fade in on scroll
     const evolucionSection = document.querySelector('.evolucion-section');
     if (evolucionSection) {
