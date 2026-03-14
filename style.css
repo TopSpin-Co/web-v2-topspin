@@ -569,7 +569,7 @@ h5 {
 }
 
 /* Mobile responsive */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .nav-pill-wrap {
         display: none;
     }
@@ -3470,5 +3470,203 @@ section {
         display: block;
         width: 100%;
         text-align: center;
+    }
+}
+
+
+/* ═══════════════════════════════════════════════
+   MOBILE RESPONSIVE — Consolidated
+   ═══════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+    /* ── Global overrides ── */
+    section {
+        padding: 3rem 0;
+    }
+
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .layout-split {
+        flex-direction: column;
+    }
+
+    .split-header,
+    .split-content {
+        min-width: 0 !important;
+        flex: unset !important;
+        padding-left: 0 !important;
+    }
+
+    .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* ── 01 Hero ── */
+    .hero-section {
+        padding: 5rem 0 3rem;
+    }
+
+    .headline br {
+        display: none;
+    }
+
+    .rotating-wrapper {
+        display: block;
+        height: auto;
+        min-height: 1.4em;
+    }
+
+    .subheadline {
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .cta-group .btn {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+
+    /* ── 02 Metrics ── */
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+
+    .metrics-section {
+        padding: 2rem 0;
+    }
+
+    /* ── 03 Logos Marquee ── */
+    .marquee-content {
+        gap: 3rem;
+        padding-right: 3rem;
+    }
+
+    .marquee-content span {
+        font-size: 1rem;
+    }
+
+    .brand-logo-icon {
+        height: 28px;
+        max-width: 80px;
+    }
+
+    /* ── 05 Soluciones / Services ── */
+    .tabs-nav {
+        flex-wrap: wrap;
+        padding: 0 0.75rem;
+    }
+
+    .tab-btn {
+        font-size: 0.8rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .tabs-content {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    .wf-columns {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+
+    .wf-col-left,
+    .wf-col-right {
+        flex: unset !important;
+        max-width: 100% !important;
+        width: 100%;
+    }
+
+    .lead-scoring-mockup {
+        max-width: 100%;
+    }
+
+    .email-mockup {
+        max-width: 100%;
+    }
+
+    /* ── Workflow stat tiles ── */
+    .wf-stat-tiles {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* ── 04 Dolor ── */
+    .dolor-section {
+        padding: 3rem 0;
+    }
+
+    .dolor-card {
+        padding: 1rem 1.25rem;
+    }
+
+    .dolor-cierre {
+        padding: 1.25rem 1.5rem;
+    }
+
+    /* ── 09 About — team carousel height fix ── */
+    .team-carousel-track {
+        min-height: 320px;
+    }
+
+    /* ── 13 Contact ── */
+    .contact-form {
+        padding: 1.5rem;
+    }
+
+    .email-capture-form input {
+        min-width: 0;
+    }
+}
+
+
+/* ── Small phones ── */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 6%;
+    }
+
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-section {
+        padding: 4rem 0 2rem;
+    }
+
+    .tab-btn .badge {
+        display: none;
+    }
+
+    .wf-stat-tiles {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs-content {
+        padding: 1.25rem;
     }
 }
