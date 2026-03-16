@@ -2865,154 +2865,24 @@ section {
    04 - DOLOR SECTION
    ═══════════════════════════════════════════════ */
 .dolor-section {
-    padding: 6rem 0;
+    padding: 5rem 0;
 }
 
 .dolor-split {
+    display: flex;
+    gap: 4rem;
     align-items: flex-start;
 }
 
 .dolor-left {
+    flex: 0 0 33%;
     position: sticky;
     top: 100px;
+    text-align: center;
 }
 
 .dolor-right {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-}
-
-/* ── Cards ── */
-.dolor-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 1.25rem;
-    padding: 1.25rem 1.5rem;
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    transition: all 0.3s ease;
-}
-
-.dolor-card:hover {
-    border-color: var(--accent-color);
-    box-shadow: var(--card-shadow);
-}
-
-.dolor-card input[type="checkbox"] {
-    display: none;
-}
-
-/* ── Checkbox (square with rounded corners) ── */
-.dolor-check {
-    flex-shrink: 0;
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
-    border: 2px solid var(--border-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    margin-top: 1px;
-}
-
-.dolor-check svg {
-    width: 14px;
-    height: 14px;
-    opacity: 0;
-    transform: scale(0);
-    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.dolor-check svg path {
-    stroke: #fff;
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-    stroke-dasharray: 20;
-    stroke-dashoffset: 20;
-    transition: stroke-dashoffset 0.35s ease 0.1s;
-}
-
-.dolor-card input:checked ~ .dolor-check {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
-    transform: scale(1.08);
-}
-
-.dolor-card input:checked ~ .dolor-check svg {
-    opacity: 1;
-    transform: scale(1);
-}
-
-.dolor-card input:checked ~ .dolor-check svg path {
-    stroke-dashoffset: 0;
-}
-
-.dolor-card:hover .dolor-check {
-    border-color: var(--accent-color);
-}
-
-/* ── Card text ── */
-.dolor-card-text {
-    font-size: 1.05rem;
-    line-height: 1.5;
-    transition: all 0.3s ease;
-}
-
-.dolor-card input:checked ~ .dolor-card-text {
-    color: var(--text-secondary);
-}
-
-/* ── Checked card state ── */
-.dolor-card.is-checked {
-    background: var(--bg-tertiary);
-    border-color: var(--accent-color);
-    border-left: 4px solid var(--accent-color);
-}
-
-/* ── Progress bar ── */
-.dolor-progress {
-    margin-top: 1.5rem;
-}
-
-.dolor-progress-bg {
-    width: 100%;
-    height: 4px;
-    background: var(--border-color);
-    border-radius: 2px;
-    overflow: hidden;
-}
-
-.dolor-progress-fill {
-    height: 100%;
-    background: var(--accent-color);
-    border-radius: 2px;
-    width: 0%;
-    transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.dolor-progress-label {
-    font-size: 0.8rem;
-    color: var(--text-secondary);
-    margin-top: 0.5rem;
-    transition: color 0.3s ease;
-}
-
-.dolor-progress-label .dolor-num {
-    font-weight: 600;
-    color: var(--accent-color);
-}
-
-.dolor-progress-label.all-done {
-    color: var(--accent-color);
-    font-weight: 500;
+    flex: 1;
 }
 
 /* ── CTA cierre ── */
@@ -3020,25 +2890,203 @@ section {
     margin-top: 2rem;
     padding: 1.5rem 2rem;
     background: var(--bg-secondary);
-    border-radius: 8px;
     border: 1px solid var(--border-color);
+    border-radius: 8px;
     border-left: 4px solid var(--accent-color);
 }
 
 .dolor-cierre p {
     font-size: 1.05rem;
     font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+/* ── Carousel ── */
+.carousel-dolor {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--border-color);
+    aspect-ratio: 16 / 10;
+}
+
+.carousel-dolor:hover .arrow-dolor {
+    opacity: 1;
+}
+
+.slide-dolor {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.slide-dolor.active {
+    opacity: 1;
+}
+
+.slide-dolor img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(100%);
+}
+
+.slide-dolor .overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.25) 100%);
+    display: flex;
+    align-items: flex-end;
+    padding: 2.5rem;
+}
+
+.slide-dolor .overlay p {
+    color: #fff;
+    font-size: 1.3rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.slide-dolor .overlay strong {
+    color: #fff;
+    font-weight: 600;
+}
+
+/* ── Arrows ── */
+.arrow-dolor {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-dolor:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.arrow-dolor.prev { left: 1rem; }
+.arrow-dolor.next { right: 1rem; }
+
+/* ── Dots ── */
+.carousel-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.25rem;
+}
+
+.dot-dolor {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border-color);
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.dot-dolor.active {
+    background: var(--accent-color);
+    transform: scale(1.2);
+}
+
+/* ── Mobile CTA below carousel ── */
+.dolor-cierre-mobile {
+    display: none;
 }
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-    .dolor-left {
-        position: static;
-    }
-
     .dolor-split {
         flex-direction: column;
+        gap: 2rem;
     }
+
+    .dolor-left {
+        position: static;
+        flex: none;
+        width: 100%;
+    }
+
+    .dolor-left .lead-text {
+        font-size: 0.9rem;
+    }
+
+    .dolor-cierre-desktop {
+        display: none;
+    }
+
+    .dolor-cierre-mobile {
+        display: block;
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+
+    .dolor-cierre-mobile .dolor-cierre {
+        text-align: center;
+        padding: 0.75rem 1rem;
+        border-left-width: 3px;
+    }
+
+    .dolor-cierre-mobile .dolor-cierre p {
+        font-size: 0.8rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .dolor-cierre-mobile .btn-primary {
+        padding: 0.5rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .carousel-nav {
+        margin-top: 0.75rem;
+        gap: 0.35rem;
+    }
+
+    .dot-dolor {
+        width: 6px;
+        height: 6px;
+    }
+
+    .carousel-dolor {
+        aspect-ratio: 4 / 3;
+    }
+
+    .slide-dolor .overlay {
+        padding: 1.5rem;
+    }
+
+    .slide-dolor .overlay p {
+        font-size: 1.05rem;
+    }
+
+    .arrow-dolor {
+        opacity: 1;
+        width: 38px;
+        height: 38px;
+        font-size: 1rem;
+    }
+
+    .arrow-dolor.prev { left: 0.75rem; }
+    .arrow-dolor.next { right: 0.75rem; }
 }
 
 /* =============================================

@@ -143,6 +143,28 @@ El PDF `TopSpin_Home_Contenido.pdf` contiene el briefing completo de contenido p
 
 Incluye copywriting detallado, microcopy, CTAs, estructura de FAQ (8 preguntas), y especificaciones de diseño para cada sección.
 
+## Skills del Proyecto
+
+Las skills locales del proyecto están en `.claude/skills/`. Cada skill es una carpeta con un archivo `SKILL.md` que contiene instrucciones especializadas para tareas recurrentes.
+
+### Estructura
+
+```
+.claude/skills/
+└── topspin-pages/
+    └── SKILL.md     ← Cómo crear páginas HTML consistentes
+```
+
+### Cómo añadir una nueva skill
+
+1. Crear una carpeta dentro de `.claude/skills/` con el nombre de la skill
+2. Dentro, crear un `SKILL.md` con frontmatter YAML (`name`, `description`) y las instrucciones en Markdown
+3. Opcionalmente, añadir subcarpetas: `scripts/`, `references/`, `assets/`
+
+### Skills disponibles
+
+- **topspin-pages** — Genera páginas HTML manteniendo consistencia con el design system, navbar, footer y convenciones del proyecto
+
 ## Git
 
 - Rama principal: `main`

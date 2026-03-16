@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "Python HTTP Server",
+      "runtimeExecutable": "/usr/bin/ruby",
+      "runtimeArgs": ["-e", "require 'webrick';s=WEBrick::HTTPServer.new(Port:ENV.fetch('PORT','8000').to_i,DocumentRoot:'/Users/nicolasvivesgarciadelreal/Desktop/web-v2-topspin');trap('INT'){s.shutdown};s.start"],
+      "port": 8000,
+      "autoPort": true
+    }
+  ]
+}

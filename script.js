@@ -202,41 +202,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Dolor Section — Checkbox progress
-    const dolorCards = document.querySelectorAll('.dolor-card');
-    const dolorCbs = document.querySelectorAll('.dolor-cb');
+    // Dolor Section — Carousel
+    const carouselDolor = document.getElementById('carouselDolor');
+    if (carouselDolor) {
+        const slides = carouselDolor.querySelectorAll('.slide-dolor');
+        const prevBtn = document.getElementById('prevDolor');
+        const nextBtn = document.getElementById('nextDolor');
+        const dotsContainer = document.getElementById('dotsContainer');
+        let currentDolor = 0;
+        let dolorInterval;
 
-    if (dolorCbs.length > 0) {
-        const updateDolorProgress = () => {
-            let checked = 0;
-            dolorCbs.forEach((cb, i) => {
-                if (cb.checked) {
-                    checked++;
-                    dolorCards[i].classList.add('is-checked');
-                } else {
-                    dolorCards[i].classList.remove('is-checked');
-                }
-            });
-
-            const pct = (checked / dolorCbs.length) * 100;
-            const fill = document.getElementById('dolor-progress-fill');
-            const label = document.getElementById('dolor-progress-label');
-
-            if (fill) fill.style.width = pct + '%';
-            if (label) {
-                if (checked === dolorCbs.length) {
-                    label.classList.add('all-done');
-                    label.innerHTML = '<span class="dolor-num">' + checked + '/' + dolorCbs.length + '</span> — ¡todas te suenan! TopSpin existe para ti.';
-                } else {
-                    label.classList.remove('all-done');
-                    label.innerHTML = '<span class="dolor-num">' + checked + '</span> de ' + dolorCbs.length + ' marcadas';
-                }
-            }
-        };
-
-        dolorCbs.forEach(cb => {
-            cb.addEventListener('change', updateDolorProgress);
+        // Create dots
+        slides.forEach((_, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'dot-dolor' + (i === 0 ? ' active' : '');
+            dot.addEventListener('click', () => goToDolor(i));
+            dotsContainer.appendChild(dot);
         });
+
+        const dots = dotsContainer.querySelectorAll('.dot-dolor');
+
+        function goToDolor(index) {
+            slides[currentDolor].classList.remove('active');
+            dots[currentDolor].classList.remove('active');
+            currentDolor = ((index % slides.length) + slides.length) % slides.length;
+            slides[currentDolor].classList.add('active');
+            dots[currentDolor].classList.add('active');
+            resetDolorInterval();
+        }
+
+        function resetDolorInterval() {
+            clearInterval(dolorInterval);
+            dolorInterval = setInterval(() => goToDolor(currentDolor + 1), 4000);
+        }
+
+        prevBtn.addEventListener('click', () => goToDolor(currentDolor - 1));
+        nextBtn.addEventListener('click', () => goToDolor(currentDolor + 1));
+
+        // Pause on hover
+        carouselDolor.addEventListener('mouseenter', () => clearInterval(dolorInterval));
+        carouselDolor.addEventListener('mouseleave', resetDolorInterval);
+
+        resetDolorInterval();
     }
 
     // Workflow Sticky Scroll Logic

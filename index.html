@@ -168,59 +168,67 @@
         <!-- 04 - Dolor -->
         <section id="dolor" class="dolor-section">
             <div class="container">
-                <div class="layout-split dolor-split">
-                    <div class="split-header dolor-left text-center">
+                <div class="dolor-split">
+                    <!-- LEFT: Title + Subtitle + CTA (desktop) -->
+                    <div class="dolor-left">
                         <h2>¿Te suena esto?</h2>
-                        <p class="lead-text mt-md">Si diriges ventas B2B en España, probablemente estás viviendo alguna de estas situaciones.</p>
+                        <p class="lead-text" style="margin-top:1rem;">Si diriges ventas B2B en España, probablemente estás viviendo alguna de estas situaciones.</p>
 
-                        <div class="dolor-progress">
-                            <div class="dolor-progress-bg">
-                                <div class="dolor-progress-fill" id="dolor-progress-fill"></div>
-                            </div>
-                            <p class="dolor-progress-label" id="dolor-progress-label"><span class="dolor-num">0</span> de 5 marcadas</p>
-                        </div>
-
-                        <div class="dolor-cierre">
+                        <div class="dolor-cierre dolor-cierre-desktop" style="margin-top:2rem;">
                             <p>Si has dicho que sí a alguna de estas, <strong>TopSpin existe para ti.</strong></p>
                             <a href="#contacto" class="btn btn-primary mt-sm">Agendar Llamada</a>
                         </div>
                     </div>
-                    <div class="split-content dolor-right">
-                        <label class="dolor-card">
-                            <input type="checkbox" class="dolor-cb">
-                            <span class="dolor-check">
-                                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
-                            </span>
-                            <span class="dolor-card-text">Tu equipo de ventas dedica más tiempo a <strong class="text-accent">buscar contactos</strong> que a cerrar reuniones</span>
-                        </label>
-                        <label class="dolor-card">
-                            <input type="checkbox" class="dolor-cb">
-                            <span class="dolor-check">
-                                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
-                            </span>
-                            <span class="dolor-card-text">El pipeline <strong class="text-accent">sube y baja sin control</strong> — hay meses buenos y meses en seco</span>
-                        </label>
-                        <label class="dolor-card">
-                            <input type="checkbox" class="dolor-cb">
-                            <span class="dolor-check">
-                                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
-                            </span>
-                            <span class="dolor-card-text">Ya intentasteis hacer outbound, pero <strong class="text-accent">parecía spam</strong> y no funcionó</span>
-                        </label>
-                        <label class="dolor-card">
-                            <input type="checkbox" class="dolor-cb">
-                            <span class="dolor-check">
-                                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
-                            </span>
-                            <span class="dolor-card-text">Necesitas <strong class="text-accent">más reuniones</strong>, pero no tienes un sistema para conseguirlas</span>
-                        </label>
-                        <label class="dolor-card">
-                            <input type="checkbox" class="dolor-cb">
-                            <span class="dolor-check">
-                                <svg viewBox="0 0 16 16"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
-                            </span>
-                            <span class="dolor-card-text">Contratar un SDR interno te parece <strong class="text-accent">caro, lento y arriesgado</strong></span>
-                        </label>
+
+                    <!-- RIGHT: Carousel -->
+                    <div class="dolor-right">
+                        <div class="carousel-dolor" id="carouselDolor">
+                            <div class="slide-dolor active">
+                                <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=800&q=80" alt="Buscando contactos">
+                                <div class="overlay">
+                                    <p>Dedicas más tiempo a <strong>buscar contactos</strong> que a cerrar reuniones</p>
+                                </div>
+                            </div>
+                            <div class="slide-dolor">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Pipeline inestable">
+                                <div class="overlay">
+                                    <p>Tus ventas <strong>suben y bajan sin control</strong> y tienes meses en los que no entra nada</p>
+                                </div>
+                            </div>
+                            <div class="slide-dolor">
+                                <img src="https://images.unsplash.com/photo-1526554850534-7c78330d5f90?w=800&q=80" alt="Spam outbound">
+                                <div class="overlay">
+                                    <p>Ya intentasteis enviar emails en frío, pero <strong>parecía spam</strong> y no funcionó</p>
+                                </div>
+                            </div>
+                            <div class="slide-dolor">
+                                <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=800&q=80" alt="Falta de reuniones">
+                                <div class="overlay">
+                                    <p>Necesitas <strong>más reuniones</strong>, pero no tienes un sistema para conseguirlas</p>
+                                </div>
+                            </div>
+                            <div class="slide-dolor">
+                                <img src="https://images.unsplash.com/photo-1534536281715-e28d76689b4d?w=800&q=80" alt="Coste SDR">
+                                <div class="overlay">
+                                    <p>Contratar a alguien solo para prospectar te parece <strong>caro, lento y arriesgado</strong></p>
+                                </div>
+                            </div>
+
+                            <!-- Arrows -->
+                            <button class="arrow-dolor prev" id="prevDolor">&#8592;</button>
+                            <button class="arrow-dolor next" id="nextDolor">&#8594;</button>
+                        </div>
+
+                        <!-- Dots -->
+                        <div class="carousel-nav" id="dotsContainer"></div>
+
+                        <!-- CTA mobile (below carousel) -->
+                        <div class="dolor-cierre-mobile">
+                            <div class="dolor-cierre">
+                                <p>Si has dicho que sí a alguna de estas, <strong>TopSpin existe para ti.</strong></p>
+                                <a href="#contacto" class="btn btn-primary mt-sm">Agendar Llamada</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -333,8 +341,8 @@
                 </div>
             </div>
 
-            <!-- Detailed Execution Process -->
-            <div class="container mt-lg mb-lg pt-md">
+            <!-- Detailed Execution Process — OCULTO TEMPORALMENTE -->
+            <div class="container mt-lg mb-lg pt-md" style="display:none;">
                 <div class="text-center mb-sm">
                     <h2>Construimos tu motor de ventas</h2>
                     <p class="subheadline">Combinamos tecnología de vanguardia y análisis humano para generar resultados
@@ -584,6 +592,7 @@
                     </div>
                 </div>
             </div>
+            <!-- FIN Detailed Execution Process -->
         </section>
 
         <!-- 05 - Work-flow (Sticky Scroll) -->
