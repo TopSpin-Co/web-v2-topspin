@@ -308,23 +308,27 @@ document.addEventListener('DOMContentLoaded', () => {
             handleHeaderShrink(); // Initialize on load
         }
 
-        // Intersection Observer
-        const wfObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const phaseNum = parseInt(entry.target.getAttribute('data-phase'));
-                    activatePhase(phaseNum);
+        // Activate the phase with the highest % visible in the viewport
+        const getMostVisiblePhase = () => {
+            let maxVisible = -1;
+            let best = 1;
+            const vh = window.innerHeight;
+            wfPhases.forEach(phase => {
+                const rect = phase.getBoundingClientRect();
+                const visiblePx = Math.max(0, Math.min(rect.bottom, vh) - Math.max(rect.top, 0));
+                const ratio = rect.height > 0 ? visiblePx / rect.height : 0;
+                if (ratio > maxVisible) {
+                    maxVisible = ratio;
+                    best = parseInt(phase.getAttribute('data-phase'));
                 }
             });
-        }, {
-            rootMargin: '-150px 0px 0px 0px',
-            threshold: 0.33
-        });
+            return best;
+        };
 
-        wfPhases.forEach(phase => wfObserver.observe(phase));
+        window.addEventListener('scroll', () => activatePhase(getMostVisiblePhase()), { passive: true });
 
-        // Activate phase 1 on load
-        activatePhase(1);
+        // Initialize on load
+        activatePhase(getMostVisiblePhase());
     }
 
     // ICP Sector Tabs
