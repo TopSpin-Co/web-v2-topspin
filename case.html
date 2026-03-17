@@ -73,11 +73,298 @@
         </div>
     </div>
 
-    <main style="min-height: 60vh; display: flex; align-items: center; justify-content: center; text-align: center;">
-        <div class="container">
-            <h1>Case Studies</h1>
-            <p class="lead-text mt-md">Not done yet</p>
-        </div>
+    <!-- Fixed background with floating logos -->
+    <div class="float-bg">
+        <div class="float-logo lg logo-1"><img src="assets/images/logos/LittleBox.png" alt="Little Box"></div>
+        <div class="float-logo md logo-2"><img src="assets/images/logos/Lotify.png" alt="Lotify"></div>
+        <div class="float-logo lg logo-3"><img src="assets/images/logos/HonestGreens.png" alt="Honest Greens"></div>
+        <div class="float-logo md logo-4"><img src="assets/images/logos/Meadow.png" alt="Meadow AI"></div>
+        <div class="float-logo lg logo-5"><img src="assets/images/logos/Occre.png" alt="OcCre"></div>
+        <div class="float-logo md logo-6"><img src="assets/images/logos/Paack.png" alt="Paack"></div>
+        <div class="float-logo sm logo-7"><img src="assets/images/logos/SoftDoit.png" alt="SoftDoit"></div>
+        <div class="float-logo sm logo-8"><img src="assets/images/logos/Nuba.png" alt="Nuba"></div>
+        <div class="float-logo md logo-9"><img src="assets/images/logos/GrupoMontaner.png" alt="Grupo Montaner"></div>
+        <div class="float-logo sm logo-10"><img src="assets/images/logos/Sercom.png" alt="Sercom"></div>
+        <div class="float-logo sm logo-11"><img src="assets/images/logos/MecaluxEsmena.png" alt="Mecalux Esmena"></div>
+        <div class="float-logo sm logo-12"><img src="assets/images/logos/Ral.png" alt="RAL"></div>
+        <div class="float-logo md logo-13"><img src="assets/images/logos/Madom.png" alt="Madom"></div>
+        <div class="float-logo sm logo-14"><img src="assets/images/logos/IncluFlex.png" alt="IncluFlex"></div>
+    </div>
+
+    <main>
+        <!-- Hero -->
+        <section class="cases-hero-section hero-float">
+            <div class="container text-center">
+                <div class="hero-content">
+                    <span class="article-tag" style="margin-bottom: 1rem; display: inline-block;">Casos de Éxito</span>
+                    <h1>Resultados reales para empresas B2B</h1>
+                    <p class="subheadline">Descubre cómo ayudamos a nuestros clientes a generar pipeline predecible y cerrar más deals.</p>
+                </div>
+                <div class="hero-stat-row">
+                    <div class="hero-stat">
+                        <strong>+30</strong>
+                        <span>clientes B2B</span>
+                    </div>
+                    <div class="hero-stat">
+                        <strong>10</strong>
+                        <span>casos documentados</span>
+                    </div>
+                    <div class="hero-stat">
+                        <strong>+200%</strong>
+                        <span>pipeline medio generado</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter + Grid -->
+        <section class="cases-section">
+            <div class="container">
+                <!-- Sticky Filter Bar -->
+                <div class="cases-filter-bar" id="casesFilterBar">
+                    <div class="cases-filter-wrap">
+                        <button class="cases-filter-trigger" id="casesFilterTrigger">
+                            <span class="cases-filter-label" id="casesFilterLabel">Todos</span>
+                            <svg class="cases-filter-icon" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                                <path d="M3.5 5.25L7 8.75L10.5 5.25" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </button>
+                        <div class="cases-filter-options" id="casesFilterOptions">
+                            <button class="filter-option active" data-category="todos">Todos</button>
+                            <button class="filter-option" data-category="saas">SaaS</button>
+                            <button class="filter-option" data-category="legal">Legal</button>
+                            <button class="filter-option" data-category="industrial">Industrial</button>
+                            <button class="filter-option" data-category="consultoria">Consultoría</button>
+                            <button class="filter-option" data-category="financiero">Financiero</button>
+                            <button class="filter-option" data-category="salud">Salud</button>
+                            <button class="filter-option" data-category="retail">Retail</button>
+                        </div>
+                    </div>
+                    <p class="cases-count">Mostrando <span id="casesCountNum">10</span> casos de éxito</p>
+                </div>
+
+                <!-- Cards List -->
+                <div class="cases-grid" id="casesGrid">
+
+                    <!-- 1. Little Box -->
+                    <a href="case/little-box.html" class="card-case" data-category="consultoria">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">Little Box</span>
+                            <span class="case-card-category">B2B Sales</span>
+                        </div>
+                        <div class="case-card-content">
+                            <div class="article-tags">
+                                <span class="article-tag">Consultoría</span>
+                                <span class="article-tag">Sales Ops</span>
+                            </div>
+                            <h3>Creación de un canal outbound B2B desde cero</h3>
+                            <div class="case-card-metric">
+                                <strong>+200</strong> <span>nuevos clientes</span>
+                            </div>
+                            <p class="article-excerpt">Plan de negocio a 2 años, equipo de 5 comerciales contratados e implementación completa de herramientas y procesos de venta. 102% del plan de negocio cumplido en el primer año.</p>
+                            <span class="btn-link">Ver caso completo &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- 2. Lotify -->
+                    <a href="case/lotify.html" class="card-case" data-category="saas">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">Lotify</span>
+                            <span class="case-card-category">SaaS / E-commerce</span>
+                        </div>
+                        <div class="case-card-content">
+                            <div class="article-tags">
+                                <span class="article-tag">SaaS</span>
+                                <span class="article-tag">LGaaS + CRM</span>
+                            </div>
+                            <h3>+200% en ventas cerradas con un proceso comercial estructurado</h3>
+                            <div class="case-card-metric">
+                                <strong>+200%</strong> <span>deals cerrados</span>
+                            </div>
+                            <p class="article-excerpt">Cómo Lotify pasó de vender sin estructura a triplicar sus ventas cerradas en solo un año.</p>
+                            <span class="btn-link">Ver caso completo &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- 3. Akira Healthcare -->
+                    <a href="case/akira-healthcare.html" class="card-case" data-category="salud">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">Akira Healthcare</span>
+                            <span class="case-card-category">Healthcare</span>
+                        </div>
+                        <div class="case-card-content">
+                            <div class="article-tags">
+                                <span class="article-tag">Salud</span>
+                                <span class="article-tag">LGaaS + CRM</span>
+                            </div>
+                            <h3>-65% en tareas manuales y +150% en capacidad de nuevos clientes</h3>
+                            <div class="case-card-metric">
+                                <strong>-65%</strong> <span>tareas manuales</span>
+                            </div>
+                            <p class="article-excerpt">Cómo Akira Healthcare pasó de gestionar todo a mano a multiplicar su capacidad comercial con las herramientas adecuadas.</p>
+                            <span class="btn-link">Ver caso completo &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- 4. OcCre -->
+                    <a href="case/occre.html" class="card-case" data-category="industrial">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">OcCre</span>
+                            <span class="case-card-category">Manufactura</span>
+                        </div>
+                        <div class="case-card-content">
+                            <div class="article-tags">
+                                <span class="article-tag">Industrial</span>
+                                <span class="article-tag">ROaaS</span>
+                            </div>
+                            <h3>-60% en tareas manuales y +30% en crecimiento de ventas</h3>
+                            <div class="case-card-metric">
+                                <strong>+30%</strong> <span>crecimiento ventas</span>
+                            </div>
+                            <p class="article-excerpt">Cómo OcCre modernizó su proceso comercial para eliminar trabajo manual y acelerar sus ventas en solo dos años.</p>
+                            <span class="btn-link">Ver caso completo &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- 5. Pragma Studio -->
+                    <a href="case/pragma-studio.html" class="card-case" data-category="saas">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">Pragma Studio</span>
+                            <span class="case-card-category">SaaS / Tech</span>
+                        </div>
+                        <div class="case-card-content">
+                            <div class="article-tags">
+                                <span class="article-tag">SaaS</span>
+                                <span class="article-tag">LGaaS</span>
+                            </div>
+                            <h3>15 demos por semana con un solo comercial</h3>
+                            <div class="case-card-metric">
+                                <strong>8.000+</strong> <span>leads cualificados</span>
+                            </div>
+                            <p class="article-excerpt">Cómo Pragma Studio conquistó el mercado europeo con una sola persona en ventas y la estrategia adecuada.</p>
+                            <span class="btn-link">Ver caso completo &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- 6. Honest Greens -->
+                    <a href="case/honest-greens.html" class="card-case" data-category="retail">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">Honest Greens</span>
+                            <span class="case-card-category">Food & Wellness</span>
+                        </div>
+                        <div class="case-card-content">
+                            <div class="article-tags">
+                                <span class="article-tag">Retail</span>
+                                <span class="article-tag">LGaaS + CRM</span>
+                            </div>
+                            <h3>Un nuevo canal de ventas para llevar comida saludable a las empresas</h3>
+                            <div class="case-card-metric">
+                                <strong>De 0</strong> <span>a operativo</span>
+                            </div>
+                            <p class="article-excerpt">Honest Greens Cantina quería dar a conocer su servicio de menús para empresas. Construimos desde cero todo el sistema comercial para conseguirlo.</p>
+                            <span class="btn-link">Ver caso completo &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- 7. 10FT -->
+                    <a href="case/10ft.html" class="card-case" data-category="salud">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">10FT</span>
+                            <span class="case-card-category">Wellness / Suplementos</span>
+                        </div>
+                        <div class="case-card-content">
+                            <div class="article-tags">
+                                <span class="article-tag">Salud</span>
+                                <span class="article-tag">GTM + RevOps</span>
+                            </div>
+                            <h3>De crecer orgánicamente a vender en España y Estados Unidos</h3>
+                            <div class="case-card-metric">
+                                <strong>2 mercados</strong> <span>España + USA</span>
+                            </div>
+                            <p class="article-excerpt">Tras un 2024 brillante, 10FT quería dar el salto a las ventas B2B en dos mercados. Construimos la estrategia y la infraestructura para conseguirlo.</p>
+                            <span class="btn-link">Ver caso completo &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- 8. Meadow AI -->
+                    <a href="case/meadow-ai.html" class="card-case" data-category="saas">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">Meadow AI</span>
+                            <span class="case-card-category">Influencer Marketing</span>
+                        </div>
+                        <div class="case-card-content">
+                            <div class="article-tags">
+                                <span class="article-tag">SaaS</span>
+                                <span class="article-tag">GTM + RevOps</span>
+                            </div>
+                            <h3>Escalando el influencer marketing en toda Europa</h3>
+                            <div class="case-card-metric">
+                                <strong>G2M Europa</strong> <span>ejecutado</span>
+                            </div>
+                            <p class="article-excerpt">Meadow AI combina inteligencia artificial con gestión humana experta. Tras un gran 2024, necesitaban un sistema de ventas para conquistar el mercado europeo.</p>
+                            <span class="btn-link">Ver caso completo &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- 9. CEIN -->
+                    <a href="case/cein.html" class="card-case" data-category="consultoria">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">CEIN</span>
+                            <span class="case-card-category">Incubadora / Startups</span>
+                        </div>
+                        <div class="case-card-content">
+                            <div class="article-tags">
+                                <span class="article-tag">Consultoría</span>
+                                <span class="article-tag">Formación</span>
+                            </div>
+                            <h3>15 startups formadas y +15.000 contactos generados en 6 meses</h3>
+                            <div class="case-card-metric">
+                                <strong>15.000+</strong> <span>leads en 6 meses</span>
+                            </div>
+                            <p class="article-excerpt">Cómo una incubadora en Navarra preparó a sus startups para vender de forma profesional con formación práctica y las herramientas adecuadas.</p>
+                            <span class="btn-link">Ver caso completo &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- 10. Rebolf -->
+                    <a href="case/rebolf.html" class="card-case" data-category="retail">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">Rebolf</span>
+                            <span class="case-card-category">Golf & Lifestyle</span>
+                        </div>
+                        <div class="case-card-content">
+                            <div class="article-tags">
+                                <span class="article-tag">Retail</span>
+                                <span class="article-tag">GTM + Sales Ops</span>
+                            </div>
+                            <h3>90% del plan de negocio cumplido en solo 6 meses</h3>
+                            <div class="case-card-metric">
+                                <strong>90%</strong> <span>del plan en 6 meses</span>
+                            </div>
+                            <p class="article-excerpt">Cómo Rebolf pasó de no tener ninguna infraestructura comercial a llevar su marca de golf a más de 100 tiendas en toda España.</p>
+                            <span class="btn-link">Ver caso completo &rarr;</span>
+                        </div>
+                    </a>
+
+                    <!-- CTA Card -->
+                    <div class="card-case card-case-cta" data-category="todos">
+                        <div class="case-card-visual">
+                            <span class="case-company-name">Tu empresa</span>
+                            <span class="case-card-category">Próximo caso de éxito</span>
+                        </div>
+                        <div class="case-card-content" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                            <div class="article-tags">
+                                <span class="article-tag">Tu empresa puede ser la siguiente</span>
+                            </div>
+                            <h3>¿Te ha convencido lo que has visto?</h3>
+                            <p class="article-excerpt">Estos resultados no son casualidad. Son el resultado de una estrategia clara, las herramientas adecuadas y un equipo que sabe ejecutar.</p>
+                            <a href="contacto.html" class="btn btn-primary" style="display: inline-block; margin-top: 1rem;">Agendar Llamada</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">

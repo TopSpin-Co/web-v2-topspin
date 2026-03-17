@@ -408,6 +408,97 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Cases Filter
+    const caseCards = document.querySelectorAll('.card-case');
+    const casesCountNum = document.getElementById('casesCountNum');
+    const filterBar = document.getElementById('casesFilterBar');
+    const filterWrap = document.querySelector('.cases-filter-wrap');
+    const filterTrigger = document.getElementById('casesFilterTrigger');
+    const filterLabel = document.getElementById('casesFilterLabel');
+    const filterOptions = document.querySelectorAll('.filter-option');
+
+    if (caseCards.length > 0) {
+        // Staggered scroll-in animation
+        const caseObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    caseObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        caseCards.forEach((card, i) => {
+            card.style.transitionDelay = `${i * 0.04}s`;
+            caseObserver.observe(card);
+        });
+
+        // Sticky detection
+        if (filterBar) {
+            const stickyObserver = new IntersectionObserver(
+                ([entry]) => {
+                    filterBar.classList.toggle('stuck', !entry.isIntersecting);
+                },
+                { threshold: 1, rootMargin: '-1px 0px 0px 0px' }
+            );
+            stickyObserver.observe(filterBar);
+        }
+
+        // Filter function
+        const filterCases = (category) => {
+            let visibleCount = 0;
+            let delay = 0;
+
+            caseCards.forEach(card => {
+                if (card.classList.contains('card-case-cta') || category === 'todos' || card.getAttribute('data-category') === category) {
+                    card.classList.remove('hidden');
+                    card.style.transitionDelay = `${delay * 0.03}s`;
+                    card.classList.remove('visible');
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            card.classList.add('visible');
+                        });
+                    });
+                    visibleCount++;
+                    delay++;
+                } else {
+                    card.classList.add('hidden');
+                    card.classList.remove('visible');
+                }
+            });
+
+            if (casesCountNum) {
+                casesCountNum.textContent = visibleCount;
+            }
+        };
+
+        // Toggle open/close
+        if (filterTrigger && filterWrap) {
+            filterTrigger.addEventListener('click', () => {
+                filterWrap.classList.toggle('open');
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!filterWrap.contains(e.target)) {
+                    filterWrap.classList.remove('open');
+                }
+            });
+        }
+
+        // Option click — filter, update label, close
+        filterOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const category = option.getAttribute('data-category');
+                filterOptions.forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                if (filterLabel) filterLabel.textContent = option.textContent;
+                filterWrap.classList.remove('open');
+                filterCases(category);
+            });
+        });
+    }
+
     // Team Carousel
     const teamCards = document.querySelectorAll('.about-team-carousel .team-member-card');
     const carouselDots = document.querySelectorAll('.carousel-dot');
