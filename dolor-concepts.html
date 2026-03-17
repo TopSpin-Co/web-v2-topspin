@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolor — Conceptos de diseño</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --accent-color: #e65926;
+            --bg-primary: #fdfbf7;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #f4f2ec;
+            --text-primary: #1a1a1a;
+            --text-secondary: #5c5c5c;
+            --border-color: #e5e5e5;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            padding: 0;
+        }
+
+        /* ── Nav de conceptos ── */
+        .concepts-nav {
+            background: #1a1a1a;
+            padding: 1rem 2rem;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .concepts-nav span {
+            color: #999;
+            font-size: 0.8rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .concepts-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            transition: background 0.2s;
+        }
+        .concepts-nav a:hover { background: rgba(255,255,255,0.1); }
+
+        /* ── Wrapper de cada concepto ── */
+        .concept-block {
+            padding: 5rem 0;
+            border-bottom: 2px dashed var(--border-color);
+        }
+        .concept-block:last-child { border-bottom: none; }
+        .concept-block:nth-child(even) { background: var(--bg-tertiary); }
+
+        .concept-label {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .concept-label .badge {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 0.6rem;
+        }
+        .concept-label h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: var(--text-primary);
+        }
+        .concept-label p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 0.4rem;
+        }
+
+        /* ── Layout compartido: split izq/der ── */
+        .dolor-wrap {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+        .dolor-left-col {
+            flex: 0 0 30%;
+        }
+        .dolor-left-col h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1.2;
+        }
+        .dolor-left-col .lead {
+            margin-top: 0.75rem;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .dolor-left-col .cta-block {
+            margin-top: 2rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+        }
+        .dolor-left-col .cta-block p {
+            font-size: 0.95rem;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 0.75rem;
+        }
+        .btn-primary {
+            display: inline-block;
+            background: var(--accent-color);
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.6rem 1.4rem;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .btn-primary:hover { background: #cc4f22; }
+
+        .dolor-right-col { flex: 1; }
+
+
+        /* ════════════════════════════════════════
+           OPCIÓN A — Imagen + frase
+        ════════════════════════════════════════ */
+        .opt-a-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .opt-a-item {
+            display: flex;
+            align-items: center;
+            gap: 1.1rem;
+            padding: 1.1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .opt-a-item:first-child { border-top: 1px solid var(--border-color); }
+        .opt-a-icon {
+            flex-shrink: 0;
+            width: 38px;
+            height: 38px;
+            border-radius: 8px;
+            background: #f0ede8;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .opt-a-icon svg {
+            width: 18px;
+            height: 18px;
+            color: #7a7672;
+        }
+        .opt-a-item p {
+            font-size: 1rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+        .opt-a-item p strong {
+            font-weight: 600;
+        }
+
+
+        /* ════════════════════════════════════════
+           OPCIÓN B — Número editorial
+        ════════════════════════════════════════ */
+        .opt-b-list {
+            display: flex;
+            flex-direction: column;
+        }
+        .opt-b-item {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            cursor: default;
+        }
+        .opt-b-item:first-child { border-top: 1px solid var(--border-color); }
+        .opt-b-num {
+            flex-shrink: 0;
+            font-family: 'Playfair Display', serif;
+            font-size: 2.4rem;
+            font-weight: 400;
+            color: #e0ddd8;
+            line-height: 1;
+            width: 48px;
+            text-align: right;
+            transition: color 0.2s;
+            user-select: none;
+        }
+        .opt-b-item:hover .opt-b-num {
+            color: var(--accent-color);
+        }
+        .opt-b-item p {
+            font-size: 1rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+        .opt-b-item p strong { font-weight: 600; }
+
+
+        /* ════════════════════════════════════════
+           OPCIÓN C — Cards con ✓ en círculo
+        ════════════════════════════════════════ */
+        .opt-c-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+        .opt-c-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            padding: 1rem 1.25rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            transition: transform 0.18s, box-shadow 0.18s;
+            cursor: default;
+        }
+        .opt-c-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+        }
+        .opt-c-icon {
+            flex-shrink: 0;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-top: 0.05rem;
+        }
+        .opt-c-item p {
+            font-size: 1rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+        .opt-c-item p strong { font-weight: 600; }
+    </style>
+</head>
+<body>
+
+<!-- Navegación rápida -->
+<nav class="concepts-nav">
+    <span>Dolor — Conceptos</span>
+    <a href="#opcion-a">A · Icono + frase</a>
+    <a href="#opcion-b">B · Número editorial</a>
+    <a href="#opcion-c">C · Cards con ✓ círculo</a>
+</nav>
+
+
+<!-- ════════════════════════════════════════
+     OPCIÓN A — Icono + frase
+════════════════════════════════════════ -->
+<section class="concept-block" id="opcion-a">
+    <div class="concept-label">
+        <div class="badge">Opción A</div>
+        <h2>Icono + frase</h2>
+        <p>Iconos pequeños en tono neutro como ancla visual de cada pain point</p>
+    </div>
+    <div class="dolor-wrap">
+        <div class="dolor-left-col">
+            <h2>¿Te suena esto?</h2>
+            <p class="lead">Si diriges ventas B2B en España, probablemente estás viviendo alguna de estas situaciones.</p>
+            <div class="cta-block">
+                <p>Si has dicho que sí a alguna de estas, <strong>TopSpin existe para ti.</strong></p>
+                <a href="#" class="btn-primary">Agendar Llamada</a>
+            </div>
+        </div>
+        <div class="dolor-right-col">
+            <div class="opt-a-list">
+                <!-- 1. Buscar contactos → lupa -->
+                <div class="opt-a-item">
+                    <div class="opt-a-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    </div>
+                    <p>Dedicas más tiempo a <strong>buscar contactos</strong> que a cerrar reuniones</p>
+                </div>
+                <!-- 2. Ventas inestables → gráfica cayendo -->
+                <div class="opt-a-item">
+                    <div class="opt-a-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg>
+                    </div>
+                    <p>Tus ventas <strong>suben y bajan sin control</strong> y tienes meses en los que no entra nada</p>
+                </div>
+                <!-- 3. Spam → sobre con X -->
+                <div class="opt-a-item">
+                    <div class="opt-a-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/><line x1="9" y1="15" x2="15" y2="9"/></svg>
+                    </div>
+                    <p>Ya intentasteis enviar emails en frío, pero <strong>parecía spam</strong> y no funcionó</p>
+                </div>
+                <!-- 4. Sin reuniones → calendario -->
+                <div class="opt-a-item">
+                    <div class="opt-a-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+                    </div>
+                    <p>Necesitas <strong>más reuniones</strong>, pero no tienes un sistema para conseguirlas</p>
+                </div>
+                <!-- 5. Caro y arriesgado → monedas/advertencia -->
+                <div class="opt-a-item">
+                    <div class="opt-a-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                    </div>
+                    <p>Contratar a alguien solo para prospectar te parece <strong>caro, lento y arriesgado</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     OPCIÓN B — Número editorial
+════════════════════════════════════════ -->
+<section class="concept-block" id="opcion-b">
+    <div class="concept-label">
+        <div class="badge">Opción B</div>
+        <h2>Número editorial</h2>
+        <p>Minimalista y elegante — los números decorativos se iluminan al pasar el ratón</p>
+    </div>
+    <div class="dolor-wrap">
+        <div class="dolor-left-col">
+            <h2>¿Te suena esto?</h2>
+            <p class="lead">Si diriges ventas B2B en España, probablemente estás viviendo alguna de estas situaciones.</p>
+            <div class="cta-block">
+                <p>Si has dicho que sí a alguna de estas, <strong>TopSpin existe para ti.</strong></p>
+                <a href="#" class="btn-primary">Agendar Llamada</a>
+            </div>
+        </div>
+        <div class="dolor-right-col">
+            <div class="opt-b-list">
+                <div class="opt-b-item">
+                    <span class="opt-b-num">01</span>
+                    <p>Dedicas más tiempo a <strong>buscar contactos</strong> que a cerrar reuniones</p>
+                </div>
+                <div class="opt-b-item">
+                    <span class="opt-b-num">02</span>
+                    <p>Tus ventas <strong>suben y bajan sin control</strong> y tienes meses en los que no entra nada</p>
+                </div>
+                <div class="opt-b-item">
+                    <span class="opt-b-num">03</span>
+                    <p>Ya intentasteis enviar emails en frío, pero <strong>parecía spam</strong> y no funcionó</p>
+                </div>
+                <div class="opt-b-item">
+                    <span class="opt-b-num">04</span>
+                    <p>Necesitas <strong>más reuniones</strong>, pero no tienes un sistema para conseguirlas</p>
+                </div>
+                <div class="opt-b-item">
+                    <span class="opt-b-num">05</span>
+                    <p>Contratar a alguien solo para prospectar te parece <strong>caro, lento y arriesgado</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     OPCIÓN C — Cards con ✓ en círculo
+════════════════════════════════════════ -->
+<section class="concept-block" id="opcion-c">
+    <div class="concept-label">
+        <div class="badge">Opción C</div>
+        <h2>Cards con ✓ en círculo</h2>
+        <p>Cada ítem como card independiente — hover con elevación suave</p>
+    </div>
+    <div class="dolor-wrap">
+        <div class="dolor-left-col">
+            <h2>¿Te suena esto?</h2>
+            <p class="lead">Si diriges ventas B2B en España, probablemente estás viviendo alguna de estas situaciones.</p>
+            <div class="cta-block">
+                <p>Si has dicho que sí a alguna de estas, <strong>TopSpin existe para ti.</strong></p>
+                <a href="#" class="btn-primary">Agendar Llamada</a>
+            </div>
+        </div>
+        <div class="dolor-right-col">
+            <div class="opt-c-list">
+                <div class="opt-c-item">
+                    <span class="opt-c-icon">✓</span>
+                    <p>Dedicas más tiempo a <strong>buscar contactos</strong> que a cerrar reuniones</p>
+                </div>
+                <div class="opt-c-item">
+                    <span class="opt-c-icon">✓</span>
+                    <p>Tus ventas <strong>suben y bajan sin control</strong> y tienes meses en los que no entra nada</p>
+                </div>
+                <div class="opt-c-item">
+                    <span class="opt-c-icon">✓</span>
+                    <p>Ya intentasteis enviar emails en frío, pero <strong>parecía spam</strong> y no funcionó</p>
+                </div>
+                <div class="opt-c-item">
+                    <span class="opt-c-icon">✓</span>
+                    <p>Necesitas <strong>más reuniones</strong>, pero no tienes un sistema para conseguirlas</p>
+                </div>
+                <div class="opt-c-item">
+                    <span class="opt-c-icon">✓</span>
+                    <p>Contratar a alguien solo para prospectar te parece <strong>caro, lento y arriesgado</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
