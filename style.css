@@ -1259,8 +1259,7 @@ section {
 
 /* --- Sidebar (Sticky Flowchart) --- */
 .wf-sidebar {
-    flex: 0 0 30%;
-    max-width: 320px;
+    flex: 0 0 auto;
     position: sticky;
     top: 270px;
     align-self: flex-start;
@@ -1283,8 +1282,8 @@ section {
 
 /* Phase box */
 .wf-box {
-    width: 90px;
-    height: 46px;
+    width: 110px;
+    height: 58px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1292,7 +1291,7 @@ section {
     border-radius: 6px;
     font-family: var(--font-body);
     font-weight: 700;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     letter-spacing: 1px;
     color: var(--text-secondary);
     background: var(--bg-secondary);
@@ -1331,7 +1330,7 @@ section {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 90px;
+    width: 110px;
     flex-shrink: 0;
 }
 
@@ -1348,8 +1347,8 @@ section {
 
 /* Diamond shape */
 .wf-diamond {
-    width: 24px;
-    height: 24px;
+    width: 14px;
+    height: 14px;
     transform: rotate(45deg);
     border: 2px solid var(--border-color);
     display: flex;
@@ -1379,25 +1378,26 @@ section {
 .wf-phases {
     flex: 1;
     min-width: 0;
+    display: grid;
+    grid-auto-rows: 1fr;
 }
 
 .wf-phase {
-    min-height: auto;
     display: flex;
-    align-items: center;
+    align-items: stretch;
     padding: 1.5rem 0;
 }
 
 .wf-phase:last-child {
-    min-height: auto;
     padding-bottom: 4rem;
 }
 
 .wf-phase-inner {
+    width: 100%;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    padding: 2.5rem;
+    padding: 3.5rem;
     box-shadow: var(--card-shadow);
     opacity: 0.3;
     transform: translateY(30px);
@@ -1484,11 +1484,14 @@ section {
     margin-bottom: 0;
 }
 
-#wf-phase-1 .wf-divider,
 #wf-phase-2 .wf-divider,
-#wf-phase-3 .wf-divider,
-#wf-phase-4 .wf-divider {
+#wf-phase-3 .wf-divider {
     margin: 0.2rem 0 0.3rem;
+}
+
+#wf-phase-1 .wf-divider,
+#wf-phase-4 .wf-divider {
+    margin: 1.25rem 0 1.5rem;
 }
 
 #wf-phase-1 .wf-phase-inner,
@@ -1636,13 +1639,17 @@ section {
     line-height: 1.5;
 }
 
-/* Phase 4 compact spacing */
+/* Phase 4 spacing */
+#wf-phase-4 .wf-phase-inner > h3 {
+    margin-bottom: 0.75rem;
+}
+
 #wf-phase-4 .wf-phase-inner > p {
     margin-bottom: 0;
 }
 
 #wf-phase-4 .wf-divider {
-    margin: 0.2rem 0 0.3rem;
+    margin: 1.25rem 0 1.5rem;
 }
 
 #wf-phase-4 .wf-phase-inner {
@@ -1652,6 +1659,7 @@ section {
 /* Phase split layout (two-column card) */
 .wf-phase-inner--split {
     flex-direction: column;
+    justify-content: center;
 }
 
 .wf-phase-inner--split .wf-phase-tag {
