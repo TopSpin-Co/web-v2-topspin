@@ -2776,6 +2776,21 @@ section {
     padding: 4rem 0 2rem;
 }
 
+.footer-institucional {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.25rem 2.5rem;
+    text-align: center;
+    margin: 0 auto 2rem;
+    width: fit-content;
+}
+
+.institucional-logos {
+    height: 56px;
+    width: auto;
+    max-width: 100%;
+}
+
 .grid-footer {
     grid-template-columns: 2fr 1fr 1fr 1fr;
 }
