@@ -481,13 +481,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
-        // Toggle open/close
+        // Mobile toggle
         if (filterTrigger && filterWrap) {
             filterTrigger.addEventListener('click', () => {
                 filterWrap.classList.toggle('open');
             });
 
-            // Close when clicking outside
             document.addEventListener('click', (e) => {
                 if (!filterWrap.contains(e.target)) {
                     filterWrap.classList.remove('open');
@@ -495,14 +494,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Option click — filter, update label, close
+        // Option click — filter, update label, close dropdown
         filterOptions.forEach(option => {
             option.addEventListener('click', () => {
                 const category = option.getAttribute('data-category');
                 filterOptions.forEach(o => o.classList.remove('active'));
                 option.classList.add('active');
                 if (filterLabel) filterLabel.textContent = option.textContent;
-                filterWrap.classList.remove('open');
+                if (filterWrap) filterWrap.classList.remove('open');
                 filterCases(category);
             });
         });

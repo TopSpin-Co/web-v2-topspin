@@ -3856,79 +3856,27 @@ section {
     color: var(--accent-color);
 }
 
-/* Filter wrap — contains trigger + expanding options */
+/* Filter wrap — always-open pill bar on desktop */
 .cases-filter-wrap {
     display: flex;
     align-items: center;
-    gap: 0;
+    gap: 0.25rem;
     background: var(--bg-secondary);
     border: 1px solid var(--border-color);
     border-radius: 999px;
     padding: 0.3rem;
-    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.cases-filter-wrap:hover {
-    border-color: #ccc;
-}
-
-.cases-filter-wrap.open {
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border-color: var(--border-color);
-}
-
-/* Trigger button */
+/* Trigger — hidden on desktop */
 .cases-filter-trigger {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.55rem 1.2rem;
-    background: none;
-    border: none;
-    border-radius: 999px;
-    font-family: var(--font-body);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--accent-color);
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s ease;
-}
-
-.cases-filter-trigger:hover {
-    background: rgba(230, 89, 38, 0.06);
-}
-
-.cases-filter-icon {
-    color: var(--accent-color);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    flex-shrink: 0;
-}
-
-.cases-filter-wrap.open .cases-filter-icon {
-    transform: rotate(180deg);
-}
-
-/* Hidden when open — trigger hides, options show */
-.cases-filter-wrap.open .cases-filter-trigger {
     display: none;
 }
 
-/* Options — hidden by default, expand horizontally */
+/* Options — always visible on desktop */
 .cases-filter-options {
     display: flex;
     align-items: center;
     gap: 0.25rem;
-    max-width: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: max-width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-                opacity 0.3s ease;
-}
-
-.cases-filter-wrap.open .cases-filter-options {
-    max-width: 800px;
-    opacity: 1;
 }
 
 /* Individual filter option */
@@ -4380,21 +4328,47 @@ section {
         max-width: none;
         flex-direction: column;
         border-radius: 16px;
+        padding: 0.3rem;
+        transition: box-shadow 0.3s ease, border-color 0.3s ease;
     }
 
-    /* On mobile, show trigger always (don't hide on open) */
-    .cases-filter-wrap.open .cases-filter-trigger {
+    .cases-filter-wrap.open {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Show trigger on mobile */
+    .cases-filter-trigger {
         display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.55rem 1.2rem;
+        background: none;
+        border: none;
+        border-radius: 999px;
+        font-family: var(--font-body);
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--accent-color);
+        cursor: pointer;
+        white-space: nowrap;
     }
 
-    /* Options drop down vertically */
+    .cases-filter-icon {
+        color: var(--accent-color);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cases-filter-wrap.open .cases-filter-icon {
+        transform: rotate(180deg);
+    }
+
+    /* Options hidden by default on mobile */
     .cases-filter-options {
         flex-direction: column;
-        max-width: none;
-        width: 100%;
         max-height: 0;
         overflow: hidden;
         opacity: 0;
+        width: 100%;
         transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
                     opacity 0.25s ease;
     }
