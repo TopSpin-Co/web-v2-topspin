@@ -535,4 +535,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
         startTeamRotation();
     }
+
+    // LGaaS scroll animations — IntersectionObserver
+    document.querySelectorAll('.lgaas-fade, .lgaas-slide-left, .lgaas-slide-right, .lgaas-scale-in').forEach(el => {
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        observer.observe(el);
+    });
 });

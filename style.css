@@ -4795,3 +4795,187 @@ section {
         font-size: 1.4rem;
     }
 }
+
+/* ========================================
+   LGaaS PAGE
+   ======================================== */
+
+/* Scroll-triggered animations */
+.lgaas-fade {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.lgaas-fade.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.lgaas-fade[data-delay="1"] { transition-delay: 0.1s; }
+.lgaas-fade[data-delay="2"] { transition-delay: 0.2s; }
+.lgaas-fade[data-delay="3"] { transition-delay: 0.3s; }
+.lgaas-fade[data-delay="4"] { transition-delay: 0.4s; }
+.lgaas-fade[data-delay="5"] { transition-delay: 0.5s; }
+.lgaas-fade[data-delay="6"] { transition-delay: 0.6s; }
+
+.lgaas-slide-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.lgaas-slide-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.lgaas-slide-right {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.lgaas-slide-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.lgaas-scale-in {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.lgaas-scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Components */
+.card-highlight {
+    border-left: 3px solid var(--accent-color);
+}
+
+.checklist-simple {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.checklist-simple li {
+    padding: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    border-bottom: 1px solid var(--border-color);
+}
+.checklist-simple li:last-child {
+    border-bottom: none;
+}
+
+.card-feature hr {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 1.2rem 0;
+}
+
+/* LGaaS 11→2 number contrast */
+.lgaas-number-contrast {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+.lgaas-number-block {
+    text-align: center;
+}
+.lgaas-big-number {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    font-weight: 600;
+    line-height: 1;
+    display: block;
+    color: var(--text-primary);
+    opacity: 0.15;
+}
+.lgaas-number-after .lgaas-big-number {
+    opacity: 1;
+}
+.lgaas-number-label {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.lgaas-number-arrow {
+    flex-shrink: 0;
+}
+.lgaas-tu-solo-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.lgaas-tu-solo-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+.lgaas-tu-solo-number {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+    .lgaas-number-contrast { gap: 1.5rem; }
+    .lgaas-big-number { font-size: 3.5rem; }
+}
+
+/* LGaaS card step + badge row */
+.lgaas-hero ~ * .card-service .card-step {
+    opacity: 0.4;
+    display: inline;
+    margin-bottom: 0;
+    margin-right: auto;
+}
+.lgaas-hero ~ * .card-service .badge {
+    margin-bottom: 0;
+}
+.lgaas-hero ~ * .card-service .card-step-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+/* LGaaS card hover & text sizing */
+.lgaas-hero ~ * .card-service,
+.lgaas-hero ~ * .card-feature {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.lgaas-hero ~ * .card-service:hover,
+.lgaas-hero ~ * .card-feature:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent-color);
+}
+.lgaas-hero ~ * .card-service p,
+.lgaas-hero ~ * .card-feature p {
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* LGaaS Responsive */
+@media (max-width: 768px) {
+    .lgaas-hero { padding: 3rem 0 2rem; }
+    .lgaas-hero h1 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+    .lgaas-comparison .grid-2 { grid-template-columns: 1fr; }
+    .lgaas-slide-left { transform: translateX(-20px); }
+    .lgaas-slide-right { transform: translateX(20px); }
+    .lgaas-fade { transform: translateY(20px); }
+    .checklist-simple li { font-size: 0.9rem; }
+    .lgaas-cta .layout-split { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+    .lgaas-hero .cta-group { flex-direction: column; gap: 0.75rem; }
+    .lgaas-hero .cta-group .btn { width: 100%; text-align: center; }
+}
