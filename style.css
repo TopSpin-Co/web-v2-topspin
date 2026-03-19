@@ -350,6 +350,20 @@ h5 {
     white-space: nowrap;
 }
 
+.nav-item-home {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+}
+
+.nav-item-home svg {
+    display: block;
+}
+
+.nav-item-servicios {
+    cursor: default;
+}
+
 .nav-item:hover,
 .nav-item.active {
     color: var(--text-primary);
@@ -540,6 +554,30 @@ h5 {
 
 .mobile-menu-item:hover {
     background: rgba(232, 86, 42, 0.08);
+}
+
+.mobile-menu-home {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.mobile-menu-home svg {
+    flex-shrink: 0;
+}
+
+.mobile-menu-label {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-top: 16px;
+    cursor: default;
+}
+
+.mobile-menu-label:hover {
+    background: transparent;
 }
 
 .mobile-menu-sub {

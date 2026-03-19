@@ -14,19 +14,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Set initial active item based on current page
         const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+        const serviciosPaths = ['lgaas.html', 'roaas.html', 'crm-admin.html'];
         let activeItem = null;
 
-        navItems.forEach(item => {
-            const href = item.getAttribute('href');
-            if (href === currentPath || (currentPath === 'index.html' && href && href.startsWith('index.html'))) {
-                activeItem = item;
-            } else if (href === currentPath) {
-                activeItem = item;
-            }
-        });
+        if (currentPath === 'index.html' || currentPath === '' || currentPath === '/') {
+            activeItem = navPill.querySelector('.nav-item-home');
+        } else if (serviciosPaths.includes(currentPath)) {
+            activeItem = navPill.querySelector('.nav-item-servicios');
+        } else {
+            navItems.forEach(item => {
+                const href = item.getAttribute('href');
+                if (href === currentPath) {
+                    activeItem = item;
+                }
+            });
+        }
 
-        // Default to first item if no match
-        if (!activeItem) activeItem = navItems[0];
+        // Default to home if no match
+        if (!activeItem) activeItem = navPill.querySelector('.nav-item-home') || navItems[0];
         activeItem.classList.add('active');
 
         // Position slider on load
@@ -548,4 +553,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { threshold: 0.15 });
         observer.observe(el);
     });
+
+    // Float logos — fade + blur on scroll
+    const floatBg = document.querySelector('.float-bg');
+    if (floatBg) {
+        const logos = floatBg.querySelectorAll('.float-logo');
+        const maxScroll = 400; // px to fully disappear
+
+        window.addEventListener('scroll', () => {
+            const y = window.scrollY;
+            const progress = Math.min(1, y / maxScroll);
+            const opacity = 1 - progress;
+            const blur = progress * 12; // max 12px blur
+
+            logos.forEach(logo => {
+                logo.style.opacity = opacity;
+                logo.style.filter = `blur(${blur}px)`;
+            });
+        }, { passive: true });
+    }
 });
