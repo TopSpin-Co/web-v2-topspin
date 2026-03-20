@@ -4857,6 +4857,7 @@ section {
 .cs-narrative-content {
     max-width: 720px;
     margin: 0 auto;
+    padding: 0 1.5rem;
 }
 
 .cs-narrative-content h2 {
