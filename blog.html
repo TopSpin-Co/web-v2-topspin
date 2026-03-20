@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog | TopSpin Co</title>
-    <link rel="stylesheet" href="style.css?v=3">
+    <meta name="description"
+        content="Artículos prácticos sobre generación de reuniones, operaciones de ventas y CRM para empresas B2B en España.">
+    <link rel="stylesheet" href="style.css?v=6">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -31,9 +33,9 @@
                 <div class="nav-item-dropdown">
                     <span class="nav-item nav-item-servicios">Servicios</span>
                     <div class="dropdown-menu">
-                        <a href="lgaas.html">LGaaS</a>
-                        <a href="roaas.html">ROaaS</a>
-                        <a href="crm-admin.html">CRM Admin</a>
+                        <a href="lgaas.html">¿Quieres más ventas?</a>
+                        <a href="roaas.html">Vende más y mejor</a>
+                        <a href="crm-admin.html">CRM bajo control</a>
                     </div>
                 </div>
                 <a href="case.html" class="nav-item">Casos de Éxito</a>
@@ -65,9 +67,9 @@
             Inicio
         </a>
         <span class="mobile-menu-item mobile-menu-label">Servicios</span>
-        <a href="lgaas.html" class="mobile-menu-item mobile-menu-sub">LGaaS</a>
-        <a href="roaas.html" class="mobile-menu-item mobile-menu-sub">ROaaS</a>
-        <a href="crm-admin.html" class="mobile-menu-item mobile-menu-sub">CRM Admin</a>
+        <a href="lgaas.html" class="mobile-menu-item mobile-menu-sub">¿Quieres más ventas?</a>
+        <a href="roaas.html" class="mobile-menu-item mobile-menu-sub">Vende más y mejor</a>
+        <a href="crm-admin.html" class="mobile-menu-item mobile-menu-sub">CRM bajo control</a>
         <a href="case.html" class="mobile-menu-item">Casos de Éxito</a>
         <a href="about.html" class="mobile-menu-item">Sobre Nosotros</a>
         <a href="blog.html" class="mobile-menu-item">Blog</a>
@@ -80,49 +82,297 @@
         </div>
     </div>
 
-    <main class="blog-section">
-        <div class="container" style="padding: 4rem 0;">
-            <div class="text-center">
-                <p class="subqualifier text-accent">NADA, UN POCO DE PROTOTIPO</p>
-                <h1>Aprende a generar pipeline B2B</h1>
-                <p class="subheadline">Estrategias, casos reales y guías prácticas de Lead Generation, RevOps y HubSpot.
-                </p>
+    <!-- 01 - Blog Hero -->
+    <section class="blog-hero-section">
+        <div class="container text-center">
+            <p class="subqualifier text-accent">NUESTRO BLOG</p>
+            <h1>Ideas para vender<br>
+                <span class="highlight">más y mejor</span><br>
+                a otras empresas</h1>
+            <p class="subheadline">Artículos prácticos sobre prospección, operaciones de ventas, CRM y todo lo que necesitas para generar más reuniones y cerrar más clientes.</p>
+            <form class="blog-subscribe" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Suscrito'; this.querySelector('button').disabled=true; this.querySelector('input').disabled=true;">
+                <input type="email" placeholder="Tu email" required>
+                <button type="submit" class="btn btn-primary">Suscribirme</button>
+            </form>
+            <p class="blog-subscribe-hint">Mantente al día suscribiéndote a nuestro blog</p>
+        </div>
+    </section>
+
+    <!-- 02 - Filter Bar + Articles -->
+    <section class="blog-section">
+        <div class="container">
+
+            <!-- Sticky Filter Bar -->
+            <div class="blog-filter-bar" id="blogFilterBar">
+                <div class="blog-filter-wrap">
+                    <button class="blog-filter-trigger" id="blogFilterTrigger">
+                        <span class="blog-filter-label" id="blogFilterLabel">Todos</span>
+                        <svg class="blog-filter-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </button>
+                    <div class="blog-filter-options">
+                        <button class="filter-option active" data-category="todos">Todos</button>
+                        <button class="filter-option" data-category="operaciones-ventas">Operaciones de Ventas</button>
+                        <button class="filter-option" data-category="prospección">Prospección</button>
+                        <button class="filter-option" data-category="ia">IA</button>
+                        <button class="filter-option" data-category="herramientas">Herramientas</button>
+                        <button class="filter-option" data-category="redes-sociales">Redes Sociales</button>
+                        <button class="filter-option" data-category="seo">SEO</button>
+                    </div>
+                </div>
+                <div class="blog-count">
+                    <span id="blogCountNum">14</span> artículos
+                </div>
             </div>
 
-            <div class="grid grid-3 mt-lg">
-                <div class="card card-article">
-                    <div
-                        style="height: 150px; background-color: var(--border-color); border-radius: 4px; margin-bottom: 1rem;">
+            <!-- Blog Grid -->
+            <div class="blog-grid" id="blogGrid">
+
+                <!-- Article 1 -->
+                <a href="blog/objetivos-ventas-desalineados.html" class="card card-article-enhanced blog-card" data-categories="operaciones-ventas">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
+                        <span class="card-article-img-label">Objetivos de Ventas</span>
                     </div>
-                    <div class="article-meta">LGaaS • 5 min lectura</div>
-                    <h3 class="mt-sm">Título del Artículo de Blog Prototipo</h3>
-                    <p class="text-secondary mt-sm">Un breve resumen del contenido del artículo para que el usuario sepa
-                        de qué trata antes de clicar.</p>
-                    <a href="#" class="btn-link mt-md" style="display:inline-block">Leer artículo &rarr;</a>
-                </div>
-                <div class="card card-article">
-                    <div
-                        style="height: 150px; background-color: var(--border-color); border-radius: 4px; margin-bottom: 1rem;">
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Operaciones de Ventas</span>
+                        </div>
+                        <div class="article-date">8 julio 2025</div>
+                        <h3>El coste oculto de fijar objetivos de ventas sin coordinación</h3>
+                        <p class="article-excerpt">Cuando los objetivos de facturación se definen de forma aislada, rara vez se cumplen. Descubre cómo alinear a todo el equipo para que los números dejen de ser una fantasía.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
                     </div>
-                    <div class="article-meta">ROaaS • 7 min lectura</div>
-                    <h3 class="mt-sm">Otro Artículo Interesante Sobre B2B</h3>
-                    <p class="text-secondary mt-sm">Aquí iría otro resumen explicando las ventajas de aplicar estas
-                        estrategias y métricas.</p>
-                    <a href="#" class="btn-link mt-md" style="display:inline-block">Leer artículo &rarr;</a>
-                </div>
-                <div class="card card-article">
-                    <div
-                        style="height: 150px; background-color: var(--border-color); border-radius: 4px; margin-bottom: 1rem;">
+                </a>
+
+                <!-- Article 2 -->
+                <a href="blog/ventas-paradas-revops.html" class="card card-article-enhanced blog-card" data-categories="operaciones-ventas prospección">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #0f3460 0%, #533483 100%);">
+                        <span class="card-article-img-label">Ventas Estancadas</span>
                     </div>
-                    <div class="article-meta">CRM Admin • 4 min lectura</div>
-                    <h3 class="mt-sm">Guía Práctica: Automatizando HubSpot</h3>
-                    <p class="text-secondary mt-sm">Cómo ahorrar horas a tu equipo de ventas configurando correctamente
-                        la herramienta estrella.</p>
-                    <a href="#" class="btn-link mt-md" style="display:inline-block">Leer artículo &rarr;</a>
-                </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Operaciones de Ventas</span>
+                            <span class="article-tag">Prospección</span>
+                        </div>
+                        <div class="article-date">8 julio 2025</div>
+                        <h3>Ventas paradas, clientes que desaparecen y objetivos sin cumplir: qué puede arreglar realmente una buena operativa</h3>
+                        <p class="article-excerpt">Una buena operativa de ventas puede ser el motor estratégico de toda tu maquinaria comercial. Aprende a identificar dónde se atascan tus oportunidades.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 3 -->
+                <a href="blog/revision-trimestral-ventas.html" class="card card-article-enhanced blog-card" data-categories="operaciones-ventas">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);">
+                        <span class="card-article-img-label">Análisis Trimestral</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Operaciones de Ventas</span>
+                        </div>
+                        <div class="article-date">1 julio 2025</div>
+                        <h3>Cómo hacer una revisión trimestral de ventas que realmente sirva para algo</h3>
+                        <p class="article-excerpt">Un buen análisis trimestral no es solo mirar gráficos — es tomar decisiones. Te enseñamos a hacer revisiones que generen acciones concretas.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 4 -->
+                <a href="blog/eficiencia-ventas-vs-crecimiento.html" class="card card-article-enhanced blog-card" data-categories="operaciones-ventas prospección">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #e65926 0%, #cc4f22 100%);">
+                        <span class="card-article-img-label">Eficiencia vs. Crecimiento</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Operaciones de Ventas</span>
+                            <span class="article-tag">Prospección</span>
+                        </div>
+                        <div class="article-date">1 julio 2025</div>
+                        <h3>La eficiencia en ventas gana al crecimiento a toda costa</h3>
+                        <p class="article-excerpt">Ser eficiente no es recortar gastos, es hacer que el crecimiento sea rentable. Descubre por qué las empresas que más facturan no son las que más gastan.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 5 -->
+                <a href="blog/ia-herramientas-ventas.html" class="card card-article-enhanced blog-card" data-categories="ia operaciones-ventas">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #0d7377 0%, #14ffec 100%);">
+                        <span class="card-article-img-label">IA en Ventas</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">IA</span>
+                            <span class="article-tag">Operaciones de Ventas</span>
+                        </div>
+                        <div class="article-date">10 junio 2025</div>
+                        <h3>Cómo la inteligencia artificial está cambiando las herramientas de ventas</h3>
+                        <p class="article-excerpt">En ventas, lo que importa es el impacto, no la novedad. Te contamos qué herramientas de IA realmente merecen la pena y cuáles son puro humo.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 6 -->
+                <a href="blog/redes-sociales-ventas-espana.html" class="card card-article-enhanced blog-card" data-categories="redes-sociales operaciones-ventas prospección">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);">
+                        <span class="card-article-img-label">Redes Sociales B2B</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Redes Sociales</span>
+                            <span class="article-tag">Prospección</span>
+                        </div>
+                        <div class="article-date">2 junio 2025</div>
+                        <h3>Cómo las empresas españolas pueden usar redes sociales para vender más gastando poco</h3>
+                        <p class="article-excerpt">Las redes sociales ofrecen a las empresas una vía potente y económica para conseguir clientes. Te explicamos cómo sacarles partido sin necesitar un gran presupuesto.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 7 -->
+                <a href="blog/seo-operaciones-ventas.html" class="card card-article-enhanced blog-card" data-categories="seo operaciones-ventas prospección">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);">
+                        <span class="card-article-img-label">SEO + Ventas</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">SEO</span>
+                            <span class="article-tag">Prospección</span>
+                        </div>
+                        <div class="article-date">29 mayo 2025</div>
+                        <h3>SEO y operaciones de ventas: por qué deben trabajar juntos</h3>
+                        <p class="article-excerpt">Combinar posicionamiento web con una buena operativa comercial puede multiplicar los ingresos de tu empresa. Te contamos cómo conectar ambos mundos.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 8 -->
+                <a href="blog/metricas-clave-ventas.html" class="card card-article-enhanced blog-card" data-categories="operaciones-ventas">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #1a1a2e 0%, #e94560 100%);">
+                        <span class="card-article-img-label">Métricas Clave</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Operaciones de Ventas</span>
+                        </div>
+                        <div class="article-date">18 marzo 2025</div>
+                        <h3>Las métricas que de verdad importan para hacer crecer tus ventas</h3>
+                        <p class="article-excerpt">Entender y monitorizar los indicadores correctos es clave para mejorar tu proceso comercial. Te mostramos cuáles son los que realmente mueven la aguja.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 9 -->
+                <a href="blog/emails-frio-estrategia.html" class="card card-article-enhanced blog-card" data-categories="prospección herramientas">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);">
+                        <span class="card-article-img-label">Emails en Frío</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Prospección</span>
+                            <span class="article-tag">Herramientas</span>
+                        </div>
+                        <div class="article-date">18 marzo 2025</div>
+                        <h3>Emails en frío: cómo dominar el arte de escribir mensajes que consiguen respuestas</h3>
+                        <p class="article-excerpt">Aprende a escribir emails en frío efectivos con estrategias probadas. La clave está en la personalización, el momento justo y un mensaje que conecte.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 10 -->
+                <a href="blog/que-son-operaciones-ventas.html" class="card card-article-enhanced blog-card" data-categories="operaciones-ventas">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);">
+                        <span class="card-article-img-label">Operaciones de Ventas</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Operaciones de Ventas</span>
+                        </div>
+                        <div class="article-date">18 marzo 2025</div>
+                        <h3>Qué son las operaciones de ventas y por qué son la clave para crecer</h3>
+                        <p class="article-excerpt">Descubre los fundamentos de las operaciones de ventas y cómo alinear a tu equipo comercial puede transformar tus resultados.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 11 -->
+                <a href="blog/10-recomendaciones-operativa-ventas.html" class="card card-article-enhanced blog-card" data-categories="herramientas prospección">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #e65926 0%, #f39c12 100%);">
+                        <span class="card-article-img-label">10 Consejos Clave</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Herramientas</span>
+                            <span class="article-tag">Prospección</span>
+                        </div>
+                        <div class="article-date">18 marzo 2025</div>
+                        <h3>10 recomendaciones para montar una operativa de ventas que funcione</h3>
+                        <p class="article-excerpt">Las claves para implementar una estrategia comercial sólida, desde elegir las herramientas hasta alinear a todo el equipo.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 12 -->
+                <a href="blog/estructura-equipo-ventas.html" class="card card-article-enhanced blog-card" data-categories="operaciones-ventas">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #6c5b7b 0%, #c06c84 100%);">
+                        <span class="card-article-img-label">Equipo de Ventas</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Operaciones de Ventas</span>
+                        </div>
+                        <div class="article-date">12 marzo 2025</div>
+                        <h3>Cómo organizar un equipo de operaciones de ventas que haga crecer tu empresa</h3>
+                        <p class="article-excerpt">Aprende a construir un equipo comercial de alto rendimiento alineando las funciones clave de marketing, ventas y atención al cliente.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 13 -->
+                <a href="blog/herramientas-proceso-ventas.html" class="card card-article-enhanced blog-card" data-categories="herramientas operaciones-ventas">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #355c7d 0%, #6c5b7b 100%);">
+                        <span class="card-article-img-label">Herramientas de Ventas</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">Herramientas</span>
+                            <span class="article-tag">Operaciones de Ventas</span>
+                        </div>
+                        <div class="article-date">10 marzo 2025</div>
+                        <h3>Las mejores herramientas para optimizar tu proceso de ventas</h3>
+                        <p class="article-excerpt">Descubre las herramientas esenciales y las estrategias para montar un stack comercial que realmente impulse tus resultados.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
+                <!-- Article 14 -->
+                <a href="blog/cliente-ideal-prospeccion.html" class="card card-article-enhanced blog-card" data-categories="ia prospección herramientas">
+                    <div class="card-article-img" style="background: linear-gradient(135deg, #2c3e50 0%, #e65926 100%);">
+                        <span class="card-article-img-label">Cliente Ideal</span>
+                    </div>
+                    <div class="card-article-body">
+                        <div class="article-tags">
+                            <span class="article-tag">IA</span>
+                            <span class="article-tag">Prospección</span>
+                            <span class="article-tag">Herramientas</span>
+                        </div>
+                        <div class="article-date">10 marzo 2025</div>
+                        <h3>Cómo definir a tu cliente ideal para vender más y mejor</h3>
+                        <p class="article-excerpt">Aprende a construir un perfil de cliente ideal efectivo y a crear un sistema de prospección que llegue exactamente a quien necesitas.</p>
+                        <span class="btn-link">Leer artículo &rarr;</span>
+                    </div>
+                </a>
+
             </div>
         </div>
-    </main>
+    </section>
+
+    <!-- 03 - CTA -->
+    <section class="section bg-tertiary">
+        <div class="container text-center">
+            <h2>¿Quieres más reuniones con clientes potenciales?</h2>
+            <p class="subheadline">Hablemos de cómo podemos ayudarte a generar pipeline real para tu empresa.</p>
+            <a href="contacto.html" class="btn btn-primary mt-md">Agendar Llamada</a>
+        </div>
+    </section>
 
     <footer class="footer">
         <div class="container">
@@ -141,7 +391,7 @@
                     <h4>Servicios</h4>
                     <a href="lgaas.html">Lead Generation</a>
                     <a href="roaas.html">Revenue Operations</a>
-                    <a href="crm-admin.html">CRM Admin</a>
+                    <a href="crm-admin.html">CRM bajo control</a>
                 </div>
                 <div class="footer-links">
                     <h4>Compañía</h4>

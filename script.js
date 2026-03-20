@@ -17,10 +17,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const serviciosPaths = ['lgaas.html', 'roaas.html', 'crm-admin.html'];
         let activeItem = null;
 
+        const fullPath = window.location.pathname;
+
         if (currentPath === 'index.html' || currentPath === '' || currentPath === '/') {
             activeItem = navPill.querySelector('.nav-item-home');
         } else if (serviciosPaths.includes(currentPath)) {
             activeItem = navPill.querySelector('.nav-item-servicios');
+        } else if (fullPath.includes('/blog/') || fullPath.includes('/case/')) {
+            const section = fullPath.includes('/blog/') ? 'blog.html' : 'case.html';
+            navItems.forEach(item => {
+                const href = item.getAttribute('href');
+                if (href && href.includes(section)) {
+                    activeItem = item;
+                }
+            });
         } else {
             navItems.forEach(item => {
                 const href = item.getAttribute('href');
@@ -553,22 +563,201 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
+    // Blog Filter
+    const blogCards = document.querySelectorAll('.blog-card');
+    const blogCountNum = document.getElementById('blogCountNum');
+    const blogFilterBar = document.getElementById('blogFilterBar');
+    const blogFilterWrap = document.querySelector('.blog-filter-wrap');
+    const blogFilterTrigger = document.getElementById('blogFilterTrigger');
+    const blogFilterLabel = document.getElementById('blogFilterLabel');
+    const blogFilterOptions = document.querySelectorAll('.blog-filter-options .filter-option');
+
+    if (blogCards.length > 0) {
+        // Staggered scroll-in animation
+        const blogObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    blogObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        blogCards.forEach((card, i) => {
+            card.style.transitionDelay = `${i * 0.04}s`;
+            blogObserver.observe(card);
+        });
+
+        // Sticky detection
+        if (blogFilterBar) {
+            const blogStickyObserver = new IntersectionObserver(
+                ([entry]) => {
+                    blogFilterBar.classList.toggle('stuck', !entry.isIntersecting);
+                },
+                { threshold: 1, rootMargin: '-1px 0px 0px 0px' }
+            );
+            blogStickyObserver.observe(blogFilterBar);
+        }
+
+        // Filter function
+        const filterBlog = (category) => {
+            let visibleCount = 0;
+            let delay = 0;
+
+            blogCards.forEach(card => {
+                const cardCategories = card.getAttribute('data-categories') || '';
+                if (category === 'todos' || cardCategories.includes(category)) {
+                    card.classList.remove('hidden');
+                    card.style.transitionDelay = `${delay * 0.03}s`;
+                    card.classList.remove('visible');
+                    requestAnimationFrame(() => {
+                        requestAnimationFrame(() => {
+                            card.classList.add('visible');
+                        });
+                    });
+                    visibleCount++;
+                    delay++;
+                } else {
+                    card.classList.add('hidden');
+                    card.classList.remove('visible');
+                }
+            });
+
+            if (blogCountNum) {
+                blogCountNum.textContent = visibleCount;
+            }
+        };
+
+        // Mobile toggle
+        if (blogFilterTrigger && blogFilterWrap) {
+            blogFilterTrigger.addEventListener('click', () => {
+                blogFilterWrap.classList.toggle('open');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!blogFilterWrap.contains(e.target)) {
+                    blogFilterWrap.classList.remove('open');
+                }
+            });
+        }
+
+        // Option click
+        blogFilterOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const category = option.getAttribute('data-category');
+                blogFilterOptions.forEach(o => o.classList.remove('active'));
+                option.classList.add('active');
+                if (blogFilterLabel) blogFilterLabel.textContent = option.textContent;
+                if (blogFilterWrap) blogFilterWrap.classList.remove('open');
+                filterBlog(category);
+            });
+        });
+    }
+
     // Float logos — fade + blur on scroll
     const floatBg = document.querySelector('.float-bg');
     if (floatBg) {
         const logos = floatBg.querySelectorAll('.float-logo');
-        const maxScroll = 400; // px to fully disappear
+        const maxScroll = 400;
 
         window.addEventListener('scroll', () => {
             const y = window.scrollY;
             const progress = Math.min(1, y / maxScroll);
-            const opacity = 1 - progress;
-            const blur = progress * 12; // max 12px blur
+            const opacity = 1 - progress * 0.75; // min 0.25 — never fully disappear
+            const blur = progress * 10; // max 10px blur
 
             logos.forEach(logo => {
                 logo.style.opacity = opacity;
                 logo.style.filter = `blur(${blur}px)`;
             });
         }, { passive: true });
+    }
+
+    // ── Calculadora de potencial (flujo por pasos) ──
+    const calcComerciales = document.getElementById('calc-comerciales');
+    const calcTicket = document.getElementById('calc-ticket');
+    const calcReuniones = document.getElementById('calc-reuniones');
+    const calcCierre = document.getElementById('calc-cierre');
+    const calcTrigger = document.getElementById('calcTrigger');
+
+    if (calcComerciales && calcTicket && calcReuniones && calcCierre && calcTrigger) {
+        const formatNum = (n) => n.toLocaleString('es-ES');
+
+        // Paso 1: actualizar valores de sliders en tiempo real
+        const updateSliderValues = () => {
+            document.getElementById('calc-comerciales-val').textContent = calcComerciales.value;
+            document.getElementById('calc-ticket-val').textContent = formatNum(parseInt(calcTicket.value)) + ' €';
+            document.getElementById('calc-reuniones-val').textContent = calcReuniones.value;
+            document.getElementById('calc-cierre-val').textContent = calcCierre.value + '%';
+        };
+
+        [calcComerciales, calcTicket, calcReuniones, calcCierre].forEach(slider => {
+            slider.addEventListener('input', updateSliderValues);
+        });
+
+        // Paso 2: click "Calcular" → loading → resultados → lead form
+        const loading = document.getElementById('calcLoading');
+        const results = document.getElementById('calcResults');
+        const leadSection = document.getElementById('calcLeadSection');
+        const recalcBtn = document.getElementById('calcRecalc');
+
+        const runCalculation = () => {
+            // Ocultar botón y resultados previos, mostrar loading
+            calcTrigger.style.display = 'none';
+            recalcBtn.classList.remove('visible');
+            results.classList.remove('visible');
+            leadSection.classList.remove('visible');
+            loading.classList.add('visible');
+
+            setTimeout(() => {
+                // Calcular valores
+                const comerciales = parseInt(calcComerciales.value);
+                const ticket = parseInt(calcTicket.value);
+                const cierre = parseInt(calcCierre.value);
+                const reunionesExtra = comerciales * 3;
+                const pipeline = reunionesExtra * ticket;
+                const revenue = pipeline * (cierre / 100);
+
+                // Escribir resultados
+                document.getElementById('calc-res-reuniones').textContent = '+' + reunionesExtra;
+                document.getElementById('calc-res-pipeline').textContent = formatNum(pipeline) + ' €';
+                document.getElementById('calc-res-revenue').textContent = formatNum(revenue) + ' €';
+
+                // Ocultar loading, mostrar resultados + recalcular
+                loading.classList.remove('visible');
+                results.classList.add('visible');
+                recalcBtn.classList.add('visible');
+
+                // Mostrar lead section tras breve pausa
+                setTimeout(() => {
+                    leadSection.classList.add('visible');
+                }, 600);
+            }, 2000);
+        };
+
+        calcTrigger.addEventListener('click', runCalculation);
+        recalcBtn.addEventListener('click', runCalculation);
+
+        // Paso 3: submit email → toast
+        const calcForm = document.getElementById('calcLeadForm');
+        if (calcForm) {
+            calcForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const toast = document.getElementById('calcToast');
+                const btn = calcForm.querySelector('button[type="submit"]');
+
+                // Deshabilitar form
+                btn.disabled = true;
+                btn.textContent = 'Enviado';
+                btn.style.opacity = '0.6';
+                calcForm.querySelector('input').disabled = true;
+
+                // Mostrar toast
+                toast.classList.add('visible');
+                setTimeout(() => {
+                    toast.classList.remove('visible');
+                }, 4000);
+            });
+        }
     }
 });
