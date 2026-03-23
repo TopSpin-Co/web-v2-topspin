@@ -673,72 +673,196 @@ document.addEventListener('DOMContentLoaded', () => {
         }, { passive: true });
     }
 
-    // ── Calculadora de potencial (flujo por pasos) ──
-    const calcComerciales = document.getElementById('calc-comerciales');
-    const calcTicket = document.getElementById('calc-ticket');
-    const calcReuniones = document.getElementById('calc-reuniones');
-    const calcCierre = document.getElementById('calc-cierre');
+    // ── Calculadora TAM (flujo por pasos) ──
     const calcTrigger = document.getElementById('calcTrigger');
+    const calcTamForm = document.getElementById('calcTamForm');
 
-    if (calcComerciales && calcTicket && calcReuniones && calcCierre && calcTrigger) {
+    if (calcTrigger && calcTamForm) {
         const formatNum = (n) => n.toLocaleString('es-ES');
 
-        // Paso 1: actualizar valores de sliders en tiempo real
-        const updateSliderValues = () => {
-            document.getElementById('calc-comerciales-val').textContent = calcComerciales.value;
-            document.getElementById('calc-ticket-val').textContent = formatNum(parseInt(calcTicket.value)) + ' €';
-            document.getElementById('calc-reuniones-val').textContent = calcReuniones.value;
-            document.getElementById('calc-cierre-val').textContent = calcCierre.value + '%';
+        // Datos hardcodeados por país (estimaciones simplificadas de empresas B2B)
+        const TAM_DATA = {
+            industries: {
+                finance_insurance_legal: { base: 42000 },
+                technology_software_internet: { base: 28000 },
+                education_training: { base: 18000 },
+                science_health_wellness: { base: 35000 },
+                construction_manufacturing: { base: 52000 },
+                consumer_retail_goods: { base: 61000 },
+                food_hospitality: { base: 72000 },
+                transport_logistics_travel: { base: 24000 },
+                business_services_consulting: { base: 47000 },
+                creative_media_entertainment: { base: 15000 },
+                agriculture_food_rural: { base: 31000 },
+                nonprofits_public: { base: 12000 },
+                materials_light_manufacturing: { base: 19000 },
+                research_design_innovation: { base: 8000 }
+            },
+            employeeBuckets: [
+                { max: 10, pct: 0.72 },
+                { max: 50, pct: 0.18 },
+                { max: 250, pct: 0.07 },
+                { max: 1000, pct: 0.02 },
+                { max: Infinity, pct: 0.01 }
+            ],
+            // Revenue en miles de €
+            revenueBuckets: [
+                { max: 500, pct: 0.55 },
+                { max: 2000, pct: 0.25 },
+                { max: 10000, pct: 0.12 },
+                { max: 50000, pct: 0.06 },
+                { max: Infinity, pct: 0.02 }
+            ],
+            // Multiplicador por país (base = España = 1.0)
+            countries: {
+                espana: 1.00, portugal: 0.22, francia: 1.85, alemania: 2.10,
+                italia: 1.45, reino_unido: 1.90, paises_bajos: 0.55,
+                belgica: 0.35, suiza: 0.30, eeuu: 8.50, latam: 3.20
+            }
         };
 
-        [calcComerciales, calcTicket, calcReuniones, calcCierre].forEach(slider => {
-            slider.addEventListener('input', updateSliderValues);
+        // Filtrar por buckets con overlap parcial
+        function filterByBuckets(min, max, buckets) {
+            if (!min && !max) return 1.0;
+            const userMin = min || 0;
+            const userMax = max || Infinity;
+            let total = 0;
+            let prevMax = 0;
+            for (const b of buckets) {
+                if (userMax > prevMax && userMin <= b.max) {
+                    const bucketRange = b.max === Infinity ? 10000 : (b.max - prevMax);
+                    const overlapStart = Math.max(userMin, prevMax);
+                    const overlapEnd = b.max === Infinity ? Math.max(userMax, overlapStart + 1) : Math.min(userMax, b.max);
+                    const fraction = Math.min(1, (overlapEnd - overlapStart) / bucketRange);
+                    total += b.pct * fraction;
+                }
+                prevMax = b.max;
+            }
+            return Math.min(1, total);
+        }
+
+        function calculateTAM() {
+            const checked = calcTamForm.querySelectorAll('input[name="tam-industry"]:checked');
+            if (checked.length === 0) return { tam: 0, reuniones: 0 };
+
+            let industryTotal = 0;
+            checked.forEach(cb => {
+                const data = TAM_DATA.industries[cb.value];
+                if (data) industryTotal += data.base;
+            });
+
+            const empMin = parseFloat(document.getElementById('tam-emp-min').value) || 0;
+            const empMax = parseFloat(document.getElementById('tam-emp-max').value) || 0;
+            const empMultiplier = filterByBuckets(empMin, empMax, TAM_DATA.employeeBuckets);
+
+            const revMin = parseFloat(document.getElementById('tam-rev-min').value) || 0;
+            const revMax = parseFloat(document.getElementById('tam-rev-max').value) || 0;
+            const revMultiplier = filterByBuckets(revMin, revMax, TAM_DATA.revenueBuckets);
+
+            // Sumar multiplicadores de países seleccionados
+            const locationChecked = calcTamForm.querySelectorAll('input[name="tam-location"]:checked');
+            let countryMultiplier = 0;
+            locationChecked.forEach(cb => {
+                countryMultiplier += TAM_DATA.countries[cb.value] || 0;
+            });
+            if (countryMultiplier === 0) countryMultiplier = 1.0; // default si no selecciona ninguno
+
+            const tam = Math.round(industryTotal * empMultiplier * revMultiplier * countryMultiplier);
+            const reuniones = Math.max(5, Math.min(120, Math.round(tam * 0.003)));
+
+            return { tam, reuniones };
+        }
+
+        // Actualizar contador de industrias seleccionadas
+        const industryCount = document.getElementById('calcIndustryCount');
+        calcTamForm.querySelectorAll('input[name="tam-industry"]').forEach(cb => {
+            cb.addEventListener('change', () => {
+                const count = calcTamForm.querySelectorAll('input[name="tam-industry"]:checked').length;
+                industryCount.textContent = '(' + count + ' seleccionado' + (count !== 1 ? 's' : '') + ')';
+            });
         });
 
-        // Paso 2: click "Calcular" → loading → resultados → lead form
+        // Location dropdown toggle
+        const locationSelect = document.getElementById('calcLocationSelect');
+        const locationTrigger = document.getElementById('calcLocationTrigger');
+        const locationLabel = document.getElementById('calcLocationLabel');
+        const locationCount = document.getElementById('calcLocationCount');
+
+        if (locationTrigger) {
+            locationTrigger.addEventListener('click', () => {
+                locationSelect.classList.toggle('open');
+            });
+
+            // Cerrar al hacer click fuera
+            document.addEventListener('click', (e) => {
+                if (!locationSelect.contains(e.target)) {
+                    locationSelect.classList.remove('open');
+                }
+            });
+
+            // Actualizar label y contador
+            calcTamForm.querySelectorAll('input[name="tam-location"]').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const checked = calcTamForm.querySelectorAll('input[name="tam-location"]:checked');
+                    const count = checked.length;
+                    locationCount.textContent = '(' + count + ' seleccionado' + (count !== 1 ? 's' : '') + ')';
+                    if (count === 0) {
+                        locationLabel.textContent = 'Selecciona países';
+                    } else {
+                        const names = Array.from(checked).map(c => c.closest('.calc-checkbox-item').querySelector('span:last-child').textContent);
+                        locationLabel.textContent = names.length <= 3 ? names.join(', ') : names.slice(0, 3).join(', ') + ' +' + (names.length - 3);
+                    }
+                });
+            });
+        }
+
+        // Flujo por pasos
         const loading = document.getElementById('calcLoading');
         const results = document.getElementById('calcResults');
         const leadSection = document.getElementById('calcLeadSection');
         const recalcBtn = document.getElementById('calcRecalc');
 
         const runCalculation = () => {
-            // Ocultar botón y resultados previos, mostrar loading
+            const checked = calcTamForm.querySelectorAll('input[name="tam-industry"]:checked');
+            if (checked.length === 0) {
+                const grid = calcTamForm.querySelector('.calc-checkbox-grid');
+                grid.classList.add('highlight');
+                setTimeout(() => grid.classList.remove('highlight'), 1500);
+                return;
+            }
+
             calcTrigger.style.display = 'none';
+            calcTamForm.style.display = 'none';
             recalcBtn.classList.remove('visible');
             results.classList.remove('visible');
             leadSection.classList.remove('visible');
             loading.classList.add('visible');
 
             setTimeout(() => {
-                // Calcular valores
-                const comerciales = parseInt(calcComerciales.value);
-                const ticket = parseInt(calcTicket.value);
-                const cierre = parseInt(calcCierre.value);
-                const reunionesExtra = comerciales * 3;
-                const pipeline = reunionesExtra * ticket;
-                const revenue = pipeline * (cierre / 100);
+                const { tam, reuniones } = calculateTAM();
+                document.getElementById('calc-res-tam').textContent = formatNum(tam);
+                document.getElementById('calc-res-reuniones').textContent = '+' + reuniones;
 
-                // Escribir resultados
-                document.getElementById('calc-res-reuniones').textContent = '+' + reunionesExtra;
-                document.getElementById('calc-res-pipeline').textContent = formatNum(pipeline) + ' €';
-                document.getElementById('calc-res-revenue').textContent = formatNum(revenue) + ' €';
-
-                // Ocultar loading, mostrar resultados + recalcular
                 loading.classList.remove('visible');
                 results.classList.add('visible');
                 recalcBtn.classList.add('visible');
 
-                // Mostrar lead section tras breve pausa
-                setTimeout(() => {
-                    leadSection.classList.add('visible');
-                }, 600);
+                setTimeout(() => { leadSection.classList.add('visible'); }, 600);
             }, 2000);
         };
 
-        calcTrigger.addEventListener('click', runCalculation);
-        recalcBtn.addEventListener('click', runCalculation);
+        const recalculate = () => {
+            results.classList.remove('visible');
+            recalcBtn.classList.remove('visible');
+            leadSection.classList.remove('visible');
+            calcTamForm.style.display = 'flex';
+            calcTrigger.style.display = 'inline-block';
+        };
 
-        // Paso 3: submit email → toast
+        calcTrigger.addEventListener('click', runCalculation);
+        recalcBtn.addEventListener('click', recalculate);
+
+        // Submit email → toast
         const calcForm = document.getElementById('calcLeadForm');
         if (calcForm) {
             calcForm.addEventListener('submit', (e) => {
@@ -746,17 +870,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const toast = document.getElementById('calcToast');
                 const btn = calcForm.querySelector('button[type="submit"]');
 
-                // Deshabilitar form
                 btn.disabled = true;
                 btn.textContent = 'Enviado';
                 btn.style.opacity = '0.6';
                 calcForm.querySelector('input').disabled = true;
 
-                // Mostrar toast
                 toast.classList.add('visible');
-                setTimeout(() => {
-                    toast.classList.remove('visible');
-                }, 4000);
+                setTimeout(() => { toast.classList.remove('visible'); }, 4000);
             });
         }
     }

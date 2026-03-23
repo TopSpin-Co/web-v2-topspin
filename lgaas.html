@@ -259,63 +259,196 @@
         <section id="calculadora" class="calc-section bg-secondary">
             <div class="container">
                 <div class="text-center lgaas-fade">
-                    <h2>¿Cuánto pipeline estás dejando sobre la mesa?</h2>
-                    <p class="subheadline">Ajusta los datos de tu equipo y descubre tu potencial de ventas con TopSpin.</p>
+                    <h2>¿Ya sabes cuál es tu potencial de ventas?</h2>
+                    <p class="subheadline">Define tu cliente ideal y descubre cuántas empresas puedes alcanzar con TopSpin.</p>
                 </div>
                 <div class="calc-flow mt-md">
-                    <!-- Paso 1: Sliders + botón -->
-                    <div class="calc-sliders lgaas-fade" data-delay="1">
-                        <div class="calc-slider-group">
-                            <div class="calc-slider-header">
-                                <label for="calc-comerciales">Nº de comerciales</label>
-                                <output id="calc-comerciales-val" class="calc-slider-value">3</output>
+                    <!-- Paso 1: Formulario TAM -->
+                    <div class="calc-tam-form lgaas-fade" data-delay="1" id="calcTamForm">
+                        <div class="calc-form-group">
+                            <label class="calc-form-label">Sector de actividad <span class="text-secondary" id="calcIndustryCount">(0 seleccionados)</span></label>
+                            <div class="calc-checkbox-grid">
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="finance_insurance_legal">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Finanzas, Seguros y Legal</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="technology_software_internet">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Tecnología, Software e Internet</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="education_training">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Educación y Formación</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="science_health_wellness">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Ciencia, Salud y Bienestar</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="construction_manufacturing">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Construcción e Industria Pesada</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="consumer_retail_goods">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Consumo, Retail y Bienes</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="food_hospitality">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Alimentación y Hostelería</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="transport_logistics_travel">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Transporte, Logística y Viajes</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="business_services_consulting">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Servicios y Consultoría</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="creative_media_entertainment">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Medios y Entretenimiento</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="agriculture_food_rural">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Agricultura y Rural</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="nonprofits_public">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>ONGs y Entidades Públicas</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="materials_light_manufacturing">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Materiales y Manufactura Ligera</span>
+                                </label>
+                                <label class="calc-checkbox-item">
+                                    <input type="checkbox" name="tam-industry" value="research_design_innovation">
+                                    <span class="calc-checkbox-mark"></span>
+                                    <span>Investigación, Diseño e Innovación</span>
+                                </label>
                             </div>
-                            <input type="range" id="calc-comerciales" min="1" max="20" value="3" step="1">
                         </div>
-                        <div class="calc-slider-group">
-                            <div class="calc-slider-header">
-                                <label for="calc-ticket">Ticket medio (€)</label>
-                                <output id="calc-ticket-val" class="calc-slider-value">10.000</output>
+
+                        <div class="calc-form-group">
+                            <label class="calc-form-label">Rango de empleados</label>
+                            <div class="calc-range-row">
+                                <input type="number" id="tam-emp-min" class="calc-input" placeholder="Mínimo" min="1" value="10">
+                                <span class="calc-range-separator">—</span>
+                                <input type="number" id="tam-emp-max" class="calc-input" placeholder="Máximo" min="1" value="50">
                             </div>
-                            <input type="range" id="calc-ticket" min="1000" max="100000" value="10000" step="1000">
                         </div>
-                        <div class="calc-slider-group">
-                            <div class="calc-slider-header">
-                                <label for="calc-reuniones">Reuniones/mes actuales</label>
-                                <output id="calc-reuniones-val" class="calc-slider-value">4</output>
+
+                        <div class="calc-form-group">
+                            <label class="calc-form-label">Facturación anual (miles €)</label>
+                            <div class="calc-range-row">
+                                <input type="number" id="tam-rev-min" class="calc-input" placeholder="Mínimo" min="0" step="10" value="200">
+                                <span class="calc-range-separator">—</span>
+                                <input type="number" id="tam-rev-max" class="calc-input" placeholder="Máximo" min="0" step="10" value="2000">
                             </div>
-                            <input type="range" id="calc-reuniones" min="0" max="30" value="4" step="1">
                         </div>
-                        <div class="calc-slider-group">
-                            <div class="calc-slider-header">
-                                <label for="calc-cierre">Tasa de cierre (%)</label>
-                                <output id="calc-cierre-val" class="calc-slider-value">15%</output>
+
+                        <div class="calc-form-group">
+                            <label class="calc-form-label">Ubicación <span class="text-secondary" id="calcLocationCount">(0 seleccionados)</span></label>
+                            <div class="calc-location-select" id="calcLocationSelect">
+                                <div class="calc-location-trigger" id="calcLocationTrigger">
+                                    <span id="calcLocationLabel">Selecciona países</span>
+                                    <span class="calc-location-chevron"></span>
+                                </div>
+                                <div class="calc-location-dropdown" id="calcLocationDropdown">
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="espana">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>España</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="portugal">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Portugal</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="francia">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Francia</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="alemania">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Alemania</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="italia">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Italia</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="reino_unido">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Reino Unido</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="paises_bajos">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Países Bajos</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="belgica">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Bélgica</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="suiza">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Suiza</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="eeuu">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Estados Unidos</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="latam">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Latinoamérica</span>
+                                    </label>
+                                </div>
                             </div>
-                            <input type="range" id="calc-cierre" min="5" max="50" value="15" step="5">
                         </div>
                     </div>
-                    <button class="btn btn-primary calc-btn-trigger lgaas-fade" data-delay="2" id="calcTrigger">Calcular mi potencial</button>
+
+                    <button class="btn btn-primary calc-btn-trigger lgaas-fade" data-delay="2" id="calcTrigger">Calcula mi potencial</button>
 
                     <!-- Paso 2: Loading -->
                     <div class="calc-loading" id="calcLoading">
                         <div class="calc-spinner"></div>
-                        <p>Analizando tu potencial...</p>
+                        <p>Analizando tu mercado...</p>
                     </div>
 
                     <!-- Paso 3: Resultados -->
                     <div class="calc-results" id="calcResults">
-                        <span class="badge">Con TopSpin podrías generar</span>
-                        <div class="calc-result-grid">
+                        <span class="badge">Tu mercado potencial</span>
+                        <div class="calc-result-grid calc-result-grid--3col">
                             <div class="calc-result-item">
-                                <span class="calc-result-number text-accent" id="calc-res-reuniones">+9</span>
+                                <span class="calc-result-number text-accent" id="calc-res-tam">12.450</span>
+                                <span class="calc-result-label">empresas alcanzables</span>
+                            </div>
+                            <div class="calc-result-item">
+                                <span class="calc-result-number text-accent" id="calc-res-reuniones">+37</span>
                                 <span class="calc-result-label">reuniones extra/mes</span>
                             </div>
                             <div class="calc-result-item">
-                                <span class="calc-result-number text-accent" id="calc-res-pipeline">90.000 €</span>
-                                <span class="calc-result-label">pipeline adicional/mes</span>
-                            </div>
-                            <div class="calc-result-item">
-                                <span class="calc-result-number text-accent" id="calc-res-revenue">13.500 €</span>
+                                <span class="calc-result-number text-accent calc-result-blurred">84.200 €</span>
                                 <span class="calc-result-label">revenue extra/mes</span>
                             </div>
                         </div>
@@ -324,10 +457,10 @@
 
                     <!-- Paso 4: Lead capture -->
                     <div class="calc-lead-section" id="calcLeadSection">
-                        <p class="calc-lead-intro">¿Quieres recibir un análisis detallado para tu empresa?</p>
+                        <p class="calc-lead-intro">¿Quieres recibir un análisis detallado de tu mercado?</p>
                         <form class="calc-lead-form" id="calcLeadForm">
                             <input type="email" placeholder="Tu email corporativo" required>
-                            <button type="submit" class="btn btn-primary">Recibir informe detallado</button>
+                            <button type="submit" class="btn btn-primary">Recibir informe</button>
                         </form>
                         <p class="microcopy text-center" style="margin-top: 0.5rem;">Sin spam. Solo tu análisis.</p>
                     </div>
