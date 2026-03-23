@@ -40,22 +40,37 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Default to home if no match
-        if (!activeItem) activeItem = navPill.querySelector('.nav-item-home') || navItems[0];
-        activeItem.classList.add('active');
+        // Pages with no nav item selected (e.g. contacto)
+        const noHighlightPages = ['contacto.html', 'privacy-policy.html'];
+        if (noHighlightPages.includes(currentPath)) {
+            activeItem = null;
+        }
 
-        // Position slider on load
-        requestAnimationFrame(() => moveSlider(activeItem));
+        // Default to home if no match (except for no-highlight pages)
+        if (!activeItem && !noHighlightPages.includes(currentPath)) {
+            activeItem = navPill.querySelector('.nav-item-home') || navItems[0];
+        }
+
+        if (activeItem) {
+            activeItem.classList.add('active');
+            requestAnimationFrame(() => moveSlider(activeItem));
+        } else {
+            navSlider.style.width = '0';
+        }
 
         // Hover: move slider to hovered item
         navItems.forEach(item => {
             item.addEventListener('mouseenter', () => moveSlider(item));
         });
 
-        // Mouse leave nav: return slider to active item
+        // Mouse leave nav: return slider to active item (or hide if none)
         navPill.addEventListener('mouseleave', () => {
             const current = navPill.querySelector('.nav-item.active');
-            if (current) moveSlider(current);
+            if (current) {
+                moveSlider(current);
+            } else {
+                navSlider.style.width = '0';
+            }
         });
 
         // Reposition on resize

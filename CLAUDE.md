@@ -80,10 +80,7 @@ Los tres servicios están diseñados para trabajar juntos como sistema, pero el 
 ├── about.html          ← Sobre Nosotros (prototipo básico)
 ├── blog.html           ← Blog (prototipo con cards placeholder)
 ├── case.html           ← Casos de Éxito (placeholder)
-├── contacto.html       ← Contacto (formulario funcional de prototipo)
-├── vs.html             ← Comparativa (placeholder)
-├── recursos.html       ← Recursos y Herramientas (placeholder)
-├── how-to.html         ← Guías How-To (placeholder)
+├── contacto.html       ← Contacto (formulario + FAQ + info de contacto)
 ├── privacy-policy.html ← Política de Privacidad (placeholder)
 ├── cache_buster.py     ← Script para cache-bust del CSS
 ├── update_nav.py       ← Script para actualizar nav en todos los HTML

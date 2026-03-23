@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contacto | TopSpin Co</title>
+    <meta name="description" content="Contacta con TopSpin Co. Cuéntanos tu situación y te decimos en 24h si podemos ayudarte a generar más pipeline B2B en España.">
     <link rel="stylesheet" href="style.css?v=3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,45 +81,55 @@
         </div>
     </div>
 
-    <main class="cta-section" style="min-height: 60vh;">
-        <div class="container layout-split" style="padding-top: 4rem;">
-            <div class="split-header text-center-mobile">
-                <p class="subqualifier text-accent">NADA, UN POCO DE PROTOTIPO</p>
-                <h2>¿Listo para generar pipeline B2B en España?</h2>
-                <p class="lead-text mt-md">Cuéntanos tu situación y te decimos en 24h si podemos ayudarte.</p>
-                <p class="mt-md text-accent font-heading">+[X] empresas B2B en España ya confían en TopSpin</p>
+    <main>
+        <!-- 01 - Hero Contacto -->
+        <section class="cta-section" style="padding-top: 6rem; padding-bottom: 4rem;">
+            <div class="container layout-split">
+                <div class="split-header text-center-mobile">
+                    <p class="subqualifier text-accent">HABLEMOS</p>
+                    <h2>¿Quieres que tu equipo de ventas cierre más?</h2>
+                    <p class="lead-text mt-md">Cuéntanos qué te frena y en menos de 24h te decimos cómo podemos ayudarte.</p>
+                    <p class="mt-md text-accent font-heading">+10 empresas ya trabajan con nosotros</p>
+                </div>
+                <div class="split-content">
+                    <form class="contact-form bg-primary p-lg border-radius" id="contactForm">
+                        <div class="form-group">
+                            <label>Nombre *</label>
+                            <input type="text" name="nombre" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group mt-sm">
+                            <label>Email de trabajo *</label>
+                            <input type="email" name="email" placeholder="email@tuempresa.com" required>
+                        </div>
+                        <div class="form-group mt-sm">
+                            <label>Empresa *</label>
+                            <input type="text" name="empresa" placeholder="Tu empresa" required>
+                        </div>
+                        <div class="form-group mt-sm">
+                            <label>Teléfono</label>
+                            <input type="tel" name="telefono" placeholder="+34 600 000 000">
+                        </div>
+                        <div class="form-group mt-sm">
+                            <label>¿Qué necesitas?</label>
+                            <select name="servicio">
+                                <option value="" disabled selected>Elige una opción</option>
+                                <option value="lgaas">Quiero más reuniones con clientes</option>
+                                <option value="roaas">Quiero vender más y mejor</option>
+                                <option value="crm-admin">Necesito poner mi CRM en orden</option>
+                                <option value="no-lo-se">No lo tengo claro</option>
+                            </select>
+                        </div>
+                        <div class="form-group mt-sm">
+                            <label>Cuéntanos más</label>
+                            <textarea name="mensaje" rows="4" placeholder="¿Qué es lo que más te cuesta a la hora de conseguir clientes?" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid var(--border-color); border-radius: 4px; font-family: var(--font-body); font-size: 0.9rem; resize: vertical; background: var(--bg-secondary);"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary mt-md w-100">Enviar mensaje</button>
+                        <p class="microcopy text-center mt-sm">Sin compromisos. Respondemos en menos de 24h.</p>
+                    </form>
+                </div>
             </div>
-            <div class="split-content">
-                <form class="contact-form bg-primary p-lg border-radius"
-                    onsubmit="event.preventDefault(); alert('Prototipo de formulario completado');">
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" placeholder="Tu nombre" required>
-                    </div>
-                    <div class="form-group mt-sm">
-                        <label>Email corporativo</label>
-                        <input type="email" placeholder="email@tuempresa.com" required>
-                    </div>
-                    <div class="form-group mt-sm">
-                        <label>Empresa</label>
-                        <input type="text" placeholder="Tu empresa" required>
-                    </div>
-                    <div class="form-group mt-sm">
-                        <label>¿Qué necesitas?</label>
-                        <select>
-                            <option>LGaaS</option>
-                            <option>ROaaS</option>
-                            <option>CRM Admin</option>
-                            <option>No lo tengo claro</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary mt-md w-100">Quiero más reuniones</button>
-                    <p class="microcopy text-center mt-sm">Sin compromisos. Respondemos en menos de 24h.</p>
-                    <p class="text-center mt-sm"><a href="#" class="btn-link text-sm">O si prefieres, reserva una
-                            llamada directamente &rarr;</a></p>
-                </form>
-            </div>
-        </div>
+        </section>
+
     </main>
 
     <footer class="footer">
