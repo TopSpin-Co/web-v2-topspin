@@ -2289,6 +2289,7 @@ section {
     gap: 1rem;
     align-items: stretch;
     overflow: hidden;
+    min-height: 420px;
 }
 
 .case-slide {
@@ -2341,12 +2342,22 @@ section {
 .case-slide-full {
     display: none;
     padding: 2rem 2.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.case-slide:not(.active) .case-slide-full {
+    display: none;
 }
 
 .case-slide.active .case-slide-full {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     opacity: 0;
-    animation: caseReveal 0.35s ease 0.2s forwards;
+    animation: caseReveal 0.45s ease 0.5s forwards;
 }
 
 @keyframes caseReveal {
