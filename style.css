@@ -982,6 +982,49 @@ section {
     gap: 1.25rem;
 }
 
+/* LGaaS tab cards — grid 2x2 con SVG */
+#tab-lgaas .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+}
+#tab-lgaas .card-service {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+#tab-lgaas .card-service-body {
+    flex: 1 1 60%;
+}
+#tab-lgaas .card-service-img {
+    flex: 0 0 30%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    background: rgba(230, 89, 38, 0.04);
+    border-radius: 10px;
+}
+#tab-lgaas .card-service-img svg {
+    width: 100%;
+    max-width: 130px;
+    height: auto;
+}
+@media (max-width: 768px) {
+    #tab-lgaas .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    #tab-lgaas .card-service {
+        flex-direction: column;
+    }
+    #tab-lgaas .card-service-img {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 1rem;
+    }
+    #tab-lgaas .card-service-img svg {
+        max-width: 100px;
+    }
+}
+
 .tabs-content .card {
     padding: 1.5rem;
     text-align: left;
