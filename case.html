@@ -139,23 +139,26 @@
                         <div class="cases-filter-options">
                             <button class="filter-option active" data-category="todos">Todos</button>
                             <button class="filter-option" data-category="saas">SaaS</button>
-                            <button class="filter-option" data-category="legal">Legal</button>
                             <button class="filter-option" data-category="industrial">Industrial</button>
                             <button class="filter-option" data-category="consultoria">Consultoría</button>
-                            <button class="filter-option" data-category="financiero">Financiero</button>
                             <button class="filter-option" data-category="salud">Salud</button>
                             <button class="filter-option" data-category="retail">Retail</button>
                         </div>
                     </div>
-                    <p class="cases-count">Mostrando <span id="casesCountNum">10</span> casos de éxito</p>
+                    <div class="cases-service-filter" id="serviceFilter">
+                        <button class="service-filter-btn active" data-service="todos">Todo</button>
+                        <button class="service-filter-btn" data-service="ventas"><span class="service-dot dot-ventas"></span>Ventas</button>
+                        <button class="service-filter-btn" data-service="operaciones"><span class="service-dot dot-operaciones"></span>Operaciones</button>
+                    </div>
                 </div>
 
                 <!-- Cards List -->
                 <div class="cases-grid" id="casesGrid">
 
                     <!-- 1. Little Box -->
-                    <a href="case/little-box.html" class="card-case" data-category="consultoria">
+                    <a href="case/little-box.html" class="card-case" data-category="consultoria" data-service="operaciones">
                         <div class="case-card-visual">
+                            <span class="case-service-badge badge-operaciones">Operaciones</span>
                             <span class="case-company-name">Little Box</span>
                             <span class="case-card-category">Ventas</span>
                         </div>
@@ -174,8 +177,9 @@
                     </a>
 
                     <!-- 2. Lotify -->
-                    <a href="case/lotify.html" class="card-case" data-category="saas">
+                    <a href="case/lotify.html" class="card-case" data-category="saas" data-service="ventas">
                         <div class="case-card-visual">
+                            <span class="case-service-badge badge-ventas">Ventas</span>
                             <span class="case-company-name">Lotify</span>
                             <span class="case-card-category">SaaS / E-commerce</span>
                         </div>
@@ -194,8 +198,9 @@
                     </a>
 
                     <!-- 3. Akira Healthcare -->
-                    <a href="case/akira-healthcare.html" class="card-case" data-category="salud">
+                    <a href="case/akira-healthcare.html" class="card-case" data-category="salud" data-service="ventas">
                         <div class="case-card-visual">
+                            <span class="case-service-badge badge-ventas">Ventas</span>
                             <span class="case-company-name">Akira Healthcare</span>
                             <span class="case-card-category">Healthcare</span>
                         </div>
@@ -214,8 +219,9 @@
                     </a>
 
                     <!-- 4. OcCre -->
-                    <a href="case/occre.html" class="card-case" data-category="industrial">
+                    <a href="case/occre.html" class="card-case" data-category="industrial" data-service="operaciones">
                         <div class="case-card-visual">
+                            <span class="case-service-badge badge-operaciones">Operaciones</span>
                             <span class="case-company-name">OcCre</span>
                             <span class="case-card-category">Manufactura</span>
                         </div>
@@ -234,8 +240,9 @@
                     </a>
 
                     <!-- 5. Pragma Studio -->
-                    <a href="case/pragma-studio.html" class="card-case" data-category="saas">
+                    <a href="case/pragma-studio.html" class="card-case" data-category="saas" data-service="ventas">
                         <div class="case-card-visual">
+                            <span class="case-service-badge badge-ventas">Ventas</span>
                             <span class="case-company-name">Pragma Studio</span>
                             <span class="case-card-category">SaaS / Tech</span>
                         </div>
@@ -254,8 +261,9 @@
                     </a>
 
                     <!-- 6. Honest Greens -->
-                    <a href="case/honest-greens.html" class="card-case" data-category="retail">
+                    <a href="case/honest-greens.html" class="card-case" data-category="retail" data-service="ventas">
                         <div class="case-card-visual">
+                            <span class="case-service-badge badge-ventas">Ventas</span>
                             <span class="case-company-name">Honest Greens</span>
                             <span class="case-card-category">Food & Wellness</span>
                         </div>
@@ -274,8 +282,9 @@
                     </a>
 
                     <!-- 7. 10FT -->
-                    <a href="case/10ft.html" class="card-case" data-category="salud">
+                    <a href="case/10ft.html" class="card-case" data-category="salud" data-service="operaciones">
                         <div class="case-card-visual">
+                            <span class="case-service-badge badge-operaciones">Operaciones</span>
                             <span class="case-company-name">10FT</span>
                             <span class="case-card-category">Wellness / Suplementos</span>
                         </div>
@@ -294,8 +303,9 @@
                     </a>
 
                     <!-- 8. Meadow AI -->
-                    <a href="case/meadow-ai.html" class="card-case" data-category="saas">
+                    <a href="case/meadow-ai.html" class="card-case" data-category="saas" data-service="operaciones">
                         <div class="case-card-visual">
+                            <span class="case-service-badge badge-operaciones">Operaciones</span>
                             <span class="case-company-name">Meadow AI</span>
                             <span class="case-card-category">Influencer Marketing</span>
                         </div>
@@ -314,8 +324,9 @@
                     </a>
 
                     <!-- 9. CEIN -->
-                    <a href="case/cein.html" class="card-case" data-category="consultoria">
+                    <a href="case/cein.html" class="card-case" data-category="consultoria" data-service="ventas">
                         <div class="case-card-visual">
+                            <span class="case-service-badge badge-ventas">Ventas</span>
                             <span class="case-company-name">CEIN</span>
                             <span class="case-card-category">Incubadora / Startups</span>
                         </div>
@@ -334,8 +345,9 @@
                     </a>
 
                     <!-- 10. Rebolf -->
-                    <a href="case/rebolf.html" class="card-case" data-category="retail">
+                    <a href="case/rebolf.html" class="card-case" data-category="retail" data-service="operaciones">
                         <div class="case-card-visual">
+                            <span class="case-service-badge badge-operaciones">Operaciones</span>
                             <span class="case-company-name">Rebolf</span>
                             <span class="case-card-category">Golf & Lifestyle</span>
                         </div>

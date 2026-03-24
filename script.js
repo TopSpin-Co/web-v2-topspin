@@ -442,16 +442,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Cases Filter
+    // Cases Filter (dual: industry + service)
     const caseCards = document.querySelectorAll('.card-case');
-    const casesCountNum = document.getElementById('casesCountNum');
     const filterBar = document.getElementById('casesFilterBar');
     const filterWrap = document.querySelector('.cases-filter-wrap');
     const filterTrigger = document.getElementById('casesFilterTrigger');
     const filterLabel = document.getElementById('casesFilterLabel');
     const filterOptions = document.querySelectorAll('.filter-option');
+    const serviceButtons = document.querySelectorAll('.service-filter-btn');
 
     if (caseCards.length > 0) {
+        let activeCategory = 'todos';
+        let activeService = 'todos';
+
         // Staggered scroll-in animation
         const caseObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -478,13 +481,16 @@ document.addEventListener('DOMContentLoaded', () => {
             stickyObserver.observe(filterBar);
         }
 
-        // Filter function
-        const filterCases = (category) => {
-            let visibleCount = 0;
+        // Dual filter function
+        const filterCases = () => {
             let delay = 0;
 
             caseCards.forEach(card => {
-                if (card.classList.contains('card-case-cta') || category === 'todos' || card.getAttribute('data-category') === category) {
+                const isCta = card.classList.contains('card-case-cta');
+                const matchCategory = activeCategory === 'todos' || card.getAttribute('data-category') === activeCategory;
+                const matchService = activeService === 'todos' || card.getAttribute('data-service') === activeService;
+
+                if (isCta || (matchCategory && matchService)) {
                     card.classList.remove('hidden');
                     card.style.transitionDelay = `${delay * 0.03}s`;
                     card.classList.remove('visible');
@@ -493,17 +499,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             card.classList.add('visible');
                         });
                     });
-                    visibleCount++;
                     delay++;
                 } else {
                     card.classList.add('hidden');
                     card.classList.remove('visible');
                 }
             });
-
-            if (casesCountNum) {
-                casesCountNum.textContent = visibleCount;
-            }
         };
 
         // Mobile toggle
@@ -519,15 +520,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
 
-        // Option click — filter, update label, close dropdown
+        // Industry filter click
         filterOptions.forEach(option => {
             option.addEventListener('click', () => {
-                const category = option.getAttribute('data-category');
+                activeCategory = option.getAttribute('data-category');
                 filterOptions.forEach(o => o.classList.remove('active'));
                 option.classList.add('active');
                 if (filterLabel) filterLabel.textContent = option.textContent;
                 if (filterWrap) filterWrap.classList.remove('open');
-                filterCases(category);
+                filterCases();
+            });
+        });
+
+        // Service filter click
+        serviceButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                activeService = btn.getAttribute('data-service');
+                serviceButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                filterCases();
             });
         });
     }
@@ -840,7 +851,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const runCalculation = () => {
             const checked = calcTamForm.querySelectorAll('input[name="tam-industry"]:checked');
             if (checked.length === 0) {
-                const grid = calcTamForm.querySelector('.calc-checkbox-grid');
+                const grid = calcTamForm.querySelector('.calc-pill-grid') || calcTamForm.querySelector('.calc-checkbox-grid');
                 grid.classList.add('highlight');
                 setTimeout(() => grid.classList.remove('highlight'), 1500);
                 return;

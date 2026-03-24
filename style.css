@@ -4149,20 +4149,57 @@ section {
     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
 }
 
-.cases-count {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--text-secondary);
-    background: rgba(230, 89, 38, 0.08);
-    padding: 0.35rem 0.85rem;
+/* Service filter pill group */
+.cases-service-filter {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
     border-radius: 999px;
-    white-space: nowrap;
+    padding: 0.3rem;
 }
 
-.cases-count span {
-    font-weight: 700;
-    color: var(--accent-color);
+.service-filter-btn {
+    flex-shrink: 0;
+    padding: 0.5rem 1rem;
+    background: none;
+    border: none;
+    border-radius: 999px;
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
 }
+
+.service-filter-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+}
+
+.service-filter-btn.active {
+    background: var(--text-primary);
+    color: #fff;
+    font-weight: 600;
+}
+
+.service-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.service-dot.dot-ventas { background: var(--accent-color); }
+.service-dot.dot-operaciones { background: #2563eb; }
+
+.service-filter-btn.active .service-dot.dot-ventas,
+.service-filter-btn.active .service-dot.dot-operaciones { background: #fff; }
 
 /* Filter wrap — always-open pill bar on desktop */
 .cases-filter-wrap {
@@ -4396,6 +4433,49 @@ section {
 
 .card-case-cta .case-card-content h3 {
     font-size: 1.6rem;
+}
+
+/* Service-colored card visuals */
+.card-case[data-service="ventas"] .case-card-visual {
+    background: linear-gradient(135deg, #fef3ed 0%, #fdf0e8 100%);
+}
+.card-case[data-service="ventas"] .case-card-visual::before {
+    background: radial-gradient(circle, rgba(230, 89, 38, 0.08) 0%, transparent 70%);
+}
+.card-case[data-service="ventas"] .case-card-metric strong {
+    color: var(--accent-color);
+}
+
+.card-case[data-service="operaciones"] .case-card-visual {
+    background: linear-gradient(135deg, #eff4ff 0%, #e8eeff 100%);
+}
+.card-case[data-service="operaciones"] .case-card-visual::before {
+    background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, transparent 70%);
+}
+.card-case[data-service="operaciones"] .case-card-metric strong {
+    color: #2563eb;
+}
+
+/* Service badge in card visual */
+.case-service-badge {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    z-index: 2;
+}
+.case-service-badge.badge-ventas {
+    background: rgba(230, 89, 38, 0.12);
+    color: var(--accent-color);
+}
+.case-service-badge.badge-operaciones {
+    background: rgba(37, 99, 235, 0.12);
+    color: #2563eb;
 }
 
 /* ═══════════════════════════════════════════════
@@ -4695,9 +4775,16 @@ section {
         width: 100%;
     }
 
-    .cases-count {
-        font-size: 0.7rem;
-        padding: 0.3rem 0.7rem;
+    .cases-service-filter {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .service-filter-btn {
+        flex: 1;
+        text-align: center;
+        font-size: 0.75rem;
+        padding: 0.45rem 0.6rem;
     }
 
     .card-case {
@@ -5318,7 +5405,7 @@ section {
 }
 
 .calc-flow {
-    max-width: 720px;
+    max-width: 1060px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -5335,6 +5422,14 @@ section {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.calc-form-row-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
 }
 
 .calc-form-group {
@@ -5403,6 +5498,53 @@ section {
     border-radius: 4px;
 }
 
+/* Pill selector for industries */
+.calc-pill-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+}
+
+.calc-pill-grid.highlight {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+    border-radius: 8px;
+}
+
+.calc-pill-item {
+    cursor: pointer;
+}
+
+.calc-pill-item input[type="checkbox"] {
+    display: none;
+}
+
+.calc-pill-label {
+    display: inline-block;
+    padding: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 100px;
+    transition: all 0.2s ease;
+    user-select: none;
+}
+
+.calc-pill-item:hover .calc-pill-label {
+    border-color: var(--accent-color);
+    color: var(--text-primary);
+}
+
+.calc-pill-item input[type="checkbox"]:checked + .calc-pill-label {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    color: #fff;
+    font-weight: 500;
+}
+
 /* Number inputs for ranges */
 .calc-range-row {
     display: flex;
@@ -5461,6 +5603,7 @@ section {
 .calc-location-select {
     position: relative;
     width: 100%;
+    z-index: 20;
 }
 
 .calc-location-trigger {
@@ -5540,6 +5683,8 @@ section {
     margin-top: 2rem;
     padding: 0.85rem 2.5rem;
     font-size: 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 /* ── Recalculate button ── */
@@ -5739,6 +5884,9 @@ section {
     .calc-result-grid--3col {
         flex-direction: column;
         gap: 1.5rem;
+    }
+    .calc-form-row-2col {
+        grid-template-columns: 1fr;
     }
 }
 
