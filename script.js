@@ -680,6 +680,80 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Values Carousel
+    const valuesCarousel = document.getElementById('valuesCarousel');
+    if (valuesCarousel) {
+        const track = valuesCarousel.querySelector('.values-track');
+        const cards = track.querySelectorAll('.card-value');
+        const dotsWrap = document.getElementById('valuesDots');
+        const prevBtn = document.getElementById('valuesPrev');
+        const nextBtn = document.getElementById('valuesNext');
+        let valuesIndex = 0;
+        let valuesInterval;
+
+        // Determine visible count based on screen width
+        const getVisibleCount = () => {
+            if (window.innerWidth <= 600) return 1;
+            if (window.innerWidth <= 900) return 2;
+            return 3;
+        };
+
+        const getTotalSteps = () => Math.max(1, cards.length - getVisibleCount() + 1);
+
+        // Build dots
+        const buildDots = () => {
+            dotsWrap.innerHTML = '';
+            const steps = getTotalSteps();
+            for (let i = 0; i < steps; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'values-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goToValue(i));
+                dotsWrap.appendChild(dot);
+            }
+        };
+
+        const goToValue = (index) => {
+            const steps = getTotalSteps();
+            valuesIndex = ((index % steps) + steps) % steps;
+
+            // Calculate offset: each card width + gap
+            const cardWidth = cards[0].offsetWidth;
+            const gap = 24; // 1.5rem
+            track.style.transform = `translateX(-${valuesIndex * (cardWidth + gap)}px)`;
+
+            // Update dots
+            const dots = dotsWrap.querySelectorAll('.values-dot');
+            dots.forEach((d, i) => d.classList.toggle('active', i === valuesIndex));
+
+            resetValuesInterval();
+        };
+
+        const resetValuesInterval = () => {
+            clearInterval(valuesInterval);
+            valuesInterval = setInterval(() => goToValue(valuesIndex + 1), 3500);
+        };
+
+        prevBtn.addEventListener('click', () => goToValue(valuesIndex - 1));
+        nextBtn.addEventListener('click', () => goToValue(valuesIndex + 1));
+
+        // Pause on hover
+        valuesCarousel.addEventListener('mouseenter', () => clearInterval(valuesInterval));
+        valuesCarousel.addEventListener('mouseleave', resetValuesInterval);
+
+        // Rebuild on resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                buildDots();
+                goToValue(Math.min(valuesIndex, getTotalSteps() - 1));
+            }, 150);
+        });
+
+        buildDots();
+        resetValuesInterval();
+    }
+
     // Float logos — fade + blur on scroll
     const floatBg = document.querySelector('.float-bg');
     if (floatBg) {
