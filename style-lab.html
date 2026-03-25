@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TopSpin Co — Style Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&family=Manrope:wght@300;400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Outfit:wght@300;400;500;600&family=Sora:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Geist+Mono:wght@400;500;600&family=Urbanist:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: #e5e5e5; color: #1a1a1a; line-height: 1.6; }
+
+        /* ===== CONTROL PANEL ===== */
+        .control-panel {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #1a1a1a;
+            color: #fff;
+            padding: 1.25rem 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: flex-end;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+        .control-panel h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #e65926;
+            width: 100%;
+            margin-bottom: -0.5rem;
+        }
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+        .control-group label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #999;
+        }
+        .control-group select {
+            background: #2a2a2a;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 0.5rem 2rem 0.5rem 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23999' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.6rem center;
+            min-width: 220px;
+        }
+        .control-group select:focus {
+            outline: none;
+            border-color: #e65926;
+        }
+        .combo-label {
+            font-size: 0.8rem;
+            color: #666;
+            padding: 0.5rem 0.75rem;
+            background: #2a2a2a;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            height: fit-content;
+        }
+        .combo-label .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .nav-arrows {
+            display: flex;
+            gap: 0.35rem;
+            margin-left: auto;
+        }
+        .nav-arrows button {
+            background: #2a2a2a;
+            color: #fff;
+            border: 1px solid #444;
+            border-radius: 6px;
+            padding: 0.45rem 0.7rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .nav-arrows button:hover { background: #e65926; border-color: #e65926; }
+
+        /* ===== PREVIEW AREA ===== */
+        .preview-wrapper {
+            padding: 2rem;
+        }
+        .preview {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+            transition: background 0.3s, color 0.3s;
+        }
+        .preview-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Hero */
+        .hero-replica {
+            text-align: center;
+            padding: 4rem 2rem 3rem;
+            transition: background 0.3s, color 0.3s;
+        }
+        .hero-replica .subqualifier {
+            font-size: 1rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            transition: color 0.3s;
+        }
+        .hero-replica h1 {
+            font-weight: 400;
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            transition: color 0.3s, font-family 0.3s;
+        }
+        .highlight { color: #e65926; font-style: italic; }
+        .hero-replica .subheadline {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.7;
+            transition: color 0.3s;
+        }
+        .cta-group { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .btn-primary { background: #e65926; color: white; border: 2px solid #e65926; }
+        .btn-outline { background: transparent; border: 2px solid; transition: border-color 0.3s, color 0.3s; }
+
+        /* Sections */
+        .section-part {
+            padding: 3rem 2rem;
+            transition: background 0.3s;
+        }
+        .section-part-inner {
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            transition: background 0.3s;
+        }
+        .part-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.6rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            opacity: 0.35;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            border: 1px solid;
+            border-radius: 8px;
+            padding: 2rem;
+            transition: transform 0.2s, background 0.3s, border-color 0.3s;
+        }
+        .card:hover { transform: translateY(-3px); }
+        .card .badge {
+            display: inline-block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background: rgba(230, 89, 38, 0.08);
+            color: #e65926;
+            padding: 0.25rem 0.6rem;
+            border-radius: 3px;
+            margin-bottom: 0.75rem;
+        }
+        .card h3 { font-weight: 400; font-size: 1.35rem; margin-bottom: 0.75rem; line-height: 1.3; transition: font-family 0.3s; }
+        .card p { font-size: 0.95rem; line-height: 1.6; transition: color 0.3s; }
+
+        /* Dolor */
+        .dolor-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .dolor-grid h2 { font-weight: 400; font-size: clamp(1.8rem, 3.5vw, 2.5rem); line-height: 1.2; margin-bottom: 1rem; transition: font-family 0.3s; }
+        .dolor-grid .lead-text { font-size: 1rem; line-height: 1.7; transition: color 0.3s; }
+        .dolor-items { display: flex; flex-direction: column; gap: 1.25rem; }
+        .dolor-item { display: flex; align-items: flex-start; gap: 1rem; }
+        .dolor-icon {
+            flex-shrink: 0; width: 40px; height: 40px;
+            background: rgba(230, 89, 38, 0.08);
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .dolor-icon svg { width: 18px; height: 18px; stroke: #e65926; }
+        .dolor-item p { font-size: 0.95rem; line-height: 1.6; }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+        .faq-grid h2 { font-weight: 400; font-size: clamp(1.8rem, 3.5vw, 2.5rem); line-height: 1.2; transition: font-family 0.3s; }
+        .faq-item { padding: 1.25rem 0; border-bottom: 1px solid; transition: border-color 0.3s; }
+        .faq-item:first-child { border-top: 1px solid; }
+        .faq-question { font-size: 1.05rem; font-weight: 500; margin-bottom: 0.5rem; }
+        .faq-answer { font-size: 0.9rem; line-height: 1.6; }
+
+        /* Navbar mockup */
+        .navbar-mockup {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 2rem;
+            transition: background 0.3s, border-color 0.3s;
+            border-bottom: 1px solid;
+        }
+        .navbar-mockup .brand {
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .navbar-mockup .brand img { height: 28px; }
+        .navbar-mockup .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+        .navbar-mockup .nav-links span { opacity: 0.6; cursor: default; }
+
+        @media (max-width: 768px) {
+            .dolor-grid, .faq-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            .control-panel { padding: 1rem; gap: 0.75rem; }
+            .control-group select { min-width: 160px; font-size: 0.78rem; }
+            .preview-wrapper { padding: 0.75rem; }
+            .hero-replica { padding: 2.5rem 1.25rem 2rem; }
+            .section-part { padding: 2rem 1.25rem; }
+            .navbar-mockup { padding: 0.75rem 1.25rem; }
+            .navbar-mockup .nav-links { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CONTROL PANEL -->
+    <div class="control-panel">
+        <h2>TopSpin Style Lab</h2>
+
+        <div class="control-group">
+            <label>Tipografía Headings</label>
+            <select id="sel-heading">
+                <option value="'Playfair Display', serif" data-weight="400" data-italic="true">Playfair Display (actual)</option>
+                <option value="'DM Serif Display', serif" data-weight="400" data-italic="true">DM Serif Display</option>
+                <option value="'Instrument Serif', serif" data-weight="400" data-italic="true">Instrument Serif</option>
+                <option value="'Fraunces', serif" data-weight="400" data-italic="true">Fraunces</option>
+                <option value="'Libre Baskerville', serif" data-weight="400" data-italic="true">Libre Baskerville</option>
+                <option value="'Source Serif 4', serif" data-weight="400" data-italic="true">Source Serif 4</option>
+                <option value="'Cormorant Garamond', serif" data-weight="500" data-italic="true">Cormorant Garamond</option>
+                <option value="'Lora', serif" data-weight="500" data-italic="true">Lora</option>
+                <option value="'Bricolage Grotesque', sans-serif" data-weight="600" data-italic="false">Bricolage Grotesque</option>
+                <option value="'Sora', sans-serif" data-weight="600" data-italic="false">Sora</option>
+                <option value="'Urbanist', sans-serif" data-weight="600" data-italic="false">Urbanist</option>
+                <option value="'Poppins', sans-serif" data-weight="600" data-italic="true">Poppins</option>
+                <option value="'Space Grotesk', sans-serif" data-weight="600" data-italic="false">Space Grotesk</option>
+                <option value="'Outfit', sans-serif" data-weight="600" data-italic="false">Outfit</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label>Tipografía Body</label>
+            <select id="sel-body">
+                <option value="'Inter', sans-serif">Inter (actual)</option>
+                <option value="'DM Sans', sans-serif">DM Sans</option>
+                <option value="'Manrope', sans-serif">Manrope</option>
+                <option value="'Outfit', sans-serif">Outfit</option>
+                <option value="'Sora', sans-serif">Sora</option>
+                <option value="'Space Grotesk', sans-serif">Space Grotesk</option>
+                <option value="'Plus Jakarta Sans', sans-serif">Plus Jakarta Sans</option>
+                <option value="'Urbanist', sans-serif">Urbanist</option>
+                <option value="'Poppins', sans-serif">Poppins</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label>Background</label>
+            <select id="sel-bg">
+                <!-- Cálidos -->
+                <optgroup label="Cálidos">
+                    <option value="warm-cream" selected>Crema cálido (actual)</option>
+                    <option value="warm-sand">Arena intensa</option>
+                    <option value="warm-peach">Melocotón suave</option>
+                    <option value="warm-terracotta">Terracotta sutil</option>
+                </optgroup>
+                <!-- Neutros -->
+                <optgroup label="Neutros">
+                    <option value="neutral-white">Blanco puro</option>
+                    <option value="neutral-snow">Blanco nieve</option>
+                    <option value="neutral-cool-gray">Gris frío (Apple)</option>
+                    <option value="neutral-warm-gray">Gris cálido</option>
+                </optgroup>
+                <!-- Fríos -->
+                <optgroup label="Fríos">
+                    <option value="cool-ice-blue">Azul hielo</option>
+                    <option value="cool-lavender">Lavanda suave</option>
+                    <option value="cool-mint">Menta fresca</option>
+                    <option value="cool-sage">Verde sage</option>
+                </optgroup>
+                <!-- Oscuros -->
+                <optgroup label="Oscuros">
+                    <option value="dark-charcoal">Charcoal</option>
+                    <option value="dark-navy">Navy profundo</option>
+                    <option value="dark-forest">Bosque oscuro</option>
+                    <option value="dark-warm">Negro cálido</option>
+                </optgroup>
+                <!-- Gradientes -->
+                <optgroup label="Gradientes">
+                    <option value="grad-cream">Gradiente crema</option>
+                    <option value="grad-sunset">Gradiente atardecer</option>
+                    <option value="grad-cool">Gradiente azul-lila</option>
+                    <option value="grad-dark">Gradiente oscuro</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <div class="nav-arrows">
+            <button onclick="cycleSelect('sel-bg', -1)" title="Background anterior">&#9664; BG</button>
+            <button onclick="cycleSelect('sel-bg', 1)" title="Background siguiente">BG &#9654;</button>
+            <button onclick="cycleSelect('sel-heading', -1)" title="Heading anterior">&#9664; H</button>
+            <button onclick="cycleSelect('sel-heading', 1)" title="Heading siguiente">H &#9654;</button>
+        </div>
+    </div>
+
+    <!-- PREVIEW -->
+    <div class="preview-wrapper">
+        <div class="preview" id="preview">
+
+            <!-- Navbar mockup -->
+            <div class="navbar-mockup" id="navbar">
+                <div class="brand">
+                    <img src="assets/images/logo.png" alt="TopSpin Co" onerror="this.style.display='none'">
+                    <span>TopSpin Co</span>
+                </div>
+                <div class="nav-links">
+                    <span>Servicios</span>
+                    <span>Casos de Éxito</span>
+                    <span>Sobre Nosotros</span>
+                    <span>Blog</span>
+                </div>
+                <span class="btn btn-primary" style="padding:0.5rem 1.25rem; font-size:0.8rem;">Agendar Llamada</span>
+            </div>
+
+            <div class="preview-container">
+
+                <!-- HERO -->
+                <div class="hero-replica" id="hero">
+                    <p class="subqualifier" id="hero-sub">¿Quieres vender más?</p>
+                    <h1 id="hero-h1">Conseguimos reuniones con tus clientes ideales.<br><span class="highlight" id="hero-highlight">Tú solo tienes que cerrar.</span></h1>
+                    <p class="subheadline" id="hero-subheadline">Nos encargamos de encontrar, contactar y preparar tus mejores clientes. Tu equipo de ventas entra cuando ya hay interés real.</p>
+                    <div class="cta-group">
+                        <span class="btn btn-primary" id="btn1">Agendar llamada</span>
+                        <span class="btn btn-outline" id="btn2">Ver cómo funciona</span>
+                    </div>
+                </div>
+
+                <!-- CARDS (bg-tertiary) -->
+                <div class="section-part" id="part-primary-1">
+                    <div class="section-part-inner" id="part-tertiary">
+                        <div class="part-label">Sección con bg-tertiary</div>
+                        <div class="cards-grid">
+                            <div class="card" id="card1">
+                                <span class="badge">Estrategia</span>
+                                <h3>Sabemos a quién buscar</h3>
+                                <p>Definimos juntos a quién vendes. Sector, tamaño, cargo, señales de compra.</p>
+                            </div>
+                            <div class="card" id="card2">
+                                <span class="badge">Búsqueda</span>
+                                <h3>Los encontramos por ti</h3>
+                                <p>Buscamos entre miles de empresas las que encajan contigo.</p>
+                            </div>
+                            <div class="card" id="card3">
+                                <span class="badge">Contacto</span>
+                                <h3>Les contactamos por ti</h3>
+                                <p>Email, LinkedIn, mensajes. Todo personalizado, sin parecer spam.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- DOLOR (bg-primary) -->
+                <div class="section-part" id="part-primary-2">
+                    <div class="dolor-grid">
+                        <div>
+                            <h2 id="dolor-h2">¿Te suena esto?</h2>
+                            <p class="lead-text" id="dolor-lead">Si diriges ventas B2B en España, probablemente estás viviendo alguna de estas situaciones.</p>
+                        </div>
+                        <div class="dolor-items">
+                            <div class="dolor-item"><div class="dolor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div><p>Dedicas más tiempo a <strong>buscar contactos</strong> que a cerrar reuniones.</p></div>
+                            <div class="dolor-item"><div class="dolor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><polyline points="22 17 13.5 8.5 8.5 13.5 2 7"/><polyline points="16 17 22 17 22 11"/></svg></div><p>Tus ventas <strong>suben y bajan sin control</strong> y tienes meses en los que no entra nada.</p></div>
+                            <div class="dolor-item"><div class="dolor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><p>Necesitas <strong>más reuniones</strong>, pero no tienes un sistema para conseguirlas.</p></div>
+                            <div class="dolor-item"><div class="dolor-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><p>Contratar a alguien solo para prospectar te parece <strong>caro, lento y arriesgado</strong>.</p></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ (bg-secondary) -->
+                <div class="section-part" id="part-primary-3">
+                    <div class="section-part-inner" id="part-secondary">
+                        <div class="part-label">Sección con bg-secondary</div>
+                        <div class="faq-grid">
+                            <h2 id="faq-h2">Preguntas frecuentes</h2>
+                            <div id="faq-items">
+                                <div class="faq-item"><div class="faq-question">¿En cuánto tiempo veré resultados?</div><div class="faq-answer">La primera reunión llega entre la segunda y tercera semana. Pipeline consistente, al segundo mes.</div></div>
+                                <div class="faq-item"><div class="faq-question">¿Qué hace TopSpin que no haga otra agencia?</div><div class="faq-answer">No generamos leads. Generamos pipeline y revenue. Somos una extensión de tu equipo comercial.</div></div>
+                                <div class="faq-item"><div class="faq-question">¿Necesito tener HubSpot?</div><div class="faq-answer">No es obligatorio, pero si lo tienes, lo integramos todo. Si no, te ayudamos a decidir qué necesitas.</div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer mockup -->
+            <div id="footer-mockup" style="padding: 2.5rem 2rem; text-align: center; font-size: 0.8rem; transition: background 0.3s, color 0.3s;">
+                <p style="opacity:0.5;">© 2025 TopSpin Co. Todos los derechos reservados.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ===== BACKGROUND THEMES =====
+        const themes = {
+            // Cálidos
+            'warm-cream':      { bgPrimary:'#fdfbf7', bgSecondary:'#ffffff', bgTertiary:'#f4f2ec', textPrimary:'#1a1a1a', textSecondary:'#5c5c5c', border:'#e5e5e5', navBg:'#fdfbf7', footerBg:'#1a1a1a', footerText:'#999' },
+            'warm-sand':       { bgPrimary:'#f6f1e7', bgSecondary:'#fefcf9', bgTertiary:'#ebe4d6', textPrimary:'#1a1a1a', textSecondary:'#7a6f60', border:'#d9d1c4', navBg:'#f6f1e7', footerBg:'#2c2416', footerText:'#a09080' },
+            'warm-peach':      { bgPrimary:'#fdf5f0', bgSecondary:'#ffffff', bgTertiary:'#f5e8df', textPrimary:'#1a1a1a', textSecondary:'#8a6e5e', border:'#e8d5c8', navBg:'#fdf5f0', footerBg:'#2a1f18', footerText:'#b09080' },
+            'warm-terracotta': { bgPrimary:'#faf3ed', bgSecondary:'#fffdfb', bgTertiary:'#f0e2d5', textPrimary:'#2c1810', textSecondary:'#7a5e4a', border:'#dbc8b8', navBg:'#faf3ed', footerBg:'#2c1810', footerText:'#a08070' },
+            // Neutros
+            'neutral-white':   { bgPrimary:'#ffffff', bgSecondary:'#f8f8f8', bgTertiary:'#f0f0f0', textPrimary:'#1a1a1a', textSecondary:'#5c5c5c', border:'#e0e0e0', navBg:'#ffffff', footerBg:'#1a1a1a', footerText:'#999' },
+            'neutral-snow':    { bgPrimary:'#fafafa', bgSecondary:'#ffffff', bgTertiary:'#f0f0f0', textPrimary:'#111111', textSecondary:'#666666', border:'#e2e2e2', navBg:'#fafafa', footerBg:'#111111', footerText:'#888' },
+            'neutral-cool-gray':{ bgPrimary:'#f5f5f7', bgSecondary:'#ffffff', bgTertiary:'#ebebed', textPrimary:'#1d1d1f', textSecondary:'#6e6e73', border:'#d2d2d7', navBg:'#f5f5f7', footerBg:'#1d1d1f', footerText:'#86868b' },
+            'neutral-warm-gray':{ bgPrimary:'#f5f4f2', bgSecondary:'#fbfbfa', bgTertiary:'#eae8e4', textPrimary:'#1a1a1a', textSecondary:'#6b6660', border:'#d8d4ce', navBg:'#f5f4f2', footerBg:'#1a1a1a', footerText:'#999' },
+            // Fríos
+            'cool-ice-blue':   { bgPrimary:'#f5f7fa', bgSecondary:'#ffffff', bgTertiary:'#e8ecf1', textPrimary:'#1a1a2e', textSecondary:'#5a6b7f', border:'#c5cdd8', navBg:'#f5f7fa', footerBg:'#1a1a2e', footerText:'#7a8a9e' },
+            'cool-lavender':   { bgPrimary:'#f8f6fb', bgSecondary:'#ffffff', bgTertiary:'#eeebf5', textPrimary:'#1a1a2e', textSecondary:'#6b6080', border:'#d5cee0', navBg:'#f8f6fb', footerBg:'#1a1a2e', footerText:'#8a80a0' },
+            'cool-mint':       { bgPrimary:'#f4faf8', bgSecondary:'#ffffff', bgTertiary:'#e4f2ed', textPrimary:'#1a2e28', textSecondary:'#4a7065', border:'#bdd8cf', navBg:'#f4faf8', footerBg:'#1a2e28', footerText:'#6a9a8e' },
+            'cool-sage':       { bgPrimary:'#f7f9f5', bgSecondary:'#ffffff', bgTertiary:'#edf2e8', textPrimary:'#1a1a1a', textSecondary:'#6b7a5e', border:'#c8d4be', navBg:'#f7f9f5', footerBg:'#1a2a18', footerText:'#7a9a6e' },
+            // Oscuros
+            'dark-charcoal':   { bgPrimary:'#1a1a1a', bgSecondary:'#242424', bgTertiary:'#2e2e2e', textPrimary:'#f0ede8', textSecondary:'#9a9590', border:'#3a3a3a', navBg:'#111111', footerBg:'#111111', footerText:'#666' },
+            'dark-navy':       { bgPrimary:'#0f1628', bgSecondary:'#161d32', bgTertiary:'#1c2540', textPrimary:'#e8ecf2', textSecondary:'#7a8aa0', border:'#2a3550', navBg:'#0a1020', footerBg:'#0a1020', footerText:'#4a5a70' },
+            'dark-forest':     { bgPrimary:'#0f1a14', bgSecondary:'#142018', bgTertiary:'#1a2a1f', textPrimary:'#e0ece4', textSecondary:'#7a9a80', border:'#2a4030', navBg:'#0a150f', footerBg:'#0a150f', footerText:'#4a6a50' },
+            'dark-warm':       { bgPrimary:'#1c1816', bgSecondary:'#242018', bgTertiary:'#2e2820', textPrimary:'#f0e8e0', textSecondary:'#a09080', border:'#3a3028', navBg:'#141210', footerBg:'#141210', footerText:'#605040' },
+            // Gradientes
+            'grad-cream':      { bgPrimary:'linear-gradient(180deg, #fdfbf7 0%, #f0ece4 100%)', bgSecondary:'#ffffff', bgTertiary:'#f4f2ec', textPrimary:'#1a1a1a', textSecondary:'#5c5c5c', border:'#e5e5e5', navBg:'#fdfbf7', footerBg:'#1a1a1a', footerText:'#999', isGradient:true },
+            'grad-sunset':     { bgPrimary:'linear-gradient(180deg, #fdf5f0 0%, #f5e8df 50%, #f0e2d5 100%)', bgSecondary:'#fffdfb', bgTertiary:'#f5e8df', textPrimary:'#2c1810', textSecondary:'#8a6e5e', border:'#e0c8b8', navBg:'#fdf5f0', footerBg:'#2a1f18', footerText:'#b09080', isGradient:true },
+            'grad-cool':       { bgPrimary:'linear-gradient(180deg, #f5f7fa 0%, #eeebf5 100%)', bgSecondary:'#ffffff', bgTertiary:'#e8ecf1', textPrimary:'#1a1a2e', textSecondary:'#5a6580', border:'#cdd0da', navBg:'#f5f7fa', footerBg:'#1a1a2e', footerText:'#7a80a0', isGradient:true },
+            'grad-dark':       { bgPrimary:'linear-gradient(180deg, #1a1a2e 0%, #0f1628 100%)', bgSecondary:'#161d32', bgTertiary:'#1c2540', textPrimary:'#e8ecf2', textSecondary:'#7a8aa0', border:'#2a3550', navBg:'#12122a', footerBg:'#0a1020', footerText:'#4a5a70', isGradient:true },
+        };
+
+        const selHeading = document.getElementById('sel-heading');
+        const selBody = document.getElementById('sel-body');
+        const selBg = document.getElementById('sel-bg');
+
+        function applyTheme() {
+            const headingFont = selHeading.value;
+            const headingOpt = selHeading.options[selHeading.selectedIndex];
+            const headingWeight = headingOpt.dataset.weight;
+            const hasItalic = headingOpt.dataset.italic === 'true';
+            const bodyFont = selBody.value;
+            const themeKey = selBg.value;
+            const t = themes[themeKey];
+
+            // Headings
+            document.querySelectorAll('h1, h2, h3').forEach(el => {
+                el.style.fontFamily = headingFont;
+                el.style.fontWeight = headingWeight;
+            });
+
+            // Highlight italic
+            const hl = document.getElementById('hero-highlight');
+            hl.style.fontStyle = hasItalic ? 'italic' : 'normal';
+            if (!hasItalic) {
+                hl.style.fontWeight = '300';
+            } else {
+                hl.style.fontWeight = headingWeight;
+            }
+
+            // Body
+            document.querySelectorAll('.subqualifier, .subheadline, .lead-text, .dolor-item p, .card p, .faq-question, .faq-answer, .btn, .navbar-mockup .brand span, .navbar-mockup .nav-links span').forEach(el => {
+                el.style.fontFamily = bodyFont;
+            });
+
+            // Backgrounds
+            const preview = document.getElementById('preview');
+            const setBg = (el, bg) => {
+                if (bg && bg.includes('gradient')) {
+                    el.style.background = bg;
+                } else {
+                    el.style.background = bg;
+                }
+            };
+
+            setBg(preview, t.bgPrimary);
+            preview.style.color = t.textPrimary;
+
+            // Navbar
+            const nav = document.getElementById('navbar');
+            nav.style.background = t.navBg;
+            nav.style.borderColor = t.border;
+            nav.style.color = t.textPrimary;
+
+            // Hero
+            document.getElementById('hero-sub').style.color = t.textSecondary;
+            document.getElementById('hero-h1').style.color = t.textPrimary;
+            document.getElementById('hero-subheadline').style.color = t.textSecondary;
+            document.getElementById('btn2').style.borderColor = t.border;
+            document.getElementById('btn2').style.color = t.textPrimary;
+            document.getElementById('btn1').style.fontFamily = bodyFont;
+
+            // Tertiary section
+            const partTertiary = document.getElementById('part-tertiary');
+            partTertiary.style.background = t.bgTertiary;
+
+            // Cards
+            document.querySelectorAll('.card').forEach(c => {
+                c.style.background = t.bgSecondary;
+                c.style.borderColor = t.border;
+                c.querySelector('p').style.color = t.textSecondary;
+                c.querySelector('h3').style.color = t.textPrimary;
+            });
+
+            // Dolor
+            document.getElementById('dolor-h2').style.color = t.textPrimary;
+            document.getElementById('dolor-lead').style.color = t.textSecondary;
+            document.querySelectorAll('.dolor-item p').forEach(p => {
+                p.style.color = t.textSecondary;
+                const s = p.querySelector('strong');
+                if (s) s.style.color = t.textPrimary;
+            });
+
+            // Secondary section
+            const partSecondary = document.getElementById('part-secondary');
+            partSecondary.style.background = t.bgSecondary;
+
+            // FAQ
+            document.getElementById('faq-h2').style.color = t.textPrimary;
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.style.borderColor = t.border;
+            });
+            document.querySelectorAll('.faq-question').forEach(q => q.style.color = t.textPrimary);
+            document.querySelectorAll('.faq-answer').forEach(a => a.style.color = t.textSecondary);
+
+            // Footer
+            const footer = document.getElementById('footer-mockup');
+            footer.style.background = t.footerBg;
+            footer.style.color = t.footerText;
+        }
+
+        function cycleSelect(id, dir) {
+            const sel = document.getElementById(id);
+            let idx = sel.selectedIndex + dir;
+            if (idx < 0) idx = sel.options.length - 1;
+            if (idx >= sel.options.length) idx = 0;
+            sel.selectedIndex = idx;
+            applyTheme();
+        }
+
+        selHeading.addEventListener('change', applyTheme);
+        selBody.addEventListener('change', applyTheme);
+        selBg.addEventListener('change', applyTheme);
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.target.tagName === 'SELECT') return;
+            if (e.key === 'ArrowLeft') { cycleSelect('sel-bg', -1); e.preventDefault(); }
+            if (e.key === 'ArrowRight') { cycleSelect('sel-bg', 1); e.preventDefault(); }
+            if (e.key === 'ArrowUp') { cycleSelect('sel-heading', -1); e.preventDefault(); }
+            if (e.key === 'ArrowDown') { cycleSelect('sel-heading', 1); e.preventDefault(); }
+        });
+
+        // Init
+        applyTheme();
+    </script>
+</body>
+</html>
