@@ -40,6 +40,7 @@
                 </div>
                 <a href="case.html" class="nav-item">Casos de Éxito</a>
                 <a href="about.html" class="nav-item">Sobre Nosotros</a>
+                <a href="social.html" class="nav-item">Social</a>
                 <a href="blog.html" class="nav-item">Blog</a>
             </nav>
 
@@ -72,6 +73,7 @@
         <a href="crm-admin.html" class="mobile-menu-item mobile-menu-sub">CRM bajo control</a>
         <a href="case.html" class="mobile-menu-item">Casos de Éxito</a>
         <a href="about.html" class="mobile-menu-item">Sobre Nosotros</a>
+        <a href="social.html" class="mobile-menu-item">Social</a>
         <a href="blog.html" class="mobile-menu-item">Blog</a>
         <div class="mobile-menu-divider"></div>
         <div class="mobile-menu-actions">
@@ -242,7 +244,7 @@
                 </div>
                 <div class="split-content" style="flex: 1.8; padding-left: 2rem;">
                     <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7;">Combinamos estrategia
-                        humana con inteligencia artificial para que cada paso de tu proceso comercial sea más rápido,
+                        humana con tecnología para que cada paso de tu proceso comercial sea más rápido,
                         más preciso y más escalable. Personas que piensan, herramientas que ejecutan.</p>
                 </div>
             </div>
@@ -251,8 +253,7 @@
             <div class="tabs-container mt-md">
                 <!-- Tabs Navigation -->
                 <div class="tabs-nav">
-                    <button class="tab-btn active" data-tab="tab-lgaas">Llena tu agenda de clientes <span class="badge"
-                            style="margin-bottom:0; margin-left: 8px;">✦ IA Powered</span></button>
+                    <button class="tab-btn active" data-tab="tab-lgaas">Llena tu agenda de clientes</button>
                     <button class="tab-btn" data-tab="tab-revenue">Vende más y mejor</button>
                 </div>
 
@@ -305,7 +306,7 @@
                                     <span class="card-step">03</span>
                                     <span class="badge">Contacto</span>
                                     <h3>Les contactamos por ti</h3>
-                                    <p>Email, LinkedIn, mensajes. Todo personalizado, sin parecer spam.</p>
+                                    <p>Email, LinkedIn, mensajes. Todo personalizado a tu gusto, sin parecer spam.</p>
                                 </div>
                                 <div class="card-service-img">
                                     <svg viewBox="0 0 140 120" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -977,6 +978,208 @@
 
                 <p class="evolucion-closing">Dos servicios. Cero curva de aprendizaje. Porque ya estamos dentro.</p>
             </div>
+        </section>
+
+        <!-- 05c - Calculadora de Potencial -->
+        <section id="calculadora" class="calc-section bg-secondary">
+            <div class="container">
+                <div class="text-center">
+                    <h2>¿Ya sabes cuál es tu potencial de ventas?</h2>
+                    <p class="subheadline">Define tu cliente ideal y descubre cuántas empresas puedes alcanzar con TopSpin.</p>
+                </div>
+                <div class="calc-flow mt-sm">
+                    <!-- Paso 1: Formulario TAM -->
+                    <div class="calc-tam-form" id="calcTamForm">
+                        <div class="calc-form-group">
+                            <label class="calc-form-label">Sector de actividad <span class="text-secondary" id="calcIndustryCount">(0 seleccionados)</span></label>
+                            <div class="calc-pill-grid">
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="finance_insurance_legal">
+                                    <span class="calc-pill-label">Finanzas, Seguros y Legal</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="technology_software_internet">
+                                    <span class="calc-pill-label">Tecnología y Software</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="education_training">
+                                    <span class="calc-pill-label">Educación y Formación</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="science_health_wellness">
+                                    <span class="calc-pill-label">Salud y Bienestar</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="construction_manufacturing">
+                                    <span class="calc-pill-label">Construcción e Industria</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="consumer_retail_goods">
+                                    <span class="calc-pill-label">Consumo y Retail</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="food_hospitality">
+                                    <span class="calc-pill-label">Alimentación y Hostelería</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="transport_logistics_travel">
+                                    <span class="calc-pill-label">Transporte y Logística</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="business_services_consulting">
+                                    <span class="calc-pill-label">Servicios y Consultoría</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="creative_media_entertainment">
+                                    <span class="calc-pill-label">Medios y Entretenimiento</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="agriculture_food_rural">
+                                    <span class="calc-pill-label">Agricultura y Rural</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="nonprofits_public">
+                                    <span class="calc-pill-label">ONGs y Sector Público</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="materials_light_manufacturing">
+                                    <span class="calc-pill-label">Manufactura Ligera</span>
+                                </label>
+                                <label class="calc-pill-item">
+                                    <input type="checkbox" name="tam-industry" value="research_design_innovation">
+                                    <span class="calc-pill-label">Diseño e Innovación</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="calc-form-row-2col">
+                            <div class="calc-form-group">
+                                <label class="calc-form-label">Rango de empleados</label>
+                                <div class="calc-range-row">
+                                    <input type="number" id="tam-emp-min" class="calc-input" placeholder="Mínimo" min="1" value="10">
+                                    <span class="calc-range-separator">—</span>
+                                    <input type="number" id="tam-emp-max" class="calc-input" placeholder="Máximo" min="1" value="50">
+                                </div>
+                            </div>
+                            <div class="calc-form-group">
+                                <label class="calc-form-label">Facturación anual (miles €)</label>
+                                <div class="calc-range-row">
+                                    <input type="number" id="tam-rev-min" class="calc-input" placeholder="Mínimo" min="0" step="10" value="200">
+                                    <span class="calc-range-separator">—</span>
+                                    <input type="number" id="tam-rev-max" class="calc-input" placeholder="Máximo" min="0" step="10" value="2000">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="calc-form-group">
+                            <label class="calc-form-label">Ubicación <span class="text-secondary" id="calcLocationCount">(0 seleccionados)</span></label>
+                            <div class="calc-location-select" id="calcLocationSelect">
+                                <div class="calc-location-trigger" id="calcLocationTrigger">
+                                    <span id="calcLocationLabel">Selecciona países</span>
+                                    <span class="calc-location-chevron"></span>
+                                </div>
+                                <div class="calc-location-dropdown" id="calcLocationDropdown">
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="espana">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>España</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="portugal">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Portugal</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="francia">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Francia</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="alemania">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Alemania</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="italia">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Italia</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="reino_unido">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Reino Unido</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="paises_bajos">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Países Bajos</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="belgica">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Bélgica</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="suiza">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Suiza</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="eeuu">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Estados Unidos</span>
+                                    </label>
+                                    <label class="calc-checkbox-item">
+                                        <input type="checkbox" name="tam-location" value="latam">
+                                        <span class="calc-checkbox-mark"></span>
+                                        <span>Latinoamérica</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-primary calc-btn-trigger" id="calcTrigger">Calcula mi potencial</button>
+
+                    <!-- Paso 2: Loading -->
+                    <div class="calc-loading" id="calcLoading">
+                        <div class="calc-spinner"></div>
+                        <p>Analizando tu mercado...</p>
+                    </div>
+
+                    <!-- Paso 3: Resultados -->
+                    <div class="calc-results" id="calcResults">
+                        <span class="badge">Tu mercado potencial</span>
+                        <div class="calc-result-grid calc-result-grid--3col">
+                            <div class="calc-result-item">
+                                <span class="calc-result-number text-accent" id="calc-res-tam">12.450</span>
+                                <span class="calc-result-label">empresas alcanzables</span>
+                            </div>
+                            <div class="calc-result-item">
+                                <span class="calc-result-number text-accent" id="calc-res-reuniones">+37</span>
+                                <span class="calc-result-label">reuniones extra/mes</span>
+                            </div>
+                            <div class="calc-result-item">
+                                <span class="calc-result-number text-accent calc-result-blurred">84.200 €</span>
+                                <span class="calc-result-label">facturación extra/mes</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline calc-btn-recalc" id="calcRecalc">Recalcular</button>
+
+                    <!-- Paso 4: Lead capture -->
+                    <div class="calc-lead-section" id="calcLeadSection">
+                        <p class="calc-lead-intro">¿Quieres recibir un análisis detallado de tu mercado?</p>
+                        <form class="calc-lead-form" id="calcLeadForm">
+                            <input type="email" placeholder="Tu email corporativo" required>
+                            <button type="submit" class="btn btn-primary">Recibir informe</button>
+                        </form>
+                        <p class="microcopy text-center" style="margin-top: 0.5rem;">Sin spam. Solo tu análisis.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Toast -->
+            <div class="calc-toast" id="calcToast">Pronto contactaremos contigo</div>
         </section>
 
         <!-- 07 - Why TopSpin (hidden) -->
