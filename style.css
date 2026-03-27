@@ -151,6 +151,60 @@ h5 {
     padding: 0 5%;
 }
 
+.page-wide .container {
+    max-width: 1400px;
+}
+
+.grid-2-fixed {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 768px) {
+    .grid-2-fixed {
+        grid-template-columns: 1fr;
+    }
+}
+
+.urgencia-split {
+    display: flex;
+    align-items: flex-start;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.urgencia-texto {
+    flex: 1 1 55%;
+}
+
+.urgencia-img {
+    flex: 0 0 45%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.urgencia-img svg {
+    width: 100%;
+    max-width: 480px;
+}
+
+@media (max-width: 768px) {
+    .urgencia-split {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .urgencia-texto,
+    .urgencia-img {
+        flex: 1 1 100%;
+    }
+
+    .urgencia-img svg {
+        max-width: 320px;
+    }
+}
+
 .mt-lg {
     margin-top: 4rem;
 }
@@ -850,9 +904,10 @@ section {
 .card-feature h3 {
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 1.75rem;
+    font-size: 1.15rem;
     color: #585858;
     margin-bottom: 1rem;
+    white-space: nowrap;
 }
 
 .card-feature p {
@@ -889,8 +944,8 @@ section {
 
 /* Tabs Browser Style */
 .tabs-container {
-    max-width: 1200px;
-    width: 96%;
+    max-width: 1400px;
+    width: 98%;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -981,6 +1036,30 @@ section {
     gap: 1.25rem;
 }
 
+.tabs-content .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.tabs-content .card-service {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.tabs-content .card-service-body {
+    flex: 1;
+}
+
+.tabs-content .card-service-img {
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 1.25rem;
+}
+
+.tabs-content .card-service-img svg {
+    max-width: 110px;
+}
+
 /* LGaaS tab cards — grid 2x2 con SVG */
 #tab-lgaas .grid-2 {
     grid-template-columns: repeat(2, 1fr);
@@ -1024,10 +1103,50 @@ section {
     }
 }
 
+/* Generic card-service layout (for ROaaS, CRM Admin and any page) */
+.card-service {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+.card-service-body {
+    flex: 1 1 65%;
+}
+.card-service-img {
+    flex: 0 0 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    background: rgba(230, 89, 38, 0.04);
+    border-radius: 10px;
+}
+.card-service-img svg {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+}
+@media (max-width: 768px) {
+    .card-service {
+        flex-direction: column;
+    }
+    .card-service-img {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 0.75rem;
+    }
+    .card-service-img svg {
+        max-width: 70px;
+    }
+}
+
 .tabs-content .card {
     padding: 1.5rem;
     text-align: left;
     border-left: 3px solid var(--accent-color);
+}
+.tabs-content .card.card-service {
+    border-left: none;
 }
 
 .tabs-content .card h3 {
@@ -1073,7 +1192,7 @@ section {
 
 .tabs-content .card .badge {
     font-size: 0.70rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 2rem;
     padding: 0.25rem 0.6rem;
 }
 
@@ -1130,7 +1249,7 @@ section {
     flex-direction: column;
     gap: 1.25rem;
     max-width: 920px;
-    margin: 0 auto 2rem;
+    margin: 2rem auto 2rem;
 }
 
 .evolucion-closing {
@@ -1184,8 +1303,8 @@ section {
 }
 
 .evolucion-card-body {
-    flex: 1 1 58%;
-    padding: 1.5rem 1.75rem;
+    flex: 1 1 55%;
+    padding: 2.5rem 2.5rem;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -1242,12 +1361,12 @@ section {
 }
 
 .evolucion-card-img {
-    flex: 0 0 35%;
+    flex: 0 0 40%;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
-    min-height: 200px;
+    padding: 2.5rem;
+    min-height: 260px;
 }
 
 .evolucion-card:nth-child(1) .evolucion-card-img {
@@ -1262,7 +1381,7 @@ section {
 
 .evolucion-card-img svg {
     width: 100%;
-    max-width: 175px;
+    max-width: 240px;
     height: auto;
     border-radius: 10px;
 }
@@ -4338,6 +4457,19 @@ section {
     z-index: 1;
 }
 
+.case-company-logo {
+    width: 100%;
+    max-height: 80px;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    mix-blend-mode: multiply;
+}
+
+.case-card-visual:has(.case-company-logo) {
+    padding: 1.5rem;
+}
+
 .case-card-category {
     font-family: var(--font-body);
     font-size: 0.75rem;
@@ -4572,6 +4704,10 @@ section {
 
     .headline br {
         display: none;
+    }
+
+    .lgaas-hero .headline br {
+        display: block;
     }
 
     .rotating-wrapper {
