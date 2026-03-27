@@ -4798,6 +4798,16 @@ section {
         grid-template-columns: 1fr 1fr;
     }
 
+    /* ── Tabs content grids ── */
+    .tabs-content .grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .tabs-content .card-service {
+        text-align: left;
+        align-items: flex-start;
+    }
+
     /* ── 04 Dolor ── */
     .dolor-section {
         padding: 3rem 0;
